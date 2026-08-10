@@ -1,10 +1,15 @@
 [tools]
 node = "22"
 pnpm = "11.13.0"
+ffmpeg = "latest"
+lefthook = "latest"
 
 [tasks.setup]
-description = "Install dependencies"
-run = "pnpm install"
+description = "Install dependencies and git hooks"
+run = [
+  "pnpm install",
+  "lefthook install"
+]
 
 [tasks.dev]
 description = "Start the slide picker in dev mode"
@@ -25,3 +30,7 @@ run = "pnpm run lint"
 [tasks.update]
 description = "Regenerate dist/_redirects for Cloudflare Pages"
 run = "pnpm run update"
+
+[tasks.image]
+description = "Convert an image to .webp and store it in a slide's src/public/images/"
+run = "pnpm run image"
