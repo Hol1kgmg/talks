@@ -9,6 +9,7 @@
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
     "update": "tsx scripts/redirects.ts",
+    "image": "tsx scripts/add-image.ts",
     "prepare": "git submodule update --init --recursive"
   },
   "devDependencies": {
@@ -32,8 +33,9 @@
     "eslint-typegen": "catalog:",
     "execa": "catalog:",
     "fast-glob": "catalog:",
-    "find-up": "^7.0.0",
+    "find-up": "catalog:",
     "markdown-it-magic-link": "catalog:",
+    "ora": "catalog:",
     "playwright-chromium": "catalog:",
     "pnpm": "catalog:",
     "prettier-plugin-slidev": "catalog:",
