@@ -19,6 +19,13 @@ run = "pnpm run dev"
 description = "Build all slides and generate Cloudflare Pages redirects"
 run = "pnpm run build"
 
+[tasks."dev:home"]
+description = "Build then locally preview dist/ (homepage + talks + _redirects + 404) like Cloudflare Pages"
+run = [
+  "pnpm run build",
+  "npx serve dist -p 4321"
+]
+
 [tasks.typecheck]
 description = "Type-check the project"
 run = "pnpm run typecheck"

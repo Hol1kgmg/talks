@@ -37,6 +37,16 @@ git commit -m "build: freeze 2026-08-10"
 
 再度編集する場合は対応する `dist-stale/<talk>` ディレクトリを削除してからビルドする。
 
+## ビルド結果をローカルで確認
+
+`dist/`（トップページ・各トーク・`_redirects`・404ページ）を静的にローカル配信して、Cloudflare Pagesと近い形で確認できる。`vite preview`はSPAフォールバックにより未定義パスも`index.html`を返してしまうため、`serve`パッケージで配信することで未定義パスに対する404の挙動（`dist/404.html`が返る）まで含めて確認できる。
+
+```bash
+mise run dev:home
+```
+
+`http://localhost:4321/` でトップページ（`dist/index.html`）、`http://localhost:4321/2026/talks-repo-intro/` で個別のトーク、存在しないパス（例: `http://localhost:4321/foo`）で404ページ（`dist/404.html`）を確認できる。
+
 ## 画像の追加
 
 ```bash
@@ -48,3 +58,5 @@ mise run image <path-to-image>   # .webpに変換してsrc/public/images/に格�
 1. 日付ディレクトリ（例: `2026-08-10/`）を作成し、`README.md`（1行目に `# <タイトル>`、2行目以降に概要）と `src/` 配下のSlidevプロジェクトを用意する
 2. `src/package.json` の `build` スクリプトで `--base` の配信パスを指定する（例: `tsx ../../scripts/build.ts /2026/talks-repo-intro/`）
 3. `mise run build` を実行すると、`scripts/homepage.ts` が各トークの `README.md` からトップページ（`dist/index.html`）を自動生成する
+
+トップページのデザイン方針（カラーパレット・タイポグラフィ等）は [docs/design-system.md](./docs/design-system.md) を参照。

@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import fg from 'fast-glob'
+import { baseStyles } from './lib/theme'
 
 // Generates dist/index.html — a static landing page listing all talks,
 // separate from the Slidev decks themselves. Cloudflare Pages serves this
@@ -38,10 +39,12 @@ function escape(s: string) {
 
 const items = talks
   .map(({ base, title, description }) => `
-    <li>
-      <a href="${escape(base)}">${escape(title)}</a>
-      ${description ? `<p>${escape(description)}</p>` : ''}
-    </li>`)
+      <li class="card">
+        <a href="${escape(base)}">
+          <span class="card-title">${escape(title)}</span>
+          ${description ? `<span class="card-description">${escape(description)}</span>` : ''}
+        </a>
+      </li>`)
   .join('')
 
 const html = `<!DOCTYPE html>
@@ -51,13 +54,47 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>talks</title>
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 4rem auto; padding: 0 1rem; line-height: 1.6; }
-  h1 { font-size: 1.5rem; }
-  ul { list-style: none; padding: 0; }
-  li { margin-bottom: 1.5rem; }
-  a { font-size: 1.1rem; text-decoration: none; color: #2563eb; }
-  a:hover { text-decoration: underline; }
-  p { margin: 0.25rem 0 0; color: #555; font-size: 0.9rem; }
+${baseStyles}
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .card {
+    border-radius: 16px;
+    background: var(--color-bg-section);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  .card a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    border-radius: inherit;
+  }
+  .card-title {
+    /* Title Medium 相当 */
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--color-accent);
+  }
+  .card:hover .card-title {
+    color: var(--color-accent-hover);
+  }
+  .card-description {
+    /* Body Medium 相当 */
+    display: block;
+    margin-top: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.015em;
+    color: var(--color-text-body);
+  }
 </style>
 </head>
 <body>
