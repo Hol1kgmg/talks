@@ -5,7 +5,7 @@
 個人サイトURL: 未定（TODO: 確定後に README / reuse / redirects に反映）。
 
 # Setup and Basic Usage
-Setup instructions and basic usage are documented in [README.md](./README.md).
+Setup instructions and basic usage are documented in [HOWTO.md](./HOWTO.md).
 
 # Work Rules
 1. Propose implementation plan
