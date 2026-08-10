@@ -3,11 +3,12 @@ pre-commit:
   commands:
     lint:
       glob: '*.{js,ts,mjs,cjs,vue,json,yaml,yml,toml,md}'
-      exclude: pnpm-lock.yaml
+      exclude: 'pnpm-lock.yaml|dist-stale/**'
       run: pnpm exec eslint --fix {staged_files}
       stage_fixed: true
     image-format:
       glob: '*.{png,jpg,jpeg,gif}'
+      exclude: 'dist-stale/**'
       run: >
         echo "PNG/JPEG/GIF画像が検出されました。'mise run image <path>' でwebpに変換してから追加してください:" &&
         echo {staged_files} && exit 1
