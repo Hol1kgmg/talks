@@ -30,59 +30,36 @@ const bases = (await Promise.all(
 ))
   .filter(Boolean)
 
+// Cloudflare Pages reads redirect rules from a plain-text `_redirects` file
+// placed in the publish directory (`dist/`), one rule per line:
+// https://developers.cloudflare.com/pages/configuration/redirects/
+const GITHUB_REPO = 'https://github.com/Hol1kgmg/talks'
+// TODO: 個人サイトのドメインが確定したら、各トークのルートリダイレクト先として設定する
+const PERSONAL_SITE_URL = ''
+
 const redirects = bases
   .flatMap(({ base, pdfFile, dir }) => {
-    const parts: string[] = []
+    const lines: string[] = []
 
     if (pdfFile) {
-      parts.push(`
-[[redirects]]
-from = "${base}pdf"
-to = "https://github.com/antfu/talks/blob/main/${dir}/${pdfFile}?raw=true"
-status = 302
-
-[[redirects]]
-from = "/${dir}/pdf"
-to = "https://github.com/antfu/talks/blob/main/${dir}/${pdfFile}?raw=true"
-status = 302`)
+      lines.push(`${base}pdf ${GITHUB_REPO}/blob/main/${dir}/${pdfFile}?raw=true 302`)
+      lines.push(`/${dir}/pdf ${GITHUB_REPO}/blob/main/${dir}/${pdfFile}?raw=true 302`)
     }
 
-    parts.push(`
-[[redirects]]
-from = "${base}src"
-to = "https://github.com/antfu/talks/tree/main/${dir}"
-status = 302`)
+    lines.push(`${base}src ${GITHUB_REPO}/tree/main/${dir} 302`)
 
-    parts.push(`
-[[redirects]]
-from = "${dir}"
-to = "https://talks.antfu.me${base}"
-status = 301
+    if (PERSONAL_SITE_URL)
+      lines.push(`${dir} ${PERSONAL_SITE_URL}${base} 301`)
 
-[[redirects]]
-from = "${base}*"
-to = "${base}index.html"
-status = 200`)
+    lines.push(`${base}* ${base}index.html 200`)
 
-    return parts
+    return lines
   })
   .join('\n')
 
-const content = `
-[build]
-publish = "dist"
-command = "pnpm run build"
-
-[build.environment]
-NODE_VERSION = "22"
-PLAYWRIGHT_BROWSERS_PATH = "0"
-
+const content = `# TODO: 個人サイトのドメインが確定したらルートリダイレクト（/ -> 個人サイト）を追加する
 ${redirects}
-
-[[redirects]]
-from = "/"
-to = "https://antfu.me/talks"
-status = 302
 `
 
-await fs.writeFile('netlify.toml', content, 'utf-8')
+await fs.mkdir('dist', { recursive: true })
+await fs.writeFile('dist/_redirects', content, 'utf-8')

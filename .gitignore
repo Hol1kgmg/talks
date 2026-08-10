@@ -2,5 +2,6 @@
 node_modules
 *-export*
 dist
+dist-stale
 .DS_Store
 **/public/assets/fonts

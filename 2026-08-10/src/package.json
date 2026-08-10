@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "tsx ../../scripts/build.ts /2026/talks-repo-intro/",
+    "export": "slidev export --per-slide --output ../2026-08-10-talks-repo-intro.pdf"
+  }
+}
