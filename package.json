@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "update": "tsx scripts/redirects.ts",
     "image": "tsx scripts/add-image.ts",
+    "freeze": "tsx scripts/freeze.ts",
     "prepare": "git submodule update --init --recursive"
   },
   "devDependencies": {

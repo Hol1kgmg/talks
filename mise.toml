@@ -34,3 +34,7 @@ run = "pnpm run update"
 [tasks.image]
 description = "Convert an image to .webp and store it in a slide's src/public/images/"
 run = "pnpm run image"
+
+[tasks.freeze]
+description = "Freeze a finished talk's build output into dist-stale/ so future builds skip rebuilding it"
+run = "pnpm run freeze"
