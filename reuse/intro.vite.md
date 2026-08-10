@@ -2,26 +2,20 @@
 layout: 'intro'
 ---
 
-# Anthony Fu
+<!-- TODO: 個人サイト公開後に自己紹介・SNSリンク・アバター画像を設定する -->
+
+# [名前: 入力待ち]
 
 <div class="leading-8 opacity-80">
-Core team member of Vite, Vue and Nuxt.<br>
-Creator of Vitest, Slidev VueUse, UnoCSS and Type Challenges.<br>
-Working at NuxtLabs.<br>
+[自己紹介: 入力待ち]<br>
 </div>
 
 <div my-10 w-min grid="~ cols-[40px_1fr] gap-y4" items-center justify-center>
   <div i-ri-github-line op50 ma text-xl/>
-  <div><a href="https://github.com/antfu" target="_blank">antfu</a></div>
-  <div i-ri-twitter-line op50 ma text-xl/>
-  <div><a href="https://twitter.com/antfu7" target="_blank">antfu7</a></div>
-  <div i-ri-mastodon-line op50 ma text-xl/>
-  <div><a href="https://m.webtoo.ls/@antfu" target="_blank">antfu@webtoo.ls</a></div>
+  <div><a href="#" target="_blank">[GitHub: 入力待ち]</a></div>
   <div i-ri-user-3-line op50 ma text-xl/>
-  <div><a href="https://antfu.me" target="_blank">antfu.me</a></div>
+  <div><a href="#" target="_blank">[個人サイトURL: 入力待ち]</a></div>
 </div>
-
-<img src="https://antfu.me/avatar.png" rounded-full w-40 abs-tr mt-16 mr-12/>
 
 <div flex="~ gap2">
 

@@ -1,6 +1,5 @@
 import fs from 'node:fs/promises'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 import { execa } from 'execa'
 import prompts from 'prompts'
 
@@ -33,8 +32,6 @@ async function startPicker(args: string[]) {
   args = args.filter(arg => arg !== '-y')
 
   if (result.folder) {
-    if (args[0] === 'dev')
-      execa('code', [fileURLToPath(new URL(`../${result.folder}/src/slides.md`, import.meta.url))])
     await execa('pnpm', ['run', ...args], {
       cwd: new URL(`../${result.folder}/src`, import.meta.url),
       stdio: 'inherit',

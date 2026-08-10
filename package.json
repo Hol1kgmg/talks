@@ -1,9 +1,10 @@
 {
+  "name": "talks",
   "type": "module",
   "private": true,
   "packageManager": "pnpm@11.13.0",
   "scripts": {
-    "build": "rimraf dist && pnpm -r run build",
+    "build": "rimraf dist && pnpm -r run build && tsx scripts/redirects.ts",
     "dev": "tsx scripts/picker.ts dev --open",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
@@ -31,6 +32,7 @@
     "eslint-typegen": "catalog:",
     "execa": "catalog:",
     "fast-glob": "catalog:",
+    "find-up": "^7.0.0",
     "markdown-it-magic-link": "catalog:",
     "playwright-chromium": "catalog:",
     "pnpm": "catalog:",

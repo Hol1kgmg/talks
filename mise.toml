@@ -1,0 +1,27 @@
+[tools]
+node = "22"
+pnpm = "11.13.0"
+
+[tasks.setup]
+description = "Install dependencies"
+run = "pnpm install"
+
+[tasks.dev]
+description = "Start the slide picker in dev mode"
+run = "pnpm run dev"
+
+[tasks.build]
+description = "Build all slides and generate Cloudflare Pages redirects"
+run = "pnpm run build"
+
+[tasks.typecheck]
+description = "Type-check the project"
+run = "pnpm run typecheck"
+
+[tasks.lint]
+description = "Lint the project"
+run = "pnpm run lint"
+
+[tasks.update]
+description = "Regenerate dist/_redirects for Cloudflare Pages"
+run = "pnpm run update"
