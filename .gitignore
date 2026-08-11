@@ -2,6 +2,7 @@
 node_modules
 *-export*
 dist
+dist-test*
 .wrangler
 .DS_Store
 **/public/assets/fonts
