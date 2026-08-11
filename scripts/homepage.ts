@@ -75,12 +75,22 @@ const items = talks
       </li>`)
   .join('')
 
+const siteDescription = 'Hol1kgmgの個人登壇スライドをまとめたアーカイブサイト。Slidevで作成した発表資料を一覧・閲覧できます。'
+
 const html = `<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>talks</title>
+<title>Hol1kgmg:talks</title>
+<meta name="description" content="${siteDescription}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hol1kgmg:talks" />
+<meta property="og:description" content="${siteDescription}" />
+<meta property="og:site_name" content="Hol1kgmg:talks" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Hol1kgmg:talks" />
+<meta name="twitter:description" content="${siteDescription}" />
 <style>
 ${baseStyles}
   ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
