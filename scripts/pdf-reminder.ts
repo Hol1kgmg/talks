@@ -1,11 +1,10 @@
 import fs from 'node:fs/promises'
 import { resolve } from 'node:path'
 import process from 'node:process'
-import { execa } from 'execa'
 
 // lefthookのpre-commitから呼ばれる。ステージされたファイルのうち
-// `<talk>/src/**` に差分があるトークだけ `pnpm run export` でPDFを再生成し、
-// 生成物をgit addしてそのままコミットに含める。
+// `<talk>/src/**` に差分があるトークについて、`mise run export` でのPDF再生成を
+// 促すリマインドだけを表示する（自動生成はしない・コミットもブロックしない）。
 const stagedFiles = process.argv.slice(2)
 
 const talkDirs = [...new Set(
@@ -17,27 +16,30 @@ const talkDirs = [...new Set(
 if (talkDirs.length === 0)
   process.exit(0)
 
+const targets: string[] = []
+
 for (const talkDir of talkDirs) {
   const pkgPath = resolve(talkDir, 'src/package.json')
   const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf-8'))
   const exportCommand: string | undefined = pkg.scripts?.export
-  if (!exportCommand) {
-    console.warn(`[export-changed] ${talkDir} has no "export" script, skipping`)
+  if (!exportCommand)
     continue
-  }
 
   const output = exportCommand.match(/--output[= ](\S+)/)?.[1]
-  if (!output) {
-    console.warn(`[export-changed] Could not determine PDF output path for ${talkDir}, skipping`)
+  if (!output)
     continue
-  }
-
-  console.log(`[export-changed] Exporting PDF for ${talkDir}...`)
-  await execa('pnpm', ['run', 'export'], {
-    cwd: resolve(talkDir, 'src'),
-    stdio: 'inherit',
-  })
 
   const pdfPath = resolve(talkDir, 'src', output)
-  await execa('git', ['add', pdfPath], { stdio: 'inherit' })
+  const pdfStaged = stagedFiles.some(file => resolve(file) === pdfPath)
+  if (!pdfStaged)
+    targets.push(talkDir)
+}
+
+if (targets.length > 0) {
+  console.log('')
+  console.log('[remind-export] スライドに差分がありますが、PDFがコミットに含まれていません:')
+  for (const talkDir of targets)
+    console.log(`  - ${talkDir}`)
+  console.log('  必要であれば `mise run export` でPDFを再生成してください。')
+  console.log('')
 }
