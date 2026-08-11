@@ -21,8 +21,10 @@ async function addShare(args: string[]) {
   const { name, ext } = path.parse(sourcePath)
 
   // svgはラスタライズすると劣化するため変換せずそのままコピーする
-  if (ext.toLowerCase() === '.svg') {
-    const outputPath = path.join(new URL(imagesDir).pathname, `${name}.svg`)
+  // webpは既に目的のフォーマットのため、再変換による劣化を避けるためコピーする
+  const lowerExt = ext.toLowerCase()
+  if (lowerExt === '.svg' || lowerExt === '.webp') {
+    const outputPath = path.join(new URL(imagesDir).pathname, `${name}${lowerExt}`)
     const relativeOutputPath = path.relative(process.cwd(), outputPath)
     const spinner = ora(`Copying to ${relativeOutputPath}`).start()
 
