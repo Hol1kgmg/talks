@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "update": "tsx scripts/redirects.ts",
     "image": "tsx scripts/add-image.ts",
+    "share": "tsx scripts/add-share.ts",
     "freeze": "tsx scripts/freeze.ts",
     "prepare": "git submodule update --init --recursive"
   },
@@ -54,7 +55,8 @@
     "vis-network": "catalog:",
     "vite": "catalog:",
     "vue-router": "catalog:",
-    "vue-tsc": "catalog:"
+    "vue-tsc": "catalog:",
+    "wrangler": "catalog:"
   },
   "resolutions": {
     "@slidev/cli": "catalog:",

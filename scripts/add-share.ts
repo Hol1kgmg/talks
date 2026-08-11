@@ -3,12 +3,11 @@ import path from 'node:path'
 import process from 'node:process'
 import { execa } from 'execa'
 import ora from 'ora'
-import prompts from 'prompts'
 
-async function addImage(args: string[]) {
+async function addShare(args: string[]) {
   const [imagePath] = args
   if (!imagePath) {
-    console.error('Usage: mise run image <path-to-image>')
+    console.error('Usage: mise run share <path-to-image>')
     process.exitCode = 1
     return
   }
@@ -16,25 +15,7 @@ async function addImage(args: string[]) {
   const sourcePath = path.resolve(process.cwd(), imagePath)
   await fs.access(sourcePath)
 
-  const folders = (await fs.readdir(new URL('..', import.meta.url), { withFileTypes: true }))
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name)
-    .filter(folder => folder.match(/^\d{4}-/))
-    .sort((a, b) => -a.localeCompare(b))
-    .map(folder => ({ title: folder, value: folder }))
-
-  const { folder } = await prompts([
-    {
-      type: 'select',
-      name: 'folder',
-      message: 'Pick a slide folder',
-      choices: folders,
-    },
-  ])
-  if (!folder)
-    return
-
-  const imagesDir = new URL(`../${folder}/src/public/images/`, import.meta.url)
+  const imagesDir = new URL('../reuse/images/', import.meta.url)
   await fs.mkdir(imagesDir, { recursive: true })
 
   const { name, ext } = path.parse(sourcePath)
@@ -74,4 +55,4 @@ async function addImage(args: string[]) {
   }
 }
 
-await addImage(process.argv.slice(2))
+await addShare(process.argv.slice(2))
