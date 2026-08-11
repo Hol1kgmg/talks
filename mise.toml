@@ -49,3 +49,7 @@ run = "pnpm run share"
 [tasks.freeze]
 description = "Freeze a finished talk's build output into dist-stale/ so future builds skip rebuilding it"
 run = "pnpm run freeze"
+
+[tasks.export]
+description = "Pick a talk and export it to PDF (../<talk-dir>.pdf)"
+run = "pnpm run export"
