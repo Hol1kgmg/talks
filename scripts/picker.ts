@@ -19,7 +19,7 @@ async function startPicker(args: string[]) {
     }))
 
   const result = args.includes('-y')
-    ? { folder: folders[0] }
+    ? { folder: folders[0].value }
     : await prompts([
         {
           type: 'select',

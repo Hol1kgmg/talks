@@ -12,3 +12,7 @@ pre-commit:
       run: >
         echo "PNG/JPEG/GIF画像が検出されました。'mise run image <path>' でwebpに変換してから追加してください:" &&
         echo {staged_files} && exit 1
+    pdf-export:
+      glob: '*/src/**'
+      exclude: 'dist-stale/**'
+      run: pnpm exec tsx scripts/export-changed.ts {staged_files}
