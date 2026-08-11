@@ -1,4 +1,4 @@
-# Slidevアセット（背景画像・共有シンボリックリンク）運用ルール
+# Slidevアセット（背景画像・共有シンボリックリンク・共有コンポーネント）運用ルール
 
 ## 背景画像（`background`フロントマター）の制約
 `@slidev/theme-default` および `@slidev/client` のビルトインレイアウトのうち、`background`フロントマターを実際に読み込んで描画するのは以下のレイアウトのみ:
@@ -50,9 +50,22 @@ reuse/images/                          # 実体（共通格納場所）
 - 新規トークを追加する際、共有背景を使う場合は`<talk>/src/public/images/shared`のシンボリックリンクを忘れずに作成する（相対パスの深さに注意: `<talk>/src/public/images/` から `reuse/images/` までは4階層上る）
 - シンボリックリンクは`slidev build`（Viteのpublicディレクトリコピー）でも問題なく解決されることをローカルビルドで確認済み。ただしCloudflare Pagesのビルド環境でシンボリックリンクが正しく辿れるかは別途要検証（未確認事項として残っている）
 
-## 検証手順の目安
-`background`や共有アセットまわりの変更をした際は、以下で実際に反映されているかまで確認してから完了報告すること（devサーバーのHTML出力はSPAのため`curl`だけでは判定できない）。
+## トーク間で共有するVueコンポーネント（シンボリックリンク運用）
+Slidevは各トークの `<talk>/src/components/*.vue` を自動でグローバルコンポーネントとして読み込む（`@slidev/cli` の内部設定 `dirs: roots.map(i => join(i, "components"))` で確認済み）。この仕組みに乗せて、共有画像と同じシンボリックリンクのパターンでコンポーネントもトーク間再利用する。
 
-1. `npx slidev build --base <base> --out <tmp-out>` でビルドが通ることを確認
-2. 必要なら`playwright-chromium`（devDependenciesに既存）でヘッドレスレンダリングし、`getComputedStyle(el).backgroundImage`が期待通りか確認
-3. 確認用に作った一時ビルド出力（`dist-test/`等）は`.gitignore`対象であることを確認しつつ、可能なら片付ける
+```
+reuse/components/                         # 実体（共通格納場所）
+<talk>/src/components -> ../../reuse/components   # 各トークからのシンボリックリンク
+```
+
+- `<talk>/src/` から `reuse/components/` までは2階層上る（`../../reuse/components`）。共有画像用シンボリックリンク（4階層上る）とは深さが異なるので混同しないこと
+- コンポーネントはslides.md内で `<ComponentName />` の形でそのまま使える（明示的なimportは不要）
+- 現在用意している共通コンポーネント:
+  - `CenterImage.vue`: 中央寄せの画像表示。`src` prop必須、`img-class` propで高さ/幅・余白を上書き（デフォルト `h-90 my-5`）
+  - `CornerComment.vue`: コーナー配置のコメントテキスト（デフォルト右下）。`position` prop（`bottom-right` / `bottom-left` / `top-right` / `top-left`）、`height` propで親要素の高さを指定すると内部でflexにより端に寄せられる
+  - `SlideBody.vue`: h1タイトル以外のコンテンツ領域を左右に配置するレイアウト。`left` / `right` の名前付きslot、`height`（デフォルト `h-9/10`）・`left-class` / `right-class`（デフォルト共に `w-1/2`、rightのみ `flex items-center`）propsで調整可能
+- 新規トークを追加する際、これらのコンポーネントを使う場合は`<talk>/src/components`のシンボリックリンクを作成する
+- 複数画像を組み合わせた複雑なレイアウト（アイコン+ラベルの並び等）は、パターンが定着するまで個別スライドごとにベタ書きし、汎用コンポーネント化は見送っている
+
+## 検証手順の目安
+`background`や共有アセットまわりの変更をした際は、`npx slidev build --base <base> --out <tmp-out>` でビルドが通ることまでは確認する。実際の見た目（背景が期待通り反映されているか等）はユーザーがdevサーバーで目視確認する（[slidev-workflow.md](./slidev-workflow.md)参照）。確認用に作った一時ビルド出力は片付ける。
