@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "tsx ../../scripts/build.ts /2026/dotfile-launcher-lt/",
+    "export": "slidev export --per-slide --output ../2026-08-06-dotfile-launcher-lt.pdf"
+  }
+}
