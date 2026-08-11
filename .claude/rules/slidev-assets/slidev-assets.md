@@ -1,0 +1,1 @@
+../../../agent/rules/slidev-assets.md

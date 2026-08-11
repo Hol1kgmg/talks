@@ -23,7 +23,7 @@ run = "pnpm run build"
 description = "Build then locally preview dist/ (homepage + talks + _redirects + 404) like Cloudflare Pages"
 run = [
   "pnpm run build",
-  "npx serve dist -p 4321"
+  "npx wrangler pages dev dist --port 4321"
 ]
 
 [tasks.typecheck]
@@ -41,6 +41,10 @@ run = "pnpm run update"
 [tasks.image]
 description = "Convert an image to .webp and store it in a slide's src/public/images/"
 run = "pnpm run image"
+
+[tasks.share]
+description = "Convert an image to .webp and store it in reuse/images/ for cross-talk sharing"
+run = "pnpm run share"
 
 [tasks.freeze]
 description = "Freeze a finished talk's build output into dist-stale/ so future builds skip rebuilding it"
