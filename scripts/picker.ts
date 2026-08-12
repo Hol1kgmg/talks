@@ -3,7 +3,7 @@ import process from 'node:process'
 import { execa } from 'execa'
 import prompts from 'prompts'
 
-async function startPicker(args: string[]) {
+const startPicker = async (args: string[]) => {
   const folders = await Promise.all((await fs.readdir(new URL('..', import.meta.url), { withFileTypes: true }))
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)

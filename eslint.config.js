@@ -1,4 +1,5 @@
 import antfu from '@antfu/eslint-config'
+import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions'
 
 export default antfu({
   vue: true,
@@ -24,4 +25,13 @@ export default antfu({
     'markdown/heading-increment',
     'markdown/no-missing-link-fragments',
     'import/newline-after-import',
+    'antfu/top-level-function',
   )
+  .append({
+    plugins: {
+      'prefer-arrow-functions': preferArrowFunctions,
+    },
+    rules: {
+      'prefer-arrow-functions/prefer-arrow-functions': 'error',
+    },
+  })

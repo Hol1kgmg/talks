@@ -5,7 +5,7 @@ import { execa } from 'execa'
 import ora from 'ora'
 import prompts from 'prompts'
 
-async function addImage(args: string[]) {
+const addImage = async (args: string[]) => {
   const [imagePath] = args
   if (!imagePath) {
     console.error('Usage: mise run image <path-to-image>')

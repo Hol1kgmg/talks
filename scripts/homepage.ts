@@ -6,7 +6,7 @@ import { baseStyles } from './lib/theme'
 
 // ボタン内にインライン埋め込みするアイコン。fill="#000000"固定のSVGを
 // currentColorに置き換えることで、.card-action:hoverの色変化に追従させる。
-async function loadIcon(name: string) {
+const loadIcon = async (name: string) => {
   const svg = await fs.readFile(resolve('scripts/assets/icons', `${name}.svg`), 'utf-8')
   return svg.replace(/fill="#000000"/, 'fill="currentColor"')
 }
@@ -54,9 +54,7 @@ const talks = (await Promise.all(
 ))
   .filter(t => t !== undefined)
 
-function escape(s: string) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
+const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 const items = talks
   .map(({ base, title, description, hasPdf }) => `
