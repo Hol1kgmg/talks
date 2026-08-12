@@ -4,7 +4,7 @@ import process from 'node:process'
 import { execa } from 'execa'
 import ora from 'ora'
 
-async function addShare(args: string[]) {
+const addShare = async (args: string[]) => {
   const [imagePath] = args
   if (!imagePath) {
     console.error('Usage: mise run share <path-to-image>')

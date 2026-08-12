@@ -12,7 +12,7 @@ export default defineConfig({
   },
   slidev: {
     markdown: {
-      markdownItSetup(md) {
+      markdownItSetup: (md) => {
         md.use(MarkdownItMagicLink, {
           linksMap: {
             'NuxtLabs': { link: 'https://nuxtlabs.com', imageUrl: 'https://nuxtlabs.com/nuxt.png' },
