@@ -83,6 +83,7 @@ const html = `<!DOCTYPE html>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hol1kgmg:talks</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="description" content="${siteDescription}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Hol1kgmg:talks" />
@@ -179,3 +180,4 @@ ${baseStyles}
 
 await fs.mkdir('dist', { recursive: true })
 await fs.writeFile('dist/index.html', html, 'utf-8')
+await fs.copyFile('scripts/assets/favicon.svg', 'dist/favicon.svg')
