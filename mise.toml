@@ -23,7 +23,7 @@ run = "pnpm run build"
 description = "Build then locally preview dist/ (homepage + talks + _redirects + 404) like Cloudflare Pages"
 run = [
   "pnpm run build",
-  "npx wrangler pages dev dist --port 4321"
+  "npx wrangler pages dev dist --port 4321 --compatibility-date=2026-08-11"
 ]
 
 [tasks.typecheck]

@@ -39,13 +39,15 @@ git commit -m "build: freeze 2026-08-10"
 
 ## ビルド結果をローカルで確認
 
-`dist/`（トップページ・各トーク・`_redirects`・404ページ）を静的にローカル配信して、Cloudflare Pagesと近い形で確認できる。`vite preview`はSPAフォールバックにより未定義パスも`index.html`を返してしまうため、`serve`パッケージで配信することで未定義パスに対する404の挙動（`dist/404.html`が返る）まで含めて確認できる。
+`dist/`（トップページ・各トーク・`_redirects`・404ページ）を`wrangler pages dev`でローカル配信して、Cloudflare Pagesと近い形で確認できる。`vite preview`はSPAフォールバックにより未定義パスも`index.html`を返してしまい、個別トークのページをリロードすると404になる問題があったため、`wrangler pages dev`で`_redirects`と404の挙動（`dist/404.html`が返る）まで含めて確認できるようにしている。
 
 ```bash
 mise run dev:home
 ```
 
 `http://localhost:4321/` でトップページ（`dist/index.html`）、`http://localhost:4321/2026/talks-repo-intro/` で個別のトーク、存在しないパス（例: `http://localhost:4321/foo`）で404ページ（`dist/404.html`）を確認できる。
+
+このタスクは`wrangler pages dev`に`--compatibility-date=2026-08-11`を固定で指定している。指定しない場合、wranglerはシステムの今日の日付をcompatibility dateとして使おうとするが、ローカルのwrangler（workerdランタイム）が対応している上限日付を超えると起動エラーになる（日付が進むたびに突然発生しうる）。過去の日付を固定指定しておけば、wranglerを新しいバージョンに更新しても対応上限日付は伸びる一方なので引き続き有効であり、更新のたびに追従させる必要はない。
 
 ## 画像の追加
 
