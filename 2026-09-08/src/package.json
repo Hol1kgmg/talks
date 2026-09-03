@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "tsx ../../scripts/build.ts /2026/herdr-terminal-multiplexer/",
+    "export": "slidev export --per-slide --output ../2026-09-08-herdr-terminal-multiplexer.pdf"
+  }
+}
