@@ -67,5 +67,19 @@ reuse/components/                         # 実体（共通格納場所）
 - 新規トークを追加する際、これらのコンポーネントを使う場合は`<talk>/src/components`のシンボリックリンクを作成する
 - 複数画像を組み合わせた複雑なレイアウト（アイコン+ラベルの並び等）は、パターンが定着するまで個別スライドごとにベタ書きし、汎用コンポーネント化は見送っている
 
+### そのトーク専用のコンポーネントと共有コンポーネントを併存させたい場合
+`<talk>/src/components`をディレクトリごとシンボリックリンクにすると、専用コンポーネントを置く場所がなくなる（symlink先の`reuse/components/`に書くと他トークにも公開されてしまう）。この場合は`<talk>/src/components`を実ディレクトリにし、共有コンポーネントは**サブディレクトリ単位**でシンボリックリンクする。
+
+```
+reuse/components/                                   # 実体（共通格納場所）
+<talk>/src/components/                              # 実ディレクトリ（トーク専用コンポーネントを直接置く）
+  shared -> ../../../reuse/components               # 共有コンポーネント群へのシンボリックリンク
+  TerminalLayers.vue                                # このトーク専用コンポーネント（実ファイル）
+```
+
+- `<talk>/src/components/` から `reuse/components/` までは3階層上る（`../../../reuse/components`）。ディレクトリ全体をシンボリックリンクする通常パターン（2階層上る）とは基準ディレクトリが1段深くなる分、階層数が異なるので混同しないこと
+- Slidevのコンポーネント自動読込（`unplugin-vue-components`）は`components/`配下をデフォルトで再帰的にスキャンするため、`components/shared/CenterImage.vue`のようにサブディレクトリに置かれていても`<CenterImage />`のようにファイル名だけで解決できる（`node_modules/@slidev/cli/dist/serve-*.mjs`の`createComponentsPlugin`で`deep`オプションを上書きしていないことを確認済み。デフォルトの`deep: true`が適用される）
+- 実装例: `2026-09-08/src/components/TerminalLayers.vue`
+
 ## 検証手順の目安
 `background`や共有アセットまわりの変更をした際は、`npx slidev build --base <base> --out <tmp-out>` でビルドが通ることまでは確認する。実際の見た目（背景が期待通り反映されているか等）はユーザーがdevサーバーで目視確認する（[slidev-workflow.md](./slidev-workflow.md)参照）。確認用に作った一時ビルド出力は片付ける。
