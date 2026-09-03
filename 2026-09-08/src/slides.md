@@ -30,8 +30,8 @@ layout: default
   <template #right>
     <div class="flex flex-col gap-4 justify-center h-full">
       <h2 class="text-3xl font-bold">Hol1kgmg(ほりかわ)</h2>
-      <div class="text-lg">🎯 キーボード、nix-dotfiles</div>
-      <div class="text-lg">💬 「こんにちは」</div>
+      <div class="text-lg">【趣味】キーボード、nix-dotfiles</div>
+      <div class="text-lg">【愛用ターミナル】 Wezterm</div>
     </div>
   </template>
 </SlideBody>
