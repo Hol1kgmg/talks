@@ -23,15 +23,18 @@ layout: default
 
 <SlideBody height="h-4/5">
   <template #left>
-    <div class="flex flex-col items-center justify-center h-full">
-      <CenterImage src="images/shared/Hol1kgmg_prof_img.webp" img-class="w-48 h-48 rounded-full object-cover ring-8 ring-blue-300 my-0" />
+    <div class="flex flex-col gap-8 justify-start h-full mt-5">
+      <h2 class="text-lg">Hol1kgmg(ほりかわ)</h2>
+      <ul class="text-lg list-disc pl-5 flex flex-col gap-2">
+        <li>WebアプリのFE・BEエンジニア</li>
+        <li>キーボード、nixが好き</li>
+        <li>Weztermユーザー</li>
+      </ul>
     </div>
   </template>
   <template #right>
-    <div class="flex flex-col gap-4 justify-center h-full">
-      <h2 class="text-3xl font-bold">Hol1kgmg(ほりかわ)</h2>
-      <div class="text-lg">【趣味】キーボード、nix-dotfiles</div>
-      <div class="text-lg">【愛用ターミナル】 Wezterm</div>
+    <div class="flex flex-col items-center justify-center h-full w-full">
+      <CenterImage src="images/shared/Hol1kgmg_prof_img.webp" img-class="w-48 h-48 rounded-full object-cover ring-8 ring-blue-300 my-0" />
     </div>
   </template>
 </SlideBody>
