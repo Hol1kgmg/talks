@@ -29,6 +29,14 @@ layout: default
         <li>WebアプリのFE・BEエンジニア</li>
         <li>キーボード、nixが好き</li>
         <li>Weztermユーザー</li>
+        <div class="flex items-center mt-4 gap-2">
+          <SharedImage src="images/shared/X_logo.svg" img-class="w-10 h-10" />
+          <a href="https://x.com/Hol1kgmg" target="_blank" class="text-2xl">@Hol1kgmg</a>
+        </div>
+        <div class="flex items-center pl-1 mt-4 gap-2">
+          <SharedImage src="images/shared/GitHub_Invertocat_Black.svg" img-class="w-8 h-8" />
+          <a href="https://github.com/Hol1kgmg" target="_blank" class="text-2xl">Hol1kgmg</a>
+        </div>
       </ul>
     </div>
   </template>
