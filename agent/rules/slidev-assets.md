@@ -64,6 +64,7 @@ reuse/components/                         # 実体（共通格納場所）
   - `CenterImage.vue`: 中央寄せの画像表示。`src` prop必須、`img-class` propで高さ/幅・余白を上書き（デフォルト `h-90 my-5`）
   - `CornerComment.vue`: コーナー配置のコメントテキスト（デフォルト右下）。`position` prop（`bottom-right` / `bottom-left` / `top-right` / `top-left`）、`height` propで親要素の高さを指定すると内部でflexにより端に寄せられる
   - `SlideBody.vue`: h1タイトル以外のコンテンツ領域を左右に配置するレイアウト。`left` / `right` の名前付きslot、`height`（デフォルト `h-9/10`）・`left-class` / `right-class`（デフォルト共に `w-1/2`、rightのみ `flex items-center`）propsで調整可能
+  - `SelfIntro.vue`: 自己紹介スライドの本文（プロフィール画像・肩書き・SNSリンク）。固定内容で、`note` propに渡した一言だけが箇条書きの3項目目として追加される（未指定なら非表示）。使用例: `<SelfIntro note="anime.js は今回が初挑戦" />`
   - `SharedImage.vue`: 強制スタイルなしの汎用画像表示。`src` prop必須、`img-class` propでクラスを指定（デフォルト空文字）。`CenterImage`は`mx-auto object-contain`が常に付与され中央寄せの大きい画像向けなので、アイコンなどインライン表示したい小さい画像にはこちらを使う
 - 新規トークを追加する際、これらのコンポーネントを使う場合は`<talk>/src/components`のシンボリックリンクを作成する
 - 複数画像を組み合わせた複雑なレイアウト（アイコン+ラベルの並び等）は、パターンが定着するまで個別スライドごとにベタ書きし、汎用コンポーネント化は見送っている
