@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import process from 'node:process'
 
 // lefthookのpre-commitから呼ばれる。ステージされたファイルのうち
-// `<talk>/src/**` に差分があるトークについて、`mise run export` でのPDF再生成を
+// `<talk>/src/**` に差分があるトークについて、`just export` でのPDF再生成を
 // 促すリマインドだけを表示する（自動生成はしない・コミットもブロックしない）。
 const stagedFiles = process.argv.slice(2)
 
@@ -40,6 +40,6 @@ if (targets.length > 0) {
   console.log('[remind-export] スライドに差分がありますが、PDFがコミットに含まれていません:')
   for (const talkDir of targets)
     console.log(`  - ${talkDir}`)
-  console.log('  必要であれば `mise run export` でPDFを再生成してください。')
+  console.log('  必要であれば `just export` でPDFを再生成してください。')
   console.log('')
 }

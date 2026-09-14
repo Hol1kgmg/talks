@@ -8,7 +8,7 @@ import prompts from 'prompts'
 const addImage = async (args: string[]) => {
   const [imagePath] = args
   if (!imagePath) {
-    console.error('Usage: mise run image <path-to-image>')
+    console.error('Usage: just image <path-to-image>')
     process.exitCode = 1
     return
   }

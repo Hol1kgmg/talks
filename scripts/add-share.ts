@@ -7,7 +7,7 @@ import ora from 'ora'
 const addShare = async (args: string[]) => {
   const [imagePath] = args
   if (!imagePath) {
-    console.error('Usage: mise run share <path-to-image>')
+    console.error('Usage: just share <path-to-image>')
     process.exitCode = 1
     return
   }

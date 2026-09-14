@@ -46,7 +46,7 @@ reuse/images/                          # 実体（共通格納場所）
 ```
 
 - 参照時のパスは常に `/images/shared/<file>.webp`（Slidevのpublicアセット解決に乗るため、`background`frontmatter・`global-bottom.vue`のどちらからも同じ書き方で参照できる）
-- 画像追加は`mise run share <path-to-image>`（`scripts/add-share.ts`）で`reuse/images/`に`.webp`変換して格納する。背景画像に限らず、トーク間で共有したい画像は全てこのコマンドを使う。個別トーク専用の画像は従来通り`mise run image`（`scripts/add-image.ts`）で`<talk>/src/public/images/`に格納する
+- 画像追加は`just share <path-to-image>`（`scripts/add-share.ts`）で`reuse/images/`に`.webp`変換して格納する。背景画像に限らず、トーク間で共有したい画像は全てこのコマンドを使う。個別トーク専用の画像は従来通り`just image`（`scripts/add-image.ts`）で`<talk>/src/public/images/`に格納する
 - 新規トークを追加する際、共有背景を使う場合は`<talk>/src/public/images/shared`のシンボリックリンクを忘れずに作成する（相対パスの深さに注意: `<talk>/src/public/images/` から `reuse/images/` までは4階層上る）
 - シンボリックリンクは`slidev build`（Viteのpublicディレクトリコピー）でも問題なく解決されることをローカルビルドで確認済み。ただしCloudflare Pagesのビルド環境でシンボリックリンクが正しく辿れるかは別途要検証（未確認事項として残っている）
 

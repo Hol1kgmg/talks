@@ -6,3 +6,4 @@ dist-test*
 .wrangler
 .DS_Store
 **/public/assets/fonts
+.direnv

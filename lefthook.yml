@@ -10,7 +10,7 @@ pre-commit:
       glob: '*.{png,jpg,jpeg}'
       exclude: 'dist-stale/**'
       run: >
-        echo "PNG/JPEG画像が検出されました。'mise run image <path>' でwebpに変換してから追加してください:" &&
+        echo "PNG/JPEG画像が検出されました。'just image <path>' でwebpに変換してから追加してください:" &&
         echo {staged_files} && exit 1
     pdf-export-reminder:
       glob: '*/src/**'
