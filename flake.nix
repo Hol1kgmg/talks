@@ -28,6 +28,9 @@
             mkdir -p "$corepack_dir"
             corepack enable --install-directory "$corepack_dir"
             export PATH="$corepack_dir:$PATH"
+
+            # gh / gh-dash の既定リポジトリを upstream ではなく origin に固定する。
+            git config --local remote.origin.gh-resolved base
           '';
         };
       });
