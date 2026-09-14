@@ -37,7 +37,7 @@ layout: default
 - **Vite** + **Vue** — スライドのビルド基盤
 - pnpm workspace — 日付ディレクトリごとの資料をモノレポ管理
 - **UnoCSS** — スタイリング
-- mise — Node.js / pnpmのバージョン管理・タスクランナー
+- Nix (flake) + just — 開発環境の再現とタスクランナー
 - Cloudflare Pages — デプロイ先
 
 ---
@@ -57,7 +57,7 @@ layout: default
 # このリポジトリでできること（1）
 
 - `YYYY-MM-DD/` ディレクトリ単位で登壇資料を管理
-- `mise run dev` で資料ピッカーを起動し、対象の資料を選んで編集・プレビュー
+- `just dev` で資料ピッカーを起動し、対象の資料を選んで編集・プレビュー
 
 ---
 layout: default
@@ -65,7 +65,7 @@ layout: default
 
 # このリポジトリでできること（2）
 
-- `mise run build` で全資料をビルドし、Cloudflare Pages用の `_redirects` を生成
+- `just build` で全資料をビルドし、Cloudflare Pages用の `_redirects` を生成
 - `slidev export` でPDFエクスポートも可能
 
 ---
