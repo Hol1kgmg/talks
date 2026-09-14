@@ -18,6 +18,10 @@
             pkgs.gh-dash
           ];
 
+          # gh-dash は go-gh のリモート優先順（upstream > origin）で fork 元を拾うため、
+          # 環境変数で明示的に上書きする。
+          GH_REPO = "Hol1kgmg/talks";
+
           shellHook = ''
             state_dir="$PWD/.direnv/state"
             mkdir -p "$state_dir"
@@ -28,9 +32,6 @@
             mkdir -p "$corepack_dir"
             corepack enable --install-directory "$corepack_dir"
             export PATH="$corepack_dir:$PATH"
-
-            # gh / gh-dash の既定リポジトリを upstream ではなく origin に固定する。
-            git config --local remote.origin.gh-resolved base
           '';
         };
       });

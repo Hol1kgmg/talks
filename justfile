@@ -47,3 +47,11 @@ freeze *args:
 # Pick a talk and export it to PDF (../<talk-dir>.pdf)
 export:
     pnpm run export
+
+# gh-dash を Issues ビューで開く（.gh-dash.yml）
+dash:
+    gh-dash
+
+# gh-dash を PRs ビューで開く（.gh-dash-prs.yml）
+dash-prs:
+    gh-dash -c .gh-dash-prs.yml
