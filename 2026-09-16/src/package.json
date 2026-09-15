@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "tsx ../../scripts/build.ts /2026/animejs-v4/",
+    "export": "slidev export --per-slide --output ../2026-09-16-animejs-v4.pdf"
+  },
+  "dependencies": {
+    "animejs": "catalog:",
+    "canvas-confetti": "catalog:",
+    "three": "catalog:"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "catalog:"
+  }
+}

@@ -44,9 +44,12 @@ catalog:
   '@slidev/cli': ^52.18.0
   '@slidev/client': ^52.18.0
   '@slidev/theme-default': ^0.25.0
+  '@types/canvas-confetti': ^1.9.0
   '@types/node': ^26.1.1
   '@types/prompts': ^2.4.9
   '@types/seedrandom': ^3.0.8
+  animejs: ^4.5.0
+  canvas-confetti: ^1.9.4
   chroma-js: ^3.2.0
   eslint: ^10.7.0
   eslint-config-flat-gitignore: ^2.3.0
@@ -68,6 +71,7 @@ catalog:
   seedrandom: ^3.0.5
   slidev-addon-graph: ^1.0.0
   taze: ^19.14.1
+  three: ^0.182.0
   tinyexec: ^1.2.4
   tsx: ^4.23.1
   typescript: ^5.9.3
