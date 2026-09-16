@@ -6,10 +6,10 @@ colorSchema: light
 transition: fade-out
 mdc: true
 lang: ja
-title: anime.js v4.5.0 を実装で使う
+title: anime.js v4.5.0 の adapter で three.js を動かす
 ---
 
-# anime.js v4.5.0 を実装で使う
+# anime.js v4.5.0 の adapter で three.js を動かす
 
 2026.09.16
 
@@ -21,7 +21,7 @@ layout: default
 
 # 自己紹介
 
-<SelfIntro note="anime.js の性能持て余しがち" />
+<SelfIntro note="最近SKK入力を始めました" />
 
 ---
 layout: default
