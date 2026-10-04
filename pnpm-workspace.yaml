@@ -41,6 +41,7 @@ catalog:
   '@eslint/config-inspector': ^3.0.4
   '@iconify/collections': ^1.0.709
   '@iconify/json': ^2.2.499
+  '@number-flow/vue': ^0.5.2
   '@slidev/cli': ^52.18.0
   '@slidev/client': ^52.18.0
   '@slidev/theme-default': ^0.25.0
