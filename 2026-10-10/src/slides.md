@@ -49,6 +49,19 @@ clicks: 9
 </div>
 
 ---
+layout: center
+---
+
+# キーボードのこだわり
+
+---
+layout: center
+clicks: 3
+---
+
+<KeyboardElements :step="$clicks" />
+
+---
 layout: default
 ---
 
