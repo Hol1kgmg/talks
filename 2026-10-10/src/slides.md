@@ -26,10 +26,24 @@ layout: default
 
 ---
 layout: center
+class: text-center
 ---
 
-# 事例紹介
+# 皆さんに質問です
 
+---
+layout: center
+class: text-center
+---
+
+# 皆さんのPJ（キーボード）、技術選定していますか？
+
+---
+layout: center
+class: text-center
+---
+
+# 今回は、技術選定をしていない人に<br>知見を共有する回です
 
 ---
 layout: default
@@ -50,16 +64,44 @@ clicks: 9
 
 ---
 layout: center
+class: text-center
 ---
 
-# キーボードのこだわり
+# キーボードの<ruby>技術選定<rt>こだわり</rt></ruby>
 
 ---
 layout: center
-clicks: 3
+class: text-center
+clicks: 4
 ---
 
 <KeyboardElements :step="$clicks" />
+
+---
+layout: center
+class: text-center
+---
+
+# 形状 × サイズ × 配列、全部話すと<br>時間が足りません
+
+---
+layout: center
+class: text-center
+---
+
+# 今回はサイズの技術選定に絞ります
+
+<div class="absolute bottom-8 right-10 text-sm op-60">
+  形状・配列が気になる人は、懇親会で聞きに来てください
+</div>
+
+---
+layout: default
+---
+
+# 40%サイズを選んだ理由
+
+- TODO
 
 ---
 layout: default

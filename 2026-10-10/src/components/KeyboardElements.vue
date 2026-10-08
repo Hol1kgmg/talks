@@ -6,17 +6,20 @@ import { KeyboardForm, KeyboardSize, KeyLayout } from './keyboard-state'
 const props = defineProps<{ step: number }>()
 
 // 0 ラベル(前スライドと同じ見た目) / 1 「+」が消えて3列に広がる → 図形が出る → 図形が動く(遅延で連続再生)
-// 2 テキストを分類名に切り替え / 3 分類名の下に選択肢がスライドイン
+// 2 テキストを分類名に切り替え / 3 分類名の下に選択肢がスライドイン / 4 自分の選定を赤枠で囲む
 const spread = computed(() => props.step >= 1)
 const renamed = computed(() => props.step >= 2)
 const listed = computed(() => props.step >= 3)
+const chosen = computed(() => props.step >= 4)
 
 const CATEGORY = { form: '形状', size: 'サイズ', layout: '配列' }
 const OPTIONS = {
-  form: ['分割', '一体型', '折り畳み'],
+  form: ['分割型', '一体型', '折り畳み'],
   size: ['85%', '60%', '40%', 'etc'],
   layout: ['通常配列', '格子状配列', 'アリス配列', 'etc'],
 }
+// 自分の選定(前スライドの morph 最終状態と同じ)
+const CHOSEN: string[] = [KeyboardForm.Unibody, `${KeyboardSize.Forty}%`, KeyLayout.Ortho]
 </script>
 
 <template>
@@ -44,7 +47,7 @@ const OPTIONS = {
         <span :key="String(renamed)" class="text-box">{{ renamed ? CATEGORY.form : KeyboardForm.Unibody }}</span>
       </Transition>
       <ul class="options" :class="{ listed }">
-        <li v-for="o in OPTIONS.form" :key="o">
+        <li v-for="o in OPTIONS.form" :key="o" :class="{ chosen: chosen && CHOSEN.includes(o) }">
           {{ o }}
         </li>
       </ul>
@@ -65,7 +68,7 @@ const OPTIONS = {
         <span v-else key="size" class="text-box"><NumberFlow :value="KeyboardSize.Forty" suffix="%" /></span>
       </Transition>
       <ul class="options" :class="{ listed }">
-        <li v-for="o in OPTIONS.size" :key="o">
+        <li v-for="o in OPTIONS.size" :key="o" :class="{ chosen: chosen && CHOSEN.includes(o) }">
           {{ o }}
         </li>
       </ul>
@@ -93,7 +96,7 @@ const OPTIONS = {
         <span :key="String(renamed)" class="text-box px-3">{{ renamed ? CATEGORY.layout : KeyLayout.Ortho }}</span>
       </Transition>
       <ul class="options" :class="{ listed }">
-        <li v-for="o in OPTIONS.layout" :key="o">
+        <li v-for="o in OPTIONS.layout" :key="o" :class="{ chosen: chosen && CHOSEN.includes(o) }">
           {{ o }}
         </li>
       </ul>
@@ -134,11 +137,19 @@ const OPTIONS = {
 
 /* 選択肢は分類名の真下に absolute で重ね(テキスト行の縦位置を動かさない)、少し上から下へスライドインする */
 .options {
-  --uno: absolute top-full left-1/2 mt-2 -translate-x-1/2 -translate-y-2 whitespace-nowrap text-center text-xl
-    font-normal text-gray-600 opacity-0 transition-all duration-500 ease-out;
+  --uno: absolute top-full left-1/2 mt-2 flex flex-col items-center -translate-x-1/2 -translate-y-2 whitespace-nowrap
+    text-xl font-normal text-gray-600 opacity-0 transition-all duration-500 ease-out;
 }
 .options.listed {
   --uno: translate-y-0 opacity-100;
+}
+
+/* 赤枠を文字幅ぴったりにするため、親を flex-col にして li を shrink-wrap させる */
+.options li {
+  --uno: rounded border-2 border-transparent px-1 transition-colors duration-500;
+}
+.options li.chosen {
+  --uno: border-red-500;
 }
 
 .board {
