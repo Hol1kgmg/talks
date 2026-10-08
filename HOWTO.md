@@ -21,6 +21,7 @@ direnv を使わない場合は `nix develop` でシェルに入る。pnpm は c
 
 ```bash
 just dev      # トークを選んでSlidevの開発サーバーを起動
+just dev-remote # 同上。LAN内の他端末からも開けるよう 0.0.0.0 で待ち受け
 just typecheck
 just lint
 ```

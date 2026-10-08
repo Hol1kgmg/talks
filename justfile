@@ -11,6 +11,10 @@ setup:
 dev *args:
     pnpm run dev {{args}}
 
+# Same as dev, but listen on 0.0.0.0 so other devices on the LAN can open it
+dev-remote *args:
+    pnpm run dev --remote {{args}}
+
 # Build all slides and generate Cloudflare Pages redirects
 build:
     pnpm run build
