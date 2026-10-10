@@ -186,10 +186,10 @@ const gridStyle = computed(() => {
   }
 })
 
-// morph の最終 step で、刻印ありキー数の変化(デフォルト格子配列 → 自分の配列)をキーボードの下に出す
+// morph の最終 step で、キー数の変化(デフォルト格子配列の物理キー数 → 自分の配列の刻印ありキー数)をキーボードの下に出す
 const showCount = computed(() => props.layout === 'morph' && step.value === frames.value.length - 1)
 const labeled = (l: Layout) => l.keys.filter(k => k.label).length
-const keyCount = { from: labeled(defaultOrtho), to: labeled(mine) }
+const keyCount = { from: defaultOrtho.keys.length, to: labeled(mine) }
 </script>
 
 <template>

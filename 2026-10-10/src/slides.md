@@ -108,13 +108,13 @@ clicks: 2
     <div class="grid transition-all duration-700 ease-out" :class="$clicks >= 1 ? 'grid-rows-[1fr] op-100' : 'grid-rows-[0fr] op-0'">
       <div class="overflow-hidden min-h-0">
         <div class="pt-4 text-2xl op-40">↓</div>
-        <div class="pt-4 text-2xl">「入力する」動作に専念する</div>
+        <div class="pt-4 text-2xl">キーボードの業務効率化 = 「入力する」動作に集中すること</div>
       </div>
     </div>
     <div class="grid transition-all duration-700 ease-out delay-1200" :class="$clicks >= 1 ? 'grid-rows-[1fr] op-100' : 'grid-rows-[0fr] op-0'">
       <div class="overflow-hidden min-h-0">
         <div class="pt-4 text-2xl op-40">↓</div>
-        <div class="pt-4 text-xl">「入力する」から「探す」に動作を切り替えないこと</div>
+        <div class="pt-4 text-xl">一番大きなノイズは、キーを「見失う」こと</div>
       </div>
     </div>
   </div>
@@ -123,7 +123,8 @@ clicks: 2
 
 <!--
 口頭で補う:
-- 探す → 視線が落ちる → 入力が止まる → 効率が落ちる
+- 入力以外の動作はすべてノイズ。集中を妨げるもの
+- 見失う → 探す → 視線が落ちる → 入力が止まる → 効率が落ちる
 - +α: 動作の切り替えで生まれるストレスも消える
 - 「隣」は上下左右・斜めを含む1キー分の距離
 -->
@@ -132,6 +133,32 @@ clicks: 2
 layout: default
 ---
 
-# まとめ
+# おすすめの1台
 
-- TODO
+<div class="flex h-5/6 items-center justify-center gap-16">
+  <SharedImage src="images/epomaker-keyboard.webp" img-class="w-1/2 object-contain" />
+  <div class="flex flex-col gap-5">
+    <div class="text-3xl font-bold">Epomaker TH40</div>
+    <div class="flex gap-3 text-base">
+      <span class="px-3 py-1 rounded-full bg-sky-100">一体型</span>
+      <span class="px-3 py-1 rounded-full bg-sky-100">40%</span>
+      <span class="px-3 py-1 rounded-full bg-sky-100">通常配列</span>
+    </div>
+    <div class="text-2xl op-70">¥13,300</div>
+    <SharedImage src="images/epomaker-keyboard-qrcode.webp" img-class="w-28 h-28" />
+  </div>
+</div>
+
+<!--
+口頭で補う:
+- Amazonで買える。専門店に行かなくても通販で普通に買える
+- 完成品なので組み立て・部品購入は不要
+- 公式: https://epomaker.jp/ja/products/epomaker-th40
+-->
+
+---
+layout: center
+class: text-center
+---
+
+# まずは40%キーボードをMVPとして触ってから、<br>技術選定しませんか
