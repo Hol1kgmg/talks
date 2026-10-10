@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import type { Key, Layout } from './keyboard-layout'
 import { computed } from 'vue'
-import defaultOrthoCsv from './default-ortho.csv?raw'
-import myOrthoCsv from './my-ortho.csv?raw'
+import { build, chars, defaultOrtho, mine, num } from './keyboard-layout'
 
 const props = withDefaults(defineProps<{
   // mine / normal: 静止表示。morph: step に応じてフルサイズ → my-ortho へ変形
-  layout?: 'mine' | 'normal' | 'morph'
+  // stagger: step に応じて 通常(横ずれ) → 縦ずれ → 格子状 へ変形(文字キー 3 段 × 10 列のみ)
+  layout?: 'mine' | 'normal' | 'morph' | 'stagger'
   step?: number
   width?: string
   // morph で中央寄せ(step 5)以降の幅(%)。静止表示の mine と同じ見た目にする
@@ -17,32 +18,7 @@ const props = withDefaults(defineProps<{
   endWidth: 80,
 })
 
-interface Key { id: string, label: string, x: number, y: number, w: number, h: number }
-// unitCols: 1u の実寸をこの列数のレイアウトと同じにする(枠幅は cols/unitCols 倍になる)。省略時は cols
-interface Layout { cols: number, rows: number, keys: Key[], unitCols?: number }
 interface Box { x0: number, y0: number, x1: number, y1: number }
-
-// 文字列は 1u キー(id = 刻印) / 数値は隙間(u) / タプルは [刻印, 幅u, 高さu, id]
-type Spec = string | number | readonly [string, number?, number?, string?]
-
-const build = (rows: Spec[][]): Key[] =>
-  rows.flatMap((specs, y) => {
-    let x = 0
-    const keys: Key[] = []
-    for (const s of specs) {
-      if (typeof s === 'number') {
-        x += s
-        continue
-      }
-      const [label, w = 1, h = 1, id = label] = typeof s === 'string' ? [s] : s
-      keys.push({ id, label, x, y, w, h })
-      x += w
-    }
-    return keys
-  })
-
-const chars = (s: string): Spec[] => [...s]
-const num = (s: string): Spec[] => [...s].map(c => [c, 1, 1, `n${c}`] as const)
 
 // 22.5u × 6行。フルサイズ ANSI 104キー
 const normal: Layout = {
@@ -57,26 +33,6 @@ const normal: Layout = {
     [['Ctrl', 1.25, 1, 'lctrl'], ['Win', 1.25, 1, 'lwin'], ['Alt', 1.25, 1, 'lalt'], ['', 6.25, 1, 'Space'], ['Alt', 1.25, 1, 'ralt'], ['Win', 1.25, 1, 'rwin'], ['Menu', 1.25], ['Ctrl', 1.25, 1, 'rctrl'], 0.25, '←', '↓', '→', 0.25, ['0', 2, 1, 'n0'], ['.', 1, 1, 'n.']],
   ]),
 }
-
-// 13u × 4行の格子配列を CSV(row,col,label) から組む。4行目の 5〜8 列目だけ 1.25u
-// ponytail: 幅の例外は row/col のベタ書き。別形状の格子を増やすなら CSV に width 列を足す
-const orthoIds: Record<string, string> = { '<': ',', '>': '.', 'shift': 'lshift', 'Shift': 'lshift', 'control': 'lctrl', 'alt': 'lalt' }
-const orthoWidth = (row: number, col: number) => (row === 4 && col >= 5 && col <= 8 ? 1.25 : 1)
-const parseOrtho = (csv: string): Layout => {
-  const rows: Spec[][] = []
-  for (const line of csv.trim().split(/\r?\n/).slice(1)) {
-    const [r, c, ...rest] = line.split(',')
-    const row = Number(r)
-    const col = Number(c)
-    const label = rest.join(',').replace(/^"(.*)"$/, '$1')
-    const id = label ? orthoIds[label] ?? label : `blank-${row}-${col}`
-    ;(rows[row - 1] ??= []).push([label, orthoWidth(row, col), 1, id])
-  }
-  return { cols: 13, rows: 4, keys: build(rows) }
-}
-
-const mine = parseOrtho(myOrthoCsv)
-const defaultOrtho = parseOrtho(defaultOrthoCsv)
 
 // morph の各ステップ。1〜4 はフルサイズから id を順に消す。5 で中央寄せしつつ 1u の実寸を格子配列に合わせ、6, 7 は格子配列
 // 各 step の説明(サイズ% / 配列)は keyboard-state.ts の MORPH_STATES。フレームを増減したらそちらも揃えること
@@ -109,9 +65,27 @@ morphFrames.push({ ...fit(morphFrames.at(-1)!.keys), unitCols: defaultOrtho.cols
 const SHRINK_STEP = removalAreas.length + 1
 const GRID_STEP = SHRINK_STEP + 2
 
-const frames = computed<Layout[]>(() =>
-  props.layout === 'morph' ? morphFrames : [props.layout === 'mine' ? mine : normal],
-)
+// 配列比較: 3 フレームとも枠は同じ 10.75u × 3.5u で、キーのずれ方だけ変える(step 切替で各キーが滑って移動する)
+// 縦ずれの列オフセットは指の長さ順(中指 0 / 薬指・人差し指 0.25 / 小指 0.5)。ponytail: 実機の数値ではなく見た目用の概算
+const letters = ['QWERTYUIOP', 'ASDFGHJKL;', 'ZXCVBNM,./']
+const staggerKeys = (dx: (row: number) => number, dy: (col: number) => number): Key[] =>
+  letters.flatMap((row, y) => [...row].map((label, x) => ({ id: label, label, x: x + dx(y), y: y + dy(x), w: 1, h: 1 })))
+const ROW_DX = [0, 0.25, 0.75]
+const COL_DY = [0.5, 0.25, 0, 0.25, 0.375, 0.375, 0.25, 0, 0.25, 0.5]
+const STAGGER = { cols: 10.75, rows: 3.5 }
+const staggerFrames: Layout[] = [
+  { ...STAGGER, keys: staggerKeys(r => ROW_DX[r], () => 0.25) },
+  { ...STAGGER, keys: staggerKeys(() => 0.375, c => COL_DY[c]) },
+  { ...STAGGER, keys: staggerKeys(() => 0.375, () => 0.25) },
+]
+
+const frames = computed<Layout[]>(() => {
+  if (props.layout === 'morph')
+    return morphFrames
+  if (props.layout === 'stagger')
+    return staggerFrames
+  return [props.layout === 'mine' ? mine : normal]
+})
 const step = computed(() => Math.min(Math.max(props.step, 0), frames.value.length - 1))
 const base = computed(() => frames.value[step.value])
 const shrunkWidth = computed(() => props.layout === 'morph' && step.value >= SHRINK_STEP)

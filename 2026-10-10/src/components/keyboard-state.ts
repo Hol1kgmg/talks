@@ -5,7 +5,7 @@ type Size = typeof KeyboardSize[keyof typeof KeyboardSize]
 export const KeyboardForm = { Unibody: '一体型' } as const
 type Form = typeof KeyboardForm[keyof typeof KeyboardForm]
 
-export const KeyLayout = { Ortho: '格子状配列' } as const
+export const KeyLayout = { RowStagger: '通常配列', ColStagger: '縦ずれ配列', Ortho: '格子状配列' } as const
 type Layout = typeof KeyLayout[keyof typeof KeyLayout]
 
 export interface KeyboardState {

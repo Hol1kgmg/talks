@@ -8,6 +8,8 @@
     "export": "slidev export --per-slide --output ../2026-10-10-keyboard-tech-stack-review.pdf"
   },
   "dependencies": {
-    "@number-flow/vue": "catalog:"
+    "@number-flow/vue": "catalog:",
+    "animejs": "catalog:",
+    "three": "catalog:"
   }
 }

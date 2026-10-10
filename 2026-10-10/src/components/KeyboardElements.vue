@@ -16,7 +16,7 @@ const CATEGORY = { form: '形状', size: 'サイズ', layout: '配列' }
 const OPTIONS = {
   form: ['分割型', '一体型', '折り畳み'],
   size: ['85%', '60%', '40%', 'etc'],
-  layout: ['通常配列', '格子状配列', 'アリス配列', 'etc'],
+  layout: Object.values(KeyLayout),
 }
 // 自分の選定(前スライドの morph 最終状態と同じ)
 const CHOSEN: string[] = [KeyboardForm.Unibody, `${KeyboardSize.Forty}%`, KeyLayout.Ortho]

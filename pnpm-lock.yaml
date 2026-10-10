@@ -312,6 +312,12 @@ importers:
       '@number-flow/vue':
         specifier: 'catalog:'
         version: 0.5.2(vue@3.5.39(typescript@6.0.3))
+      animejs:
+        specifier: 'catalog:'
+        version: 4.5.0(three@0.182.0)
+      three:
+        specifier: 'catalog:'
+        version: 0.182.0
 
 packages:
 
