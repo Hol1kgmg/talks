@@ -8,6 +8,7 @@ mdc: true
 lang: ja
 title: このリポジトリについて
 seoMeta:
+  ogDescription: このリポジトリ自体の紹介スライド（自己紹介・技術スタック・Slidevの簡単な解説）
   ogImage: auto
   twitterCard: summary_large_image
 ---

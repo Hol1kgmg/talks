@@ -51,6 +51,21 @@ else {
   // X/Slack等のクローラーは絶対URLしか解釈しないため本番URLに書き換える
   const indexHtml = join(dirDist, 'index.html')
   const html = await fs.readFile(indexHtml, 'utf-8')
-  const toAbsolute = (p: string) => `https://talks.hol1kgmg.com${p.startsWith('./') ? base + p.slice(2) : p}`
-  await fs.writeFile(indexHtml, html.replace(/(property="og:image" content=")([^"]+)"/, (_, key, p) => `${key}${toAbsolute(p)}"`), 'utf-8')
+  const siteUrl = 'https://talks.hol1kgmg.com'
+  const toAbsolute = (p: string) => `${siteUrl}${p.startsWith('./') ? base + p.slice(2) : p}`
+  // og:url / og:type / og:site_name はSlidevの seoMeta に無い（or baseから導ける）ためここで注入する。
+  // og:description は headmatter の `seoMeta.ogDescription` から Slidev が出力する
+  // （`info` でも出るが JSON.stringify を通るため値が引用符で囲まれてしまうので使わない）
+  const extraMeta = [
+    `<meta property="og:url" content="${siteUrl}${base}">`,
+    `<meta property="og:type" content="article">`,
+    `<meta property="og:site_name" content="Hol1kgmg:talks">`,
+  ].join('\n')
+  await fs.writeFile(
+    indexHtml,
+    html
+      .replace(/(property="og:image" content=")([^"]+)"/, (_, key, p) => `${key}${toAbsolute(p)}"`)
+      .replace('</head>', `${extraMeta}\n</head>`),
+    'utf-8',
+  )
 }

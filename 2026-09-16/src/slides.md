@@ -8,6 +8,7 @@ mdc: true
 lang: ja
 title: anime.js v4.5.0 の adapter で three.js を動かす
 seoMeta:
+  ogDescription: Web UI 実装勉強会。anime.js v4.5.0 を実際の実装で使ってみた話
   ogImage: auto
   twitterCard: summary_large_image
 ---

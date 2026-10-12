@@ -8,6 +8,7 @@ mdc: true
 lang: ja
 title: dotfilesの世界から覗くランチャーアプリ
 seoMeta:
+  ogDescription: 新卒N年目の勉強会&交流会向けLT。dotfilesとランチャーアプリ（Raycast/Tuna/Vicinae）の設定ファイル管理事情を紹介。
   ogImage: auto
   twitterCard: summary_large_image
 ---

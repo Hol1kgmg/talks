@@ -13,9 +13,13 @@
 
 ```yaml
 seoMeta:
+  ogDescription: <READMEの説明文と同じ一文>
   ogImage: auto
   twitterCard: summary_large_image
 ```
+
+- `og:description` は `seoMeta.ogDescription` に書く。headmatter の `info` でも出力されるが、Slidevが `JSON.stringify` を通すため値が引用符で囲まれてしまうので使わない
+- `og:url` / `og:type` / `og:site_name` は `scripts/build.ts` がベースパスと定数から注入するため、headmatterには書かない
 
 - 生成された `<talk>/src/og-image.png` は**コミットする**。Slidevは既存ファイルがあれば再生成せずコピーするだけなので、Playwrightのブラウザが無いCloudflare Pagesのビルド環境でも壊れない。1枚目を変更して画像を更新したい場合はこのファイルを削除して `just build` する
 - Slidevは `og:image` を相対パスで出力する（初回生成時は `./og-image.png`、`src/og-image.png` がコミット済みならViteが `/<base>/assets/og-image-<hash>.png` に書き換える）。クローラーは絶対URLしか解釈しないため、`scripts/build.ts` がどちらの形式も本番URLに書き換えている
