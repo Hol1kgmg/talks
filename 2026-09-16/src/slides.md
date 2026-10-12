@@ -7,6 +7,9 @@ transition: fade-out
 mdc: true
 lang: ja
 title: anime.js v4.5.0 の adapter で three.js を動かす
+seoMeta:
+  ogImage: auto
+  twitterCard: summary_large_image
 ---
 
 # anime.js v4.5.0 の adapter で three.js を動かす

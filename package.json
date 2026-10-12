@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@11.13.0",
   "scripts": {
-    "build": "rimraf dist && pnpm -r run build && tsx scripts/redirects.ts && tsx scripts/homepage.ts && tsx scripts/404.ts",
+    "build": "rimraf dist && pnpm -r --workspace-concurrency=1 run build && tsx scripts/redirects.ts && tsx scripts/homepage.ts && tsx scripts/404.ts",
     "dev": "tsx scripts/picker.ts dev --open",
     "export": "tsx scripts/picker.ts export",
     "typecheck": "vue-tsc --noEmit",

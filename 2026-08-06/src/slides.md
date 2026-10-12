@@ -7,6 +7,9 @@ transition: fade-out
 mdc: true
 lang: ja
 title: dotfilesの世界から覗くランチャーアプリ
+seoMeta:
+  ogImage: auto
+  twitterCard: summary_large_image
 ---
 
 # dotfilesの世界から覗くランチャーアプリ

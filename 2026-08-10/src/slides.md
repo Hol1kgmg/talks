@@ -7,6 +7,9 @@ transition: fade-out
 mdc: true
 lang: ja
 title: このリポジトリについて
+seoMeta:
+  ogImage: auto
+  twitterCard: summary_large_image
 ---
 
 # このリポジトリについて

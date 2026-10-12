@@ -73,6 +73,7 @@ const items = talks
       </li>`)
   .join('')
 
+const siteUrl = 'https://talks.hol1kgmg.com'
 const siteDescription = 'Hol1kgmgの個人登壇スライドをまとめたアーカイブサイト。Slidevで作成した発表資料を一覧・閲覧できます。'
 
 const html = `<!DOCTYPE html>
@@ -87,9 +88,12 @@ const html = `<!DOCTYPE html>
 <meta property="og:title" content="Hol1kgmg:talks" />
 <meta property="og:description" content="${siteDescription}" />
 <meta property="og:site_name" content="Hol1kgmg:talks" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:url" content="${siteUrl}/" />
+<meta property="og:image" content="${siteUrl}/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Hol1kgmg:talks" />
 <meta name="twitter:description" content="${siteDescription}" />
+<meta name="twitter:image" content="${siteUrl}/og-image.png" />
 <style>
 ${baseStyles}
   ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
@@ -179,3 +183,4 @@ ${baseStyles}
 await fs.mkdir('dist', { recursive: true })
 await fs.writeFile('dist/index.html', html, 'utf-8')
 await fs.copyFile('scripts/assets/favicon.svg', 'dist/favicon.svg')
+await fs.copyFile('scripts/assets/og-image.png', 'dist/og-image.png')

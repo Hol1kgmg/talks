@@ -45,4 +45,10 @@ else {
       stdio: 'inherit',
     },
   })
+
+  // Slidevの seoMeta.ogImage: auto は og:image を "./og-image.png" の相対パスで出力するが、
+  // X/Slack等のクローラーは絶対URLしか解釈しないため本番URLに書き換える
+  const indexHtml = join(dirDist, 'index.html')
+  const html = await fs.readFile(indexHtml, 'utf-8')
+  await fs.writeFile(indexHtml, html.replaceAll('"./og-image.png"', `"https://talks.hol1kgmg.com${base}og-image.png"`), 'utf-8')
 }

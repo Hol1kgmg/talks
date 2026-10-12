@@ -7,6 +7,9 @@ transition: fade-out
 mdc: true
 lang: ja
 title: このPJ（キーボード）の技術選定についてレビューしてください
+seoMeta:
+  ogImage: auto
+  twitterCard: summary_large_image
 ---
 
 # このPJ（キーボード）の技術選定についてレビューしてください

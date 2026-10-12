@@ -7,6 +7,9 @@ transition: fade-out
 mdc: true
 lang: ja
 title: herdrから考えるターミナルとターミナルマルチプレクサの位置付け
+seoMeta:
+  ogImage: auto
+  twitterCard: summary_large_image
 ---
 
 # herdrから考える<br>ターミナルとターミナルマルチプレクサの位置付け

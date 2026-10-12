@@ -8,7 +8,10 @@ pre-commit:
       stage_fixed: true
     image-format:
       glob: '*.{png,jpg,jpeg}'
-      exclude: 'dist-stale/**'
+      # og-image.png はOGP用。X/Facebookのクローラーがwebpを解釈しないためpngのまま許可する
+      exclude:
+        - 'dist-stale/**'
+        - '**/og-image.png'
       run: >
         echo "PNG/JPEG画像が検出されました。'just image <path>' でwebpに変換してから追加してください:" &&
         echo {staged_files} && exit 1
