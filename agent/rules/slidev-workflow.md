@@ -18,6 +18,6 @@ seoMeta:
 ```
 
 - 生成された `<talk>/src/og-image.png` は**コミットする**。Slidevは既存ファイルがあれば再生成せずコピーするだけなので、Playwrightのブラウザが無いCloudflare Pagesのビルド環境でも壊れない。1枚目を変更して画像を更新したい場合はこのファイルを削除して `just build` する
-- Slidevは `og:image` を相対パス `./og-image.png` で出力するが、クローラーは絶対URLしか解釈しないため `scripts/build.ts` が本番URLに書き換えている
+- Slidevは `og:image` を相対パスで出力する（初回生成時は `./og-image.png`、`src/og-image.png` がコミット済みならViteが `/<base>/assets/og-image-<hash>.png` に書き換える）。クローラーは絶対URLしか解釈しないため、`scripts/build.ts` がどちらの形式も本番URLに書き換えている
 - og-image生成は固定ポート12445を使うため、`pnpm run build` のワークスペース並列度は1に固定している（`--workspace-concurrency=1`）。並列に戻すとポート衝突で失敗する
 - トップページのカード画像は `scripts/assets/og-image.png`（1200x630）。`scripts/homepage.ts` が `dist/og-image.png` にコピーする

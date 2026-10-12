@@ -46,9 +46,11 @@ else {
     },
   })
 
-  // Slidevの seoMeta.ogImage: auto は og:image を "./og-image.png" の相対パスで出力するが、
+  // Slidevの seoMeta.ogImage: auto は og:image を相対パスで出力する
+  // （初回生成時は "./og-image.png"、src/og-image.png がコミット済みならViteが "/<base>/assets/og-image-<hash>.png" に書き換える）。
   // X/Slack等のクローラーは絶対URLしか解釈しないため本番URLに書き換える
   const indexHtml = join(dirDist, 'index.html')
   const html = await fs.readFile(indexHtml, 'utf-8')
-  await fs.writeFile(indexHtml, html.replaceAll('"./og-image.png"', `"https://talks.hol1kgmg.com${base}og-image.png"`), 'utf-8')
+  const toAbsolute = (p: string) => `https://talks.hol1kgmg.com${p.startsWith('./') ? base + p.slice(2) : p}`
+  await fs.writeFile(indexHtml, html.replace(/(property="og:image" content=")([^"]+)"/, (_, key, p) => `${key}${toAbsolute(p)}"`), 'utf-8')
 }
