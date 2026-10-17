@@ -6,6 +6,7 @@ colorSchema: dark
 transition: fade-out
 mdc: true
 lang: ja
+routerMode: hash
 title: このリポジトリについて
 seoMeta:
   ogDescription: このリポジトリ自体の紹介スライド（自己紹介・技術スタック・Slidevの簡単な解説）

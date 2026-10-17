@@ -30,53 +30,47 @@ const bases = (await Promise.all(
 ))
   .filter(Boolean)
 
-// Cloudflare Pages reads redirect rules from a plain-text `_redirects` file
-// placed in the publish directory (`dist/`), one rule per line:
-// https://developers.cloudflare.com/pages/configuration/redirects/
+// GitHub Pages にはサーバー側リダイレクトの仕組みが無いため、
+// `dist/<path>/index.html` に meta refresh を書いた静的 HTML を置いて代用する。
 const GITHUB_REPO = 'https://github.com/Hol1kgmg/talks'
 // TODO: 個人サイトのドメインが確定したら、各トークのルートリダイレクト先として設定する
 const PERSONAL_SITE_URL = ''
 
 const redirects = bases
   .flatMap(({ base, pdfFile, dir }) => {
-    const lines: string[] = []
+    const rules: [from: string, to: string][] = []
 
     if (pdfFile) {
-      lines.push(`${base}pdf ${GITHUB_REPO}/blob/main/${dir}/${pdfFile}?raw=true 302`)
-      lines.push(`/${dir}/pdf ${GITHUB_REPO}/blob/main/${dir}/${pdfFile}?raw=true 302`)
+      rules.push([`${base}pdf`, `${GITHUB_REPO}/blob/main/${dir}/${pdfFile}?raw=true`])
+      rules.push([`/${dir}/pdf`, `${GITHUB_REPO}/blob/main/${dir}/${pdfFile}?raw=true`])
     }
 
-    lines.push(`${base}src ${GITHUB_REPO}/tree/main/${dir} 302`)
+    rules.push([`${base}src`, `${GITHUB_REPO}/tree/main/${dir}`])
 
     if (PERSONAL_SITE_URL)
-      lines.push(`${dir} ${PERSONAL_SITE_URL}${base} 301`)
+      rules.push([`/${dir}`, `${PERSONAL_SITE_URL}${base}`])
 
-    return lines
+    return rules
   })
-  .join('\n')
 
-const content = `# TODO: 個人サイトのドメインが確定したらルートリダイレクト（/ -> 個人サイト）を追加する
-${redirects}
+const redirectHtml = (to: string) => `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="refresh" content="0; url=${to}" />
+<link rel="canonical" href="${to}" />
+<title>Redirecting...</title>
+</head>
+<body>
+<a href="${to}">${to}</a>
+</body>
+</html>
 `
 
-await fs.mkdir('dist', { recursive: true })
-await fs.writeFile('dist/_redirects', content, 'utf-8')
-
-// スライド内の個別ページ（例: /2026/xxx/3）は実ファイルが存在しないため、
-// `${base}* -> ${base}index.html 200` のような _redirects の書き換えルールで
-// SPAフォールバックさせたいが、Cloudflare Pagesはこのパターンを
-// 「無限ループの可能性あり」として無条件に無視する
-// （from が `/*` 終わり・to が `/index(.html)?` 終わりの組み合わせは弾かれる仕様）。
-// また回避のため書き換え先をディレクトリパスにしても、_redirectsのマッチは
-// 静的アセットの存在チェックより先に評価されるため、同ディレクトリ配下の
-// JS/CSSアセットまでindex.htmlへ巻き込んで壊れてしまう。
-// そこでdist/404.htmlと同じ「未一致リクエストに対して最も近い階層の
-// 404.htmlを自動的に返す」というCloudflare Pages標準の仕組みに乗せる。
-// 404.htmlはindex.htmlと同一内容にしておくことで、HTTPステータスは404のままだが
-// ブラウザはSlidevクライアント（Vue Router）を実行し、正しいスライドを描画する。
 await Promise.all(
-  bases.map(async ({ base }) => {
-    const outDir = join('dist', base)
-    await fs.copyFile(join(outDir, 'index.html'), join(outDir, '404.html'))
+  redirects.map(async ([from, to]) => {
+    const outDir = join('dist', from)
+    await fs.mkdir(outDir, { recursive: true })
+    await fs.writeFile(join(outDir, 'index.html'), redirectHtml(to), 'utf-8')
   }),
 )

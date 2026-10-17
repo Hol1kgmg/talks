@@ -18,7 +18,7 @@ const [openIcon, presenterIcon, pdfIcon] = await Promise.all([
 ])
 
 // Generates dist/index.html — a static landing page listing all talks,
-// separate from the Slidev decks themselves. Cloudflare Pages serves this
+// separate from the Slidev decks themselves. GitHub Pages serves this
 // automatically for requests to `/`.
 const packageFiles = (await fg('*/src/package.json', {
   onlyFiles: true,
@@ -65,7 +65,7 @@ const items = talks
         </a>
         <div class="card-actions">
           <a class="card-action" href="${escape(base)}" title="スライドを開く" aria-label="スライドを開く">${openIcon}</a>
-          <a class="card-action" href="${escape(base)}presenter/1" title="発表モードで開く" aria-label="発表モードで開く">${presenterIcon}</a>
+          <a class="card-action" href="${escape(base)}#/presenter/1" title="発表モードで開く" aria-label="発表モードで開く">${presenterIcon}</a>
           ${hasPdf
             ? `<a class="card-action" href="${escape(base)}pdf" title="PDFをダウンロード" aria-label="PDFをダウンロード">${pdfIcon}</a>`
             : `<span class="card-action card-action-disabled" title="PDF未エクスポート" aria-label="PDF未エクスポート">${pdfIcon}</span>`}
@@ -184,3 +184,6 @@ await fs.mkdir('dist', { recursive: true })
 await fs.writeFile('dist/index.html', html, 'utf-8')
 await fs.copyFile('scripts/assets/favicon.svg', 'dist/favicon.svg')
 await fs.copyFile('scripts/assets/og-image.png', 'dist/og-image.png')
+// GitHub Pages は公開ディレクトリ直下の CNAME ファイルで独自ドメインを判定する。
+// これが無いとデプロイのたびに Pages 設定の独自ドメインが解除される
+await fs.writeFile('dist/CNAME', `${new URL(siteUrl).hostname}\n`, 'utf-8')

@@ -1,8 +1,11 @@
 import fs from 'node:fs/promises'
 import { baseStyles } from './lib/theme'
 
-// Generates dist/404.html — Cloudflare Pages automatically serves this
-// for requests to any path that doesn't match a talk or a redirect rule.
+// Generates dist/404.html — GitHub Pages serves this for any path that has no
+// matching file. Talk decks use `routerMode: hash` so deep links don't rely on
+// server-side fallback, but links shared before the migration still use the
+// history-mode form (`/2026/<slug>/3`, `/2026/<slug>/presenter/1`). The inline
+// script below rewrites those to `/2026/<slug>/#/3` before showing the 404 page.
 const html = `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,6 +13,13 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>404 - talks</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<script>
+(function () {
+  var m = location.pathname.match(/^(\\/\\d{4}\\/[^/]+\\/)(.+)$/)
+  if (m)
+    location.replace(m[1] + '#/' + m[2] + location.search)
+})()
+</script>
 <style>
 ${baseStyles}
   body { text-align: center; padding-top: 6rem; }

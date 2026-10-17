@@ -1,7 +1,7 @@
 # Project Overview
 個人の登壇スライド管理プロジェクト。[Slidev](https://sli.dev) を使い、日付ディレクトリ（例: `2025-10-25/`）単位でスライドとソースを管理する。元は antfu/talks のフォーク。
 
-デプロイ先: Cloudflare Pages（旧Netlify設定は廃止済み）。
+デプロイ先: GitHub Pages（GitHub Actions でビルド・配信。旧Cloudflare Pages/Netlify設定は廃止済み）。
 個人サイトURL: 未定（TODO: 確定後に README / reuse / redirects に反映）。
 
 # Setup and Basic Usage

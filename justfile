@@ -15,14 +15,14 @@ dev *args:
 dev-remote *args:
     pnpm run dev --remote {{args}}
 
-# Build all slides and generate Cloudflare Pages redirects
+# Build all slides, homepage, redirect stubs and 404 page into dist/
 build:
     pnpm run build
 
-# Build then locally preview dist/ (homepage + talks + _redirects + 404) like Cloudflare Pages
+# Build then locally preview dist/ (homepage + talks + redirect stubs + 404) like GitHub Pages
 dev-home:
     pnpm run build
-    npx wrangler pages dev dist --port 4321 --compatibility-date=2026-08-11
+    npx serve dist --listen 4321
 
 # Type-check the project
 typecheck:
@@ -32,7 +32,7 @@ typecheck:
 lint:
     pnpm run lint
 
-# Regenerate dist/_redirects for Cloudflare Pages
+# Regenerate redirect stubs under dist/
 update:
     pnpm run update
 

@@ -6,6 +6,7 @@ colorSchema: light
 transition: fade-out
 mdc: true
 lang: ja
+routerMode: hash
 title: このPJ（キーボード）の技術選定についてレビューしてください
 seoMeta:
   ogDescription: 新卒N年目の勉強会&交流会！#6。自作キーボードプロジェクトの技術選定を振り返り、レビューしてもらう話

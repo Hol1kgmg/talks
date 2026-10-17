@@ -6,6 +6,7 @@ colorSchema: light
 transition: fade-out
 mdc: true
 lang: ja
+routerMode: hash
 title: anime.js v4.5.0 の adapter で three.js を動かす
 seoMeta:
   ogDescription: Web UI 実装勉強会。anime.js v4.5.0 を実際の実装で使ってみた話

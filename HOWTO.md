@@ -2,7 +2,7 @@
 
 個人の登壇資料・スライド管理リポジトリ。[Slidev](https://sli.dev) を使い、日付ディレクトリ（例: `2026-08-10/`）単位でスライドとソースを管理する。元は [antfu/talks](https://github.com/antfu/talks) のフォーク。
 
-デプロイ先: Cloudflare Pages。ルート（`/`）は各トークへのリンク一覧（`dist/index.html`）で、各トークは `/<year>/<slug>/` 配下に配信される。
+デプロイ先: GitHub Pages（`.github/workflows/deploy.yml` が main への push で `pnpm run build` → `actions/deploy-pages` を実行する）。ルート（`/`）は各トークへのリンク一覧（`dist/index.html`）で、各トークは `/<year>/<slug>/` 配下に配信される。
 
 ## セットアップ
 
@@ -29,7 +29,7 @@ just lint
 ## ビルド
 
 ```bash
-just build    # 全トークをビルドし、dist/ にトップページと_redirectsを生成
+just build    # 全トークをビルドし、dist/ にトップページ・リダイレクト用スタブ・404ページを生成
 ```
 
 `pnpm run build`（`pnpm -r run build`）は各トークを毎回ビルドするが、`dist-stale/<talk>` が存在する場合はビルドをスキップしてそこからコピーする（`scripts/build.ts`）。
@@ -47,7 +47,7 @@ git commit -m "build: freeze 2026-08-10"
 
 ## ビルド結果をローカルで確認
 
-`dist/`（トップページ・各トーク・`_redirects`・404ページ）を`wrangler pages dev`でローカル配信して、Cloudflare Pagesと近い形で確認できる。`vite preview`はSPAフォールバックにより未定義パスも`index.html`を返してしまい、個別トークのページをリロードすると404になる問題があったため、`wrangler pages dev`で`_redirects`と404の挙動（`dist/404.html`が返る）まで含めて確認できるようにしている。
+`dist/`（トップページ・各トーク・リダイレクト用スタブ・404ページ）を静的配信して、GitHub Pagesと近い形で確認できる。
 
 ```bash
 just dev-home
@@ -55,7 +55,13 @@ just dev-home
 
 `http://localhost:4321/` でトップページ（`dist/index.html`）、`http://localhost:4321/2026/talks-repo-intro/` で個別のトーク、存在しないパス（例: `http://localhost:4321/foo`）で404ページ（`dist/404.html`）を確認できる。
 
-このタスクは`wrangler pages dev`に`--compatibility-date=2026-08-11`を固定で指定している。指定しない場合、wranglerはシステムの今日の日付をcompatibility dateとして使おうとするが、ローカルのwrangler（workerdランタイム）が対応している上限日付を超えると起動エラーになる（日付が進むたびに突然発生しうる）。過去の日付を固定指定しておけば、wranglerを新しいバージョンに更新しても対応上限日付は伸びる一方なので引き続き有効であり、更新のたびに追従させる必要はない。
+各トークは headmatter の `routerMode: hash` によりページ遷移を `#/3` のようなハッシュで表すため、サーバー側のSPAフォールバックが無くてもリロードや直リンクが動く。移行前の `/2026/<slug>/3` 形式のリンクは `dist/404.html` 内のスクリプトがハッシュ形式へ書き換える。
+
+`/2026/<slug>/pdf` や `/2026/<slug>/src` へのリダイレクトは、GitHub Pagesにサーバー側リダイレクトが無いため `scripts/redirects.ts` が meta refresh 入りの `index.html` を各パスに生成して代用している。
+
+## 本番デプロイ（GitHub Pages）
+
+main への push で `.github/workflows/deploy.yml` が走り、`dist/` が GitHub Pages に配信される。独自ドメイン `talks.hol1kgmg.com` は `scripts/homepage.ts` が出力する `dist/CNAME` で維持される（`hol1kgmg.github.io/talks/` へのアクセスはGitHub側で独自ドメインへ自動リダイレクトされる）。
 
 ## 画像の追加
 

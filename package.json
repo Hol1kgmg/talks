@@ -57,8 +57,7 @@
     "vis-network": "catalog:",
     "vite": "catalog:",
     "vue-router": "catalog:",
-    "vue-tsc": "catalog:",
-    "wrangler": "catalog:"
+    "vue-tsc": "catalog:"
   },
   "resolutions": {
     "@slidev/cli": "catalog:",

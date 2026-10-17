@@ -6,6 +6,7 @@ colorSchema: light
 transition: fade-out
 mdc: true
 lang: ja
+routerMode: hash
 title: dotfilesの世界から覗くランチャーアプリ
 seoMeta:
   ogDescription: 新卒N年目の勉強会&交流会向けLT。dotfilesとランチャーアプリ（Raycast/Tuna/Vicinae）の設定ファイル管理事情を紹介。
