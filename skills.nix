@@ -2,6 +2,8 @@
 # ID 一覧は `just skills-list`。
 {
   enable = [
+    # slidevjs/slidev
+    "slidev"
   ];
 
   disable = [

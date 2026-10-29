@@ -17,6 +17,11 @@ export default antfu({
   ignores: [
     '**/demo/eslint/**',
     '**/dist-stale/**',
+    // claude-temp から同期するファイル。整形すると just sync で毎回衝突する
+    '.codex/**',
+    '.github/**',
+    'adr/**',
+    'lefthook.yaml',
   ],
 })
   .removeRules(

@@ -2,6 +2,11 @@
 # ID 一覧は `just rules-list`。
 {
   enable = [
+    # ./rules（独自）
+    "slidev-assets"
+    "slidev-style"
+    "slidev-workflow"
+    "talk-ideas"
   ];
 
   disable = [
