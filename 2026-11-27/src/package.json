@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "tsx ../../scripts/build.ts /2026/hover-hold-detection/",
+    "export": "slidev export --per-slide --output ../2026-11-27-hover-hold-detection.pdf"
+  }
+}
