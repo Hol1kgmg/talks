@@ -13,9 +13,12 @@ colorSchema: light
 transition: fade-out
 mdc: true
 lang: ja
+favicon: /images/shared/Hol1kgmg_prof_img_round.webp
 title: <トークタイトル>
 ---
 ```
+
+- `favicon`は`reuse/images/Hol1kgmg_prof_img_round.webp`（プロフィール画像を円形に切り抜いた透過WebP）。public配下の絶対パスなので、ビルド時にViteがbaseパスを付けて書き換える
 
 - 1枚目（タイトルスライド）のレイアウトは`layout: cover`ではなく`layout: center`
 - `colorSchema`は`light`をデフォルトにする

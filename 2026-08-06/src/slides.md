@@ -6,6 +6,7 @@ colorSchema: light
 transition: fade-out
 mdc: true
 lang: ja
+favicon: /images/shared/Hol1kgmg_prof_img_round.webp
 routerMode: hash
 title: dotfilesの世界から覗くランチャーアプリ
 seoMeta:
