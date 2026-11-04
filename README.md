@@ -8,6 +8,7 @@
 
 ###### 2026
 
+- `ja` [APM で agent skill をバージョン管理してみる](https://talks.hol1kgmg.com/2026/agent-package-manager/) - 新卒N年目の勉強会&交流会！ 〜若手エンジニアのAIの使い方・向き合い方〜 ([ソース](./2026-11-05))
 - `ja` [このPJ（キーボード）の技術選定についてレビューしてください](https://talks.hol1kgmg.com/2026/keyboard-tech-stack-review/) - 新卒N年目の勉強会&交流会！#6 ([ソース](./2026-10-10))
 - `ja` [anime.js v4.5.0 の adapter で three.js を動かす](https://talks.hol1kgmg.com/2026/animejs-v4/) - Web UI 実装勉強会 ([ソース](./2026-09-16))
 - `ja` [herdrから考えるターミナルとターミナルマルチプレクサの位置付け](https://talks.hol1kgmg.com/2026/herdr-terminal-multiplexer/) - みんなの「もう戻れない」ターミナル環境LT会〜開発効率化の工夫を大公開〜 ([ソース](./2026-09-08))

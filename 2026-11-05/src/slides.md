@@ -7,14 +7,14 @@ transition: fade-out
 mdc: true
 lang: ja
 routerMode: hash
-title: pnpm skills で agent skill をバージョン管理してみる
+title: APM で agent skill をバージョン管理してみる
 seoMeta:
-  ogDescription: "新卒N年目の勉強会&交流会！ 〜若手エンジニアのAIの使い方・向き合い方〜。pnpm skill に触れてみる話"
+  ogDescription: "新卒N年目の勉強会&交流会！ 〜若手エンジニアのAIの使い方・向き合い方〜。Agent Package Manager（APM）で agent skill をバージョン管理してみる話"
   ogImage: auto
   twitterCard: summary_large_image
 ---
 
-# pnpm skills で agent skill をバージョン管理してみる
+# APM で agent skill をバージョン管理してみる
 
 2026.11.05
 
@@ -58,11 +58,75 @@ layout: section
 layout: default
 ---
 
-# そこで pnpm skills
+# pnpm skills というものがある
 
-- skill を npm パッケージと一緒にバージョン管理できる pnpm の機能
-- パッケージに同梱された `skills/<name>/SKILL.md` を、承認済みのものだけエージェント用ディレクトリにリンクする
+- pnpm で管理している各パッケージに同梱された skill を、パッケージと一緒に使える
+- skill のバージョンは、パッケージのバージョンとして `pnpm-lock.yaml` で固定される
 - 参考: https://pnpm.io/ja/agent-skills
+- 今日は、これと Nix での管理を比べる予定だった
+
+---
+layout: section
+---
+
+<div class="text-3xl mb-8">pnpm skills 🆚 Nix</div>
+
+# 更に詳しい仕様について共有……
+
+<div v-click>
+
+# したいのですが、状況が変わりました
+
+</div>
+
+---
+layout: default
+---
+
+# 11/03、GitHub Changelog
+
+<CenterImage src="/images/dependabot-apm-changelog.webp" img-class="h-85 my-3" />
+
+<div class="text-center text-sm">
+
+https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager/
+
+</div>
+
+---
+layout: default
+---
+
+# ダークホース現る
+
+<div class="text-center text-3xl mt-16">
+
+pnpm skills 🆚 Nix
+
+<div v-click class="mt-8">
+
+……に、第三勢力 **APM** が参戦
+
+</div>
+
+<div v-click class="mt-8">
+
+しかも Dependabot 対応で、一気に強くなった 💪
+
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+# APM（Agent Package Manager）とは
+
+- [microsoft/apm](https://github.com/microsoft/apm)。「agent context 版の npm」
+- skill / instructions / prompts / agents / hooks / MCP などを依存として宣言できる
+- **npm 公開は不要**。`skills/<name>/SKILL.md` を置いた Git リポジトリをそのまま依存にできる
+- Claude Code / Copilot / Cursor / Codex などに展開できる
 
 ---
 layout: default
@@ -71,15 +135,15 @@ layout: default
 # 仕組み
 
 ```
-[配布側]                         [利用側]
-@scope/skills@1.2.0              package.json        ← バージョン範囲を宣言
-└── skills/<name>/SKILL.md  ──▶  pnpm-lock.yaml      ← バージョンを固定
-        (npm publish)            pnpm-workspace.yaml ← permissions で承認
-                                       │ pnpm install
-                                       ▼
-                                 .agents/skills/pnpm-@scope+skills-<name>  (symlink)
-                                       ▲
-                                 Dependabot が新バージョンを PR 化
+[配布側: 任意の Git リポジトリ]        [利用側]
+owner/repo                            apm.yml        ← 依存を宣言（ref / semver 範囲）
+└── skills/<name>/SKILL.md   ──────▶  apm.lock.yaml  ← commit SHA + ファイルハッシュを固定
+    └── references/ scripts/ ...            │ apm install (--frozen)
+                                            ▼
+                                      apm_modules/           ← 取得キャッシュ（gitignore）
+                                      .agents/skills/<name>/ ← target ごとの固定パスに展開
+                                            ▲
+                                      Dependabot が更新を PR 化
 ```
 
 ---
@@ -88,133 +152,108 @@ layout: default
 
 # 試してみた
 
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+```yaml
+# apm.yml
+targets:
+  - agent-skills
+dependencies:
+  apm:
+    - Hol1kgmg/skills
+```
+
+</div>
+
+<div>
+
 ```bash
-pnpm add -D @hol1kgmg/skills
-# => Agent skills awaiting approval: @hol1kgmg/skills.
-pnpm approve @hol1kgmg/skills
+# .envrc（direnv で自動展開）
+watch_file apm.yml apm.lock.yaml
+mise x -- apm install --frozen
 ```
 
-```yaml
-# pnpm-workspace.yaml（承認が記録される）
-permissions:
-  '@hol1kgmg/skills':
-    skills: true
+</div>
+
+</div>
+
+```bash
+apm install Hol1kgmg/skills   # => 2 スキルを .agents/skills/ に展開
+apm audit                     # => No drift detected
 ```
 
-```
-.agents/skills/
-├── .gitignore    # pnpm-*（自動生成）
-├── pnpm-@hol1kgmg+skills-dependabot-review -> ../../node_modules/.pnpm/...
-└── pnpm-@hol1kgmg+skills-speckit-explain   -> ../../node_modules/.pnpm/...
-```
-
-Claude Code はリンクされた skill をそのまま認識した
+- `apm.lock.yaml` に `resolved_commit` と各ファイルの sha256 が記録される
+- Claude Code は展開された skill をそのまま認識した
 
 ---
 layout: default
 ---
 
-# いつもの依存管理がそのまま使える
+# ハマりどころ
 
-| npm パッケージ | agent skill（pnpm skills） |
-|---|---|
-| `package.json` で依存を宣言 | 同じ（`devDependencies` に追加） |
-| `pnpm-lock.yaml` でバージョンを固定 | 同じ |
-| `pnpm install` で `node_modules` に展開 | 加えて `.agents/skills` 等にリンク |
-| Dependabot / Renovate で更新 PR | 同じ |
-| `allowBuilds` でビルドスクリプトを許可 | `permissions.<pkg>.skills` で skill を許可 |
-
-<CornerComment height="h-30">
-  pnpm skills、良さそう！
-</CornerComment>
-
----
-layout: section
----
-
-# でも、使える skill がない
+- `.claude/skills` を `.agents/skills` への symlink にしていると、`claude` target は `Unsafe skill destination` で拒否される
+- `targets: [agent-skills]` にして `.agents/skills/` へ直接展開し、symlink 経由で Claude Code に読ませて回避した
+- SKILL.md の frontmatter は ASCII のみ、`name` はディレクトリ名と一致が必要
 
 ---
 layout: default
 ---
 
-# 主要パッケージの対応状況
+# APM が対応している範囲（`.claude/` の場合）
 
-| パッケージ | リポジトリに skills | npm tarball に skills | pnpm skills で取得 |
-|---|---|---|---|
-| `shadcn@4.23.0` | ✅ | ❌ | ❌ |
-| `next@16.4.4` | ✅（Claude Code プラグイン形式） | ❌ | ❌ |
-| `drizzle-kit@0.31.11`（公式ドキュメントの例） | - | ❌ | ❌ |
-| `@hol1kgmg/skills@1.0.0` | ✅ | ✅ | ✅ |
-
-- npm tarball に `skills/` を含めて公開されたパッケージでないと取得できない
-- GitHub 上の skill は直接取れない
-
----
-layout: default
----
-
-# 更新の仕組みはあっても
-
-- Dependabot で skill も更新できる
-- でも、対応しているパッケージがほとんどない
-- 本末転倒気味。今後の発展に期待
-
----
-layout: default
----
-
-# 代わりに: agent-skills-nix
-
-- [Kyure-A/agent-skills-nix](https://github.com/Kyure-A/agent-skills-nix)
-- skill の取得元を flake input として宣言する
-- npm 公開の制限がなく、GitHub リポジトリをコミット単位で固定できる
-- `flake.lock` の更新は Dependabot（nix ecosystem）が input ごとに PR 化する
-
-```nix
-# flake.nix
-inputs = {
-  agent-skills.url = "github:Kyure-A/agent-skills-nix";
-  anthropic-skills = { url = "github:anthropics/skills"; flake = false; };
-  slidev = { url = "github:slidevjs/slidev"; flake = false; };
-};
+```
+.claude/
+├── skills/<name>/       ✅ skills（同梱のスクリプトや references も丸ごと）
+├── rules/<name>.md      ✅ instructions
+├── commands/<name>.md   ✅ prompts
+├── agents/<name>.md     ✅ agents
+├── settings.json
+│   ├── hooks            △  APM が書いたエントリだけマージ
+│   └── permissions / statusLine / env   ❌
+├── settings.local.json  ❌
+└── statusline.sh        ❌ 任意のファイルは置けない
 ```
 
----
-layout: default
----
-
-# このスライドのリポジトリでも使っている
-
-```nix
-# sources.nix（取得元）
-skills = {
-  slidev = { path = inputs.slidev.outPath; subdir = "skills"; };
-};
-
-# skills.nix（有効にする skill）
-enable = [ "slidev" ];
-```
-
-```yaml
-# .github/dependabot.yml
-- package-ecosystem: nix
-  directory: /
-  schedule:
-    interval: weekly
-```
+- 展開先は target ごとに APM が決める（変えられるのはディレクトリ名だけ）
 
 <CornerComment height="h-15">
-  例: chore(deps): bump vercel-ai from 36e4ce7 to e59b6e0
+  ハーネスの設定までは手が届かない
 </CornerComment>
 
 ---
 layout: default
 ---
 
-# まとめ
+# ハーネス周りまでこだわるなら Nix
 
-- agent skill の管理は、更新に気付けず内容もばらつきがち
-- pnpm skills なら、skill を依存パッケージとしてバージョン管理できる
-- ただし npm tarball に skill を含めたパッケージが少なく、今は対応範囲が狭い
-- GitHub の skill をコミット単位で管理したいなら agent-skills-nix
+- 例: [layat](https://github.com/yasunori0418/layat)。skill の取得元を flake input にして `flake.lock` で rev を固定する
+- 配置先のパスを `flake.nix` に自分で書ける
+- ハーネス本体やツールも、同じ devShell でバージョンを固定できる
+- Dependabot（nix ecosystem）で `flake.lock` の更新 PR を出せる
+
+```nix
+# flake.nix（簡略化）
+inputs.skills = { url = "github:Hol1kgmg/SKILL"; flake = false; };
+
+entries = {
+  ".agents/skills/layat-dependabot-review" = { src = skills; subpath = "skills/dependabot-review"; };
+};
+```
+
+---
+layout: default
+---
+
+# 余談
+
+- 本当は pnpm skills の話をするつもりだった
+- 11/03（登壇の2日前、作業日でいうと前日）に、Dependabot の APM 対応のニュースが飛び込んできた
+- 泣く泣く APM の話を頑張りました 😭
+
+<div v-click class="text-center text-2xl mt-12">
+
+AI まわりは状況の変化が激しいので、<br>前から準備していた話ができなくなるのはよくあること
+
+</div>
