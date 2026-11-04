@@ -27,7 +27,7 @@ layout: default
 
 # 自己紹介
 
-<SelfIntro />
+<SelfIntro note="ジャンケットバンク 最新話(228話)に脳を焼かれました..." />
 
 ---
 layout: default
