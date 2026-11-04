@@ -119,27 +119,48 @@ clicks: 3
 
 ---
 layout: default
+clicks: 3
 ---
 
-# ダークホース現る
+# 何があったか
 
-<div class="text-center text-3xl mt-16">
-
-pnpm skills 🆚 Nix
-
-<div v-click class="mt-8">
-
-……に、第三勢力 **APM** が参戦
-
+<div class="mt-8 text-center transition-opacity duration-700" :class="$clicks > 0 ? 'opacity-100' : 'opacity-0'">
+  <div class="text-3xl">2026.11.03、<b>Dependabot が APM に対応</b>した</div>
+  <div class="mt-4 text-2xl opacity-70">その結果……</div>
 </div>
 
-<div v-click class="mt-8">
-
-しかも Dependabot 対応で、一気に強くなった 💪
-
+<div class="h-3/5 flex items-center justify-center gap-24 transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
+  <!-- 左枠: pnpm が倒れて退場し、APM が入れ替わりで入る -->
+  <div class="relative h-48 w-72">
+    <div class="absolute inset-0 flex justify-center origin-bottom-left transition-all duration-700" :class="$clicks > 2 ? 'opacity-0 rotate-90 translate-y-8' : ''">
+      <SharedImage src="/images/shared/pnpm.svg" img-class="h-48" />
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center transition-all duration-700" :class="$clicks > 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'">
+      <span class="flex items-center gap-4 rounded-2xl border-4 border-gray-800 bg-white px-8 py-6 text-6xl font-bold shadow-xl">
+        <!-- Microsoft ロゴ（4色の正方形） -->
+        <span class="grid grid-cols-2 gap-1">
+          <span class="h-6 w-6 bg-[#F25022]" /><span class="h-6 w-6 bg-[#7FBA00]" />
+          <span class="h-6 w-6 bg-[#00A4EF]" /><span class="h-6 w-6 bg-[#FFB900]" />
+        </span>
+        APM
+      </span>
+    </div>
+  </div>
+  <div class="text-6xl font-bold">VS</div>
+  <div class="flex w-72 justify-center">
+    <SharedImage src="/images/shared/nix-snowflake.svg" img-class="h-48" />
+  </div>
 </div>
 
+<div class="absolute bottom-10 right-12 text-xl transition-opacity duration-700" :class="$clicks > 2 ? 'opacity-70' : 'opacity-0'">
+  pnpm どころじゃなくなった
 </div>
+
+---
+layout: section
+---
+
+# 時間の都合で pnpm の話は省略
 
 ---
 layout: default
