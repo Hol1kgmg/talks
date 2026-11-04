@@ -50,31 +50,41 @@ clicks: 2
 layout: section
 ---
 
-# AI を使った開発環境なのに、管理はアナログ
+# スキルの管理はアナログ
+
+<div class="absolute bottom-10 right-12 text-xl opacity-70">
+  AI を使った開発環境なのに……
+</div>
 
 ---
 layout: default
+clicks: 2
 ---
 
 # pnpm skills というものがある
 
-- pnpm で管理している各パッケージに同梱された skill を、パッケージと一緒に使える
-- skill のバージョンは、パッケージのバージョンとして `pnpm-lock.yaml` で固定される
-- 参考: https://pnpm.io/ja/agent-skills
-- 今日は、これと Nix での管理を比べる予定だった
+<div class="h-9/10 flex items-center justify-center">
+  <div class="relative">
+    <!-- pnpm + SKILL.md: 初期は中央、クリックで左へ -->
+    <div class="relative flex flex-col items-center transition-transform duration-700" :class="$clicks > 0 ? '-translate-x-52' : ''">
+      <SharedImage src="/images/shared/pnpm.svg" img-class="h-48" />
+      <div class="mt-4 flex items-center justify-center gap-2 font-mono text-sm">
+        <span class="rounded-lg border border-gray-300 bg-white px-3 py-1 shadow-md">📦 package</span>
+        <span class="text-gray-400">+</span>
+        <span class="rounded-lg border border-gray-300 bg-white px-3 py-1 shadow-md">📄 SKILL.md</span>
+      </div>
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center text-6xl font-bold transition-opacity duration-700" :class="$clicks > 0 ? 'opacity-100' : 'opacity-0'">
+      VS
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center translate-x-52 transition-opacity duration-700" :class="$clicks > 0 ? 'opacity-100' : 'opacity-0'">
+      <SharedImage src="/images/shared/nix-snowflake.svg" img-class="h-48" />
+    </div>
+  </div>
+</div>
 
----
-layout: section
----
-
-<div class="text-3xl mb-8">pnpm skills 🆚 Nix</div>
-
-# 更に詳しい仕様について共有……
-
-<div v-click>
-
-# したいのですが、状況が変わりました
-
+<div class="absolute bottom-10 right-12 text-xl transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-70' : 'opacity-0'">
+  ……という話をしたかった
 </div>
 
 ---
