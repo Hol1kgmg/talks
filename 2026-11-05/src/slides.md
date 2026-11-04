@@ -168,10 +168,32 @@ layout: default
 
 # APM（Agent Package Manager）とは
 
-- [microsoft/apm](https://github.com/microsoft/apm)。「agent context 版の npm」
-- skill / instructions / prompts / agents / hooks / MCP などを依存として宣言できる
-- **npm 公開は不要**。`skills/<name>/SKILL.md` を置いた Git リポジトリをそのまま依存にできる
-- Claude Code / Copilot / Cursor / Codex などに展開できる
+<div class="h-9/10 flex flex-col justify-center">
+
+```yaml
+# apm.yml
+name: my-project
+version: 1.0.0
+targets: [claude]
+dependencies:
+  apm:
+    - anthropics/skills/skills/frontend-design # skills
+    - owner/repo/instructions/style.instructions.md # instructions
+    - owner/repo/prompts/review.prompt.md # prompts
+    - github/awesome-copilot/agents/api-architect.agent.md # agents
+    - microsoft/apm-sample-package#v1.0.0 # hooks など（パッケージ丸ごと）
+  mcp:
+    - name: io.github.github/github-mcp-server # MCP
+      transport: http
+```
+
+<div class="text-center">
+
+skill / instructions / prompts / agents / hooks / MCP をバージョン管理するパッケージマネージャー
+
+</div>
+
+</div>
 
 ---
 layout: default
