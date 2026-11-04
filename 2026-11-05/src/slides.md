@@ -245,15 +245,10 @@ apm audit                     # => No drift detected
 - `apm.lock.yaml` に `resolved_commit` と各ファイルの sha256 が記録される
 - Claude Code は展開された skill をそのまま認識した
 
----
-layout: default
----
-
-# ハマりどころ
-
-- `.claude/skills` を `.agents/skills` への symlink にしていると、`claude` target は `Unsafe skill destination` で拒否される
-- `targets: [agent-skills]` にして `.agents/skills/` へ直接展開し、symlink 経由で Claude Code に読ませて回避した
-- SKILL.md の frontmatter は ASCII のみ、`name` はディレクトリ名と一致が必要
+<div class="absolute bottom-8 right-6 flex items-center gap-2 text-xl">
+  <SharedImage src="images/shared/GitHub_Invertocat_Black.svg" img-class="w-7 h-7" />
+  <a href="https://github.com/Hol1kgmg/playground-apm" target="_blank">https://github.com/Hol1kgmg/playground-apm</a>
+</div>
 
 ---
 layout: default

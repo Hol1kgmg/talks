@@ -24,7 +24,7 @@ agent skill を `npx skills` やコピペで導入している人
 
 ## 構成
 
-話の流れ: 導入（課題） → pnpm skills と Nix を比べる予定だった → changelog → APM の仕様をざっくり → 試してみた → APM の対応範囲（対応していないところもある） → ハーネス周りまでこだわるなら Nix → 余談
+話の流れ: 導入（課題） → pnpm skills と Nix を比べる予定だった → changelog → APM VS Nix に構図が変わる → APM の仕様をざっくり → 試してみた → APM の対応範囲（対応していないところもある） → ハーネス周りまでこだわるなら Nix → 余談
 
 1. タイトル
 2. 自己紹介
@@ -33,18 +33,20 @@ agent skill を `npx skills` やコピペで導入している人
 5. section: スキルの管理はアナログ（右下に小さく「AI を使った開発環境なのに……」）
 6. pnpm skills というものがある
    - pnpm アイコン + 「📦 package + 📄 SKILL.md」を中央に置き、クリックで左に寄せて「VS」と Nix アイコンを表示する。次のクリックで右下に「……という話をしたかった」
-7. 11/03 の changelog の OG 画像
-8. ダークホース現る（pnpm skills 🆚 Nix に第三勢力 APM が参戦し、Dependabot 対応で強力になった、という抽象的なイメージだけ）
-9. APM とは
-10. 仕組み
-11. 試してみた（`apm.yml` / `.envrc` / `apm install` / `apm audit`）
-12. ハマりどころ（`.claude/skills` が symlink だと `claude` target が使えない）
-13. APM が対応している範囲（`.claude/` のツリーで ✅ / △ / ❌ を示し、ハーネスの設定までは手が届かないと伝える）
-14. ハーネス周りまでこだわるなら Nix（layat の例）
-15. 余談（本当は pnpm skills の話をするつもりだったが、前日にニュースが飛び込んできて泣く泣く APM の話を頑張った）。オチは「AI まわりは状況の変化が激しいので、前から準備していた話ができなくなるのはよくあること」。まとめスライドは置かず、14枚目を着地点にする
+   - 最後のクリックで 11/03 の Changelog 画像が落下してくる（引用リンクは画像内に表示）
+7. 何があったか（Dependabot が APM に対応 → pnpm が倒れて APM と入れ替わり、APM VS Nix の構図になる。右下に「pnpm どころじゃなくなった」）
+8. section: 時間の都合で pnpm の話は省略
+9. APM とは（`apm.yml` のサンプルで skill / instructions / prompts / agents / hooks / MCP を管理できることを示す）
+10. 仕組み（`apm install` の流れを矢印アニメーションで示す）
+11. 試してみた（`apm.yml` / `.envrc` / `apm install` / `apm audit`。右下に GitHub アイコン付きで https://github.com/Hol1kgmg/playground-apm へのリンク）
+12. APM が対応している範囲（`.claude/` のツリーで ✅ / △ / ❌ を示し、ハーネスの設定までは手が届かないと伝える）
+13. ハーネス周りまでこだわるなら Nix（layat の例）
+14. 余談（本当は pnpm skills の話をするつもりだったが、前日にニュースが飛び込んできて泣く泣く APM の話を頑張った）。オチは「AI まわりは状況の変化が激しいので、前から準備していた話ができなくなるのはよくあること」。まとめスライドは置かず、13枚目を着地点にする
+
+ハマりどころ（`.claude/skills` が symlink だと `claude` target が使えない）のスライドは時間の都合で削除した。
 
 ## 今後の調整候補
 
 - 10・11枚目は縦にはみ出しやすいため、分割を検討する
 - 時間に余裕があれば追加する: レポートの未検証事項（semver 範囲、hooks / MCP の配布）
-- Dependabot の apm ecosystem を playground-apm で実際に動かせたら、PR のスクリーンショットを8枚目に入れる
+- Dependabot の apm ecosystem を playground-apm で実際に動かせたら、PR のスクリーンショットを7枚目に入れる
