@@ -88,14 +88,12 @@ clicks: 3
 </div>
 
 <div v-if="$clicks > 2" class="absolute inset-0 flex items-center justify-center">
-  <div class="changelog-drop flex flex-col items-center">
-    <div class="relative overflow-hidden rounded-xl shadow-2xl">
-      <SharedImage src="/images/dependabot-apm-changelog.webp" img-class="block w-160" />
-      <div class="absolute inset-x-0 top-0 bg-black/80 py-2 text-center text-2xl font-bold text-white">
-        11/03 GitHub Changelog
-      </div>
+  <div class="changelog-drop relative w-97/100 overflow-hidden shadow-2xl">
+    <SharedImage src="/images/dependabot-apm-changelog.webp" img-class="block w-full" />
+    <div class="absolute inset-x-0 top-0 bg-black/80 py-3 text-center text-3xl font-bold text-white">
+      11/03 GitHub Changelog
     </div>
-    <div class="mt-2 rounded bg-white/90 px-2 text-xs text-gray-600">
+    <div class="absolute inset-x-0 bottom-0 bg-black/80 py-1 text-center text-xs text-white">
       https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager/
     </div>
   </div>
