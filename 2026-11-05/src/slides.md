@@ -197,21 +197,12 @@ skill / instructions / prompts / agents / hooks / MCP をバージョン管理�
 
 ---
 layout: default
+clicks: 5
 ---
 
 # 仕組み
 
-```
-[配布側: 任意の Git リポジトリ]        [利用側]
-owner/repo                            apm.yml        ← 依存を宣言（ref / semver 範囲）
-└── skills/<name>/SKILL.md   ──────▶  apm.lock.yaml  ← commit SHA + ファイルハッシュを固定
-    └── references/ scripts/ ...            │ apm install (--frozen)
-                                            ▼
-                                      apm_modules/           ← 取得キャッシュ（gitignore）
-                                      .agents/skills/<name>/ ← target ごとの固定パスに展開
-                                            ▲
-                                      Dependabot が更新を PR 化
-```
+<ApmInstallFlow :active="$clicks" />
 
 ---
 layout: default
