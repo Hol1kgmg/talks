@@ -18,7 +18,7 @@ seoMeta:
 
 2026.11.05
 
-Hol1kgmg(ほりかわ)
+Hol1kgmg（ほりかわ）
 
 ---
 layout: default
@@ -33,9 +33,15 @@ layout: default
 clicks: 3
 ---
 
-# Agent Skillをどうやって入れていますか？
+# agent skill をどうやって入れていますか？
 
 <InstallWays :active="$clicks" />
+
+---
+layout: section
+---
+
+# この skill 導入では<br>困ることがあります
 
 ---
 layout: default
@@ -50,48 +56,48 @@ clicks: 2
 layout: section
 ---
 
-# スキルの管理はアナログ
+# skill の管理がアナログ
 
 <div class="absolute bottom-10 right-12 text-xl opacity-70">
-  AI を使った開発環境なのに……
+  AI を使った今どきな開発環境なのに……
 </div>
 
 ---
 layout: default
-clicks: 3
+clicks: 4
 ---
 
 # pnpm skills というものがある
 
 <div class="h-9/10 flex items-center justify-center">
   <div class="relative">
-    <!-- pnpm + SKILL.md: 初期は中央、クリックで左へ -->
-    <div class="relative flex flex-col items-center transition-transform duration-700" :class="$clicks > 0 ? '-translate-x-52' : ''">
+    <!-- pnpm + SKILL.md: 初期は中央、クリックで + と SKILL.md が出て、次のクリックで左へ -->
+    <div class="relative flex flex-col items-center transition-transform duration-700" :class="$clicks > 1 ? '-translate-x-52' : ''">
       <SharedImage src="/images/shared/pnpm.svg" img-class="h-48" />
       <div class="mt-4 flex items-center justify-center gap-2 font-mono text-sm">
         <span class="rounded-lg border border-gray-300 bg-white px-3 py-1 shadow-md">📦 package</span>
-        <span class="text-gray-400">+</span>
-        <span class="rounded-lg border border-gray-300 bg-white px-3 py-1 shadow-md">📄 SKILL.md</span>
+        <span class="text-gray-400 transition-opacity duration-700" :class="$clicks > 0 ? 'opacity-100' : 'opacity-0'">+</span>
+        <span class="rounded-lg border border-gray-300 bg-white px-3 py-1 shadow-md" :class="$clicks > 0 ? 'skill-bounce' : 'opacity-0'">📄 SKILL.md</span>
       </div>
     </div>
-    <div class="absolute inset-0 flex items-center justify-center text-6xl font-bold transition-opacity duration-700" :class="$clicks > 0 ? 'opacity-100' : 'opacity-0'">
+    <div class="absolute inset-0 flex items-center justify-center text-6xl font-bold transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
       VS
     </div>
-    <div class="absolute inset-0 flex items-center justify-center translate-x-52 transition-opacity duration-700" :class="$clicks > 0 ? 'opacity-100' : 'opacity-0'">
+    <div class="absolute inset-0 flex items-center justify-center translate-x-52 transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
       <SharedImage src="/images/shared/nix-snowflake.svg" img-class="h-48" />
     </div>
   </div>
 </div>
 
-<div class="absolute bottom-10 right-12 text-xl transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-70' : 'opacity-0'">
+<div class="absolute bottom-10 right-12 text-xl transition-opacity duration-700" :class="$clicks > 2 ? 'opacity-70' : 'opacity-0'">
   ……という話をしたかった
 </div>
 
-<div v-if="$clicks > 2" class="absolute inset-0 flex items-center justify-center">
+<div v-if="$clicks > 3" class="absolute inset-0 flex items-center justify-center">
   <div class="changelog-drop relative w-97/100 overflow-hidden shadow-2xl">
     <SharedImage src="/images/dependabot-apm-changelog.webp" img-class="block w-full" />
     <div class="absolute inset-x-0 top-0 bg-black/80 py-3 text-center text-3xl font-bold text-white">
-      11/03 GitHub Changelog
+      2026.11.03 GitHub Changelog
     </div>
     <div class="absolute inset-x-0 bottom-0 bg-black/80 py-1 text-center text-xs text-white">
       https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager/
@@ -114,6 +120,19 @@ clicks: 3
   82% { transform: translateY(-16px) rotate(-0.5deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
   90% { transform: translateY(0) scaleY(0.97) rotate(-0.5deg); }
   100% { transform: translateY(0); }
+}
+
+.skill-bounce {
+  animation: skill-bounce 0.8s both;
+}
+
+/* その場で現れて2回跳ねて止まる */
+@keyframes skill-bounce {
+  0% { opacity: 0; transform: translateY(0); animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  30% { opacity: 1; transform: translateY(-20px); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  60% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  80% { transform: translateY(-8px); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 </style>
 
@@ -153,7 +172,7 @@ clicks: 3
 </div>
 
 <div class="absolute bottom-10 right-12 text-xl transition-opacity duration-700" :class="$clicks > 2 ? 'opacity-70' : 'opacity-0'">
-  pnpm どころじゃなくなった
+  pnpm の話どころじゃなくなった
 </div>
 
 ---
@@ -238,7 +257,7 @@ mise x -- apm install --frozen
 </div>
 
 ```bash
-apm install Hol1kgmg/skills   # => 2 スキルを .agents/skills/ に展開
+apm install Hol1kgmg/skills   # => 2つの skill を .agents/skills/ に展開
 apm audit                     # => No drift detected
 ```
 
@@ -246,7 +265,7 @@ apm audit                     # => No drift detected
 - Claude Code は展開された skill をそのまま認識した
 
 <div class="absolute bottom-8 right-6 flex items-center gap-2 text-xl">
-  <SharedImage src="images/shared/GitHub_Invertocat_Black.svg" img-class="w-7 h-7" />
+  <SharedImage src="/images/shared/GitHub_Invertocat_Black.svg" img-class="w-7 h-7" />
   <a href="https://github.com/Hol1kgmg/playground-apm" target="_blank">https://github.com/Hol1kgmg/playground-apm</a>
 </div>
 
@@ -260,9 +279,9 @@ clicks: 1
 <div class="h-9/10 flex flex-col items-center justify-center">
 <div>
 
-<!-- 13枚目とコードブロックの位置をそろえるため、同じ構成にしてラベルは invisible で場所だけ取る -->
+<!-- 14枚目とコードブロックの位置をそろえるため、同じ構成にしてラベルは invisible で場所だけ取る -->
 <div class="mx-auto w-fit">
-  <div class="invisible mb-1 text-sm">apmの範囲</div>
+  <div class="invisible mb-1 text-sm">APM の範囲</div>
   <ClaudeDirTree class="mb-8" :active="$clicks > 0" />
 </div>
 
@@ -284,13 +303,13 @@ clicks: 2
 
 <!-- 箇条書きの方が幅が広いので、ラベルとツリーだけ中央に寄せる -->
 <div class="mx-auto w-fit">
-  <div class="mb-1 text-sm opacity-70">apmの範囲</div>
+  <div class="mb-1 text-sm opacity-70">APM の範囲</div>
   <ClaudeDirTree class="mb-8" active :nix="$clicks > 0" />
 </div>
 
 <div class="transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
 
-- 例: <SharedImage src="images/shared/GitHub_Invertocat_Black.svg" img-class="inline w-5 h-5 mb-1" /> <a href="https://github.com/yasunori0418/layat" target="_blank">https://github.com/yasunori0418/layat</a>。配置先のパスも `flake.nix` に自分で書ける
+- 例: <SharedImage src="/images/shared/GitHub_Invertocat_Black.svg" img-class="inline w-5 h-5 mb-1" /> <a href="https://github.com/yasunori0418/layat" target="_blank">https://github.com/yasunori0418/layat</a>。配置先のパスも `flake.nix` に自分で書ける
 - Dependabot（nix ecosystem）で `flake.lock` の更新 PR も出せる
 
 </div>
@@ -306,8 +325,8 @@ layout: default
 <div class="h-9/10 flex flex-col">
 
 - 本当は pnpm skills の話をするつもりだった
-- 11/03（登壇の2日前、作業日でいうと前日）に、Dependabot の APM 対応のニュースが飛び込んできた
-	- pnpm skill の話をしている場合ではなくなった
+- 2026.11.03（登壇の2日前、作業日でいうと前日）に、Dependabot の APM 対応のニュースが飛び込んできた
+  - pnpm skills の話をしている場合ではなくなった
 - 泣く泣く APM の話を頑張りました 😭
 
 <!-- 箇条書きより下の残り領域で上下中央に置く -->

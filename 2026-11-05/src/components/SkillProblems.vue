@@ -4,7 +4,7 @@ import { onUnmounted, ref, watch } from 'vue'
 
 const props = defineProps<{ active: number }>()
 
-const titles = ['スキル が更新されても気付けない', '中身が少しずつ違う スキル が広がる']
+const titles = ['skill が更新されても気付けない', '中身が少しずつ違う skill が広がる']
 // 版が上がるほどチップを大きく派手にして「すごくなっていく」を見せる
 const upstream = [
   { tag: 'v1.1', class: 'text-sm bg-blue-200 text-blue-800' },
@@ -23,7 +23,7 @@ const members = [
       'polygon(25% 0, 85% 0, 100% 15%, 100% 70%, 75% 100%, 30% 100%, 0 75%, 0 35%)',
     ],
     bg: '#3b82f6',
-    dur: 2.7,
+    dur: 1.4,
   },
   {
     name: 'Bさん',
@@ -33,7 +33,7 @@ const members = [
       'polygon(30% 0, 70% 0, 100% 35%, 100% 65%, 85% 100%, 15% 100%, 30% 60%, 0 30%)',
     ],
     bg: '#06b6d4',
-    dur: 1.6,
+    dur: 0.8,
   },
   {
     name: 'Cさん',
@@ -43,19 +43,19 @@ const members = [
       'polygon(50% 0, 60% 15%, 100% 50%, 80% 85%, 65% 100%, 15% 85%, 0 55%, 20% 10%)',
     ],
     bg: '#8b5cf6',
-    dur: 4.2,
+    dur: 2.1,
   },
 ]
 
-// カレンダーは10月固定で、形の変化(CSS の .play .shape の delay 0.8s)が始まってから
-// 最後の1人が止まるまでに 10/2 → 10/31 を1日ずつ進める(delay 0.8s + 最長 dur 4.2s = 5s で終了、約 0.145s 間隔)
+// カレンダーは10月固定で、形の変化(CSS の .play .shape の delay 0.5s)が始まってから
+// 最後の1人が止まるまでに 10/2 → 10/31 を1日ずつ進める(delay 0.5s + 最長 dur 2.1s = 2.6s で終了、約 0.072s 間隔)
 // 数字は NumberFlow で常に上方向へ回す。回転時間は進める間隔に収める
-const DELAY = 0.8
+const DELAY = 0.5
 const FIRST_DAY = 2
 const LAST_DAY = 31
 const END = DELAY + Math.max(...members.map(m => m.dur))
 const STEP = (END - DELAY) / (LAST_DAY - FIRST_DAY)
-const SPIN = { duration: 130, easing: 'ease-out' }
+const SPIN = { duration: 70, easing: 'ease-out' }
 const day = ref(FIRST_DAY)
 let timer: ReturnType<typeof setInterval> | undefined
 
@@ -70,7 +70,7 @@ watch(() => props.active, (active) => {
     day.value = FIRST_DAY + Math.max(0, Math.floor((t - DELAY) / STEP))
     if (t >= END)
       clearInterval(timer)
-  }, 50)
+  }, 20)
 }, { immediate: true })
 onUnmounted(() => clearInterval(timer))
 </script>
@@ -101,8 +101,8 @@ onUnmounted(() => clearInterval(timer))
                 <span class="ghost absolute left-0 top-0 rounded px-2 bg-blue-100 text-blue-700 shadow-lg" style="--dy: 5rem">v1.0</span>
               </span>
               <template v-for="(v, j) in upstream" :key="v.tag">
-                <span class="up text-gray-400" :style="{ animationDelay: `${2 + j * 0.7}s` }">→</span>
-                <span class="up rounded px-2 font-bold" :class="v.class" :style="{ animationDelay: `${2 + j * 0.7}s` }">{{ v.tag }}</span>
+                <span class="up text-gray-400" :style="{ animationDelay: `${1.2 + j * 0.4}s` }">→</span>
+                <span class="up rounded px-2 font-bold" :class="v.class" :style="{ animationDelay: `${1.2 + j * 0.4}s` }">{{ v.tag }}</span>
               </template>
             </div>
 
@@ -167,18 +167,18 @@ onUnmounted(() => clearInterval(timer))
   opacity: 0;
 }
 .play .ghost {
-  animation: copy 1.1s 0.3s both;
+  animation: copy 0.8s 0.2s both;
 }
 .play .up {
-  animation: pop 0.5s both;
+  animation: pop 0.4s both;
 }
 .play .local {
   animation:
-    fade-in 0.1s 1.2s both,
-    fade-gray 0.8s 4.2s both;
+    fade-in 0.1s 0.9s both,
+    fade-gray 0.6s 2.4s both;
 }
 .play .left-behind {
-  animation: fade-in 0.6s 4.4s both;
+  animation: fade-in 0.4s 2.5s both;
 }
 @keyframes copy {
   0% {
@@ -215,11 +215,11 @@ onUnmounted(() => clearInterval(timer))
   opacity: 0;
 }
 .play .comment {
-  animation: fade-in 0.6s both;
+  animation: fade-in 0.4s both;
 }
 /* duration はインラインの animationDuration で人ごとに上書きする */
 .play .shape {
-  animation: drift 1s 0.8s ease-in-out both;
+  animation: drift 1s 0.5s ease-in-out both;
 }
 @keyframes drift {
   33% {

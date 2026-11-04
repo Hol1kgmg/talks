@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{ active: number }>()
 
-const titles = ['ディレクトリに放り込む', 'スキルの本文をコピペ', 'npx skills で入れる']
+const titles = ['ディレクトリに放り込む', 'skill の本文をコピペ', 'npx skills で入れる']
 </script>
 
 <template>
