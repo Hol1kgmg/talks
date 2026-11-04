@@ -252,48 +252,43 @@ apm audit                     # => No drift detected
 
 ---
 layout: default
+clicks: 1
 ---
 
 # APM が対応している範囲（`.claude/` の場合）
 
-```
-.claude/
-├── skills/<name>/       ✅ skills（同梱のスクリプトや references も丸ごと）
-├── rules/<name>.md      ✅ instructions
-├── commands/<name>.md   ✅ prompts
-├── agents/<name>.md     ✅ agents
-├── settings.json
-│   ├── hooks            △  APM が書いたエントリだけマージ
-│   └── permissions / statusLine / env   ❌
-├── settings.local.json  ❌
-└── statusline.sh        ❌ 任意のファイルは置けない
-```
+<div class="h-9/10 flex flex-col items-center justify-center">
+<div>
 
-- 展開先は target ごとに APM が決める（変えられるのはディレクトリ名だけ）
+<ClaudeDirTree class="mb-8" :active="$clicks > 0" />
 
-<CornerComment height="h-15">
-  ハーネスの設定までは手が届かない
-</CornerComment>
+- 配置先は `.claude/` 以外に `.agents/` なども選べる（`targets` で指定）
+- ❌の範囲、いわゆるハーネス周りの管理は対応していない
+
+</div>
+</div>
 
 ---
 layout: default
+clicks: 2
 ---
 
 # ハーネス周りまでこだわるなら Nix
 
-- 例: [layat](https://github.com/yasunori0418/layat)。skill の取得元を flake input にして `flake.lock` で rev を固定する
-- 配置先のパスを `flake.nix` に自分で書ける
-- ハーネス本体やツールも、同じ devShell でバージョンを固定できる
-- Dependabot（nix ecosystem）で `flake.lock` の更新 PR を出せる
+<div class="h-9/10 flex flex-col items-center justify-center">
+<div>
 
-```nix
-# flake.nix（簡略化）
-inputs.skills = { url = "github:Hol1kgmg/SKILL"; flake = false; };
+<div class="mb-1 text-sm opacity-70">apmの範囲</div>
+<ClaudeDirTree class="mb-8" active :nix="$clicks > 0" />
 
-entries = {
-  ".agents/skills/layat-dependabot-review" = { src = skills; subpath = "skills/dependabot-review"; };
-};
-```
+<div class="transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
+
+- 例: <SharedImage src="images/shared/GitHub_Invertocat_Black.svg" img-class="inline w-5 h-5 mb-1" /> <a href="https://github.com/yasunori0418/layat" target="_blank">https://github.com/yasunori0418/layat</a>。配置先のパスも `flake.nix` に自分で書ける
+- Dependabot（nix ecosystem）で `flake.lock` の更新 PR も出せる
+
+</div>
+</div>
+</div>
 
 ---
 layout: default
