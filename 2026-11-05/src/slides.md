@@ -39,13 +39,12 @@ clicks: 3
 
 ---
 layout: default
+clicks: 2
 ---
 
 # 何が困るのか
 
-- skill が更新されても気付けない
-- 組織内に、中身が少しずつ違う skill が広がる
-- 「どのバージョンを使っているか」を誰も答えられない
+<SkillProblems :active="$clicks" />
 
 ---
 layout: section
