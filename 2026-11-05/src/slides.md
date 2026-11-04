@@ -58,7 +58,7 @@ layout: section
 
 ---
 layout: default
-clicks: 2
+clicks: 3
 ---
 
 # pnpm skills というものがある
@@ -87,19 +87,37 @@ clicks: 2
   ……という話をしたかった
 </div>
 
----
-layout: default
----
-
-# 11/03、GitHub Changelog
-
-<CenterImage src="/images/dependabot-apm-changelog.webp" img-class="h-85 my-3" />
-
-<div class="text-center text-sm">
-
-https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager/
-
+<div v-if="$clicks > 2" class="absolute inset-0 flex items-center justify-center">
+  <div class="changelog-drop flex flex-col items-center">
+    <div class="relative overflow-hidden rounded-xl shadow-2xl">
+      <SharedImage src="/images/dependabot-apm-changelog.webp" img-class="block w-160" />
+      <div class="absolute inset-x-0 top-0 bg-black/80 py-2 text-center text-2xl font-bold text-white">
+        11/03 GitHub Changelog
+      </div>
+    </div>
+    <div class="mt-2 rounded bg-white/90 px-2 text-xs text-gray-600">
+      https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager/
+    </div>
+  </div>
 </div>
+
+<style>
+.changelog-drop {
+  transform-origin: bottom center;
+  animation: changelog-drop 1.1s cubic-bezier(0.55, 0, 1, 0.45) both;
+}
+
+/* 落下 → 着地で潰れて傾く → 2回跳ねて止まる */
+@keyframes changelog-drop {
+  0% { transform: translateY(-150vh); }
+  45% { transform: translateY(0) scaleY(0.9) rotate(-2deg); animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  60% { transform: translateY(-50px) rotate(1deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  72% { transform: translateY(0) scaleY(0.94) rotate(1.5deg); animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1); }
+  82% { transform: translateY(-16px) rotate(-0.5deg); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  90% { transform: translateY(0) scaleY(0.97) rotate(-0.5deg); }
+  100% { transform: translateY(0); }
+}
+</style>
 
 ---
 layout: default

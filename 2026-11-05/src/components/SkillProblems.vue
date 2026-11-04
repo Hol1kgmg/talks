@@ -4,7 +4,7 @@ import { onUnmounted, ref, watch } from 'vue'
 
 const props = defineProps<{ active: number }>()
 
-const titles = ['skill が更新されても気付けない', '中身が少しずつ違う skill が広がる']
+const titles = ['スキル が更新されても気付けない', '中身が少しずつ違う スキル が広がる']
 // 版が上がるほどチップを大きく派手にして「すごくなっていく」を見せる
 const upstream = [
   { tag: 'v1.1', class: 'text-sm bg-blue-200 text-blue-800' },
