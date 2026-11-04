@@ -30,13 +30,12 @@ layout: default
 
 ---
 layout: default
+clicks: 3
 ---
 
-# agent skill、どうやって入れていますか？
+# Agent Skillをどうやって入れていますか？
 
-- `npx skills add ...` で入れる
-- GitHub からコピペする
-- 置き場所はリポジトリの `.claude/skills` や `~/.agents/skills`
+<InstallWays :active="$clicks" />
 
 ---
 layout: default
