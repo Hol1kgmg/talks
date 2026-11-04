@@ -11,7 +11,7 @@ const titles = ['ディレクトリに放り込む', 'スキルの本文をコ�
         v-for="(title, i) in titles"
         :key="title"
         class="rounded-xl border border-gray-300 bg-white p-5 transition-all duration-500"
-        :class="[active === i + 1 ? 'play opacity-100 -translate-y-3 shadow-xl' : 'opacity-30 grayscale']"
+        :class="[active === i + 1 ? 'play opacity-100 -translate-y-3 shadow-xl' : active > i + 1 ? 'play played opacity-60' : 'opacity-30 grayscale']"
       >
         <div class="text-center text-xl font-bold">
           {{ title }}
@@ -100,6 +100,11 @@ const titles = ['ディレクトリに放り込む', 'スキルの本文をコ�
 
 <style scoped>
 /* .play が付いていない時は再生前の状態を表示する */
+/* .played は再生済み: 全アニメーションを即座に最終フレームへ進める */
+.played * {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+}
 
 /* 3: ターミナル */
 .typed {
