@@ -260,7 +260,11 @@ clicks: 1
 <div class="h-9/10 flex flex-col items-center justify-center">
 <div>
 
-<ClaudeDirTree class="mb-8" :active="$clicks > 0" />
+<!-- 13枚目とコードブロックの位置をそろえるため、同じ構成にしてラベルは invisible で場所だけ取る -->
+<div class="mx-auto w-fit">
+  <div class="invisible mb-1 text-sm">apmの範囲</div>
+  <ClaudeDirTree class="mb-8" :active="$clicks > 0" />
+</div>
 
 - 配置先は `.claude/` 以外に `.agents/` なども選べる（`targets` で指定）
 - ❌の範囲、いわゆるハーネス周りの管理は対応していない
@@ -278,8 +282,11 @@ clicks: 2
 <div class="h-9/10 flex flex-col items-center justify-center">
 <div>
 
-<div class="mb-1 text-sm opacity-70">apmの範囲</div>
-<ClaudeDirTree class="mb-8" active :nix="$clicks > 0" />
+<!-- 箇条書きの方が幅が広いので、ラベルとツリーだけ中央に寄せる -->
+<div class="mx-auto w-fit">
+  <div class="mb-1 text-sm opacity-70">apmの範囲</div>
+  <ClaudeDirTree class="mb-8" active :nix="$clicks > 0" />
+</div>
 
 <div class="transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
 
