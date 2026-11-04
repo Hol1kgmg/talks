@@ -303,12 +303,20 @@ layout: default
 
 # 余談
 
+<div class="h-9/10 flex flex-col">
+
 - 本当は pnpm skills の話をするつもりだった
 - 11/03（登壇の2日前、作業日でいうと前日）に、Dependabot の APM 対応のニュースが飛び込んできた
+	- pnpm skill の話をしている場合ではなくなった
 - 泣く泣く APM の話を頑張りました 😭
 
-<div v-click class="text-center text-2xl mt-12">
+<!-- 箇条書きより下の残り領域で上下中央に置く -->
+<div class="flex-1 flex items-center justify-center">
+<div v-click class="text-center text-2xl">
 
-AI まわりは状況の変化が激しいので、<br>前から準備していた話ができなくなるのはよくあること
+AI まわりは状況の変化が激しく、<br>前から準備していた話ができなくなるのはよくあるので、お気をつけて
+
+</div>
+</div>
 
 </div>
