@@ -17,6 +17,8 @@ seoMeta:
 
 # APM で agent skill をバージョン管理してみる
 
+<div class="text-sm opacity-70">新卒N年目の勉強会&交流会！ 〜若手エンジニアのAIの使い方・向き合い方〜</div>
+
 2026.11.05
 
 Hol1kgmg（ほりかわ）
