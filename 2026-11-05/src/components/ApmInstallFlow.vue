@@ -20,7 +20,7 @@ const later = (active: number, step: number, s: number) => ({ transitionDelay: a
   <div class="h-9/10 flex items-center justify-center">
     <div class="relative h-[380px] w-[860px] font-mono text-sm">
       <!-- 最後のクリックで lock 以外を暗くする -->
-      <div class="absolute inset-0 transition-opacity duration-700" :class="active > 4 ? 'opacity-20' : ''">
+      <div class="absolute inset-0 transition-opacity duration-700" :class="active > 5 ? 'opacity-20' : ''">
         <!-- ローカルのリポジトリ -->
         <div class="absolute left-0 top-[90px] h-[290px] w-[560px] rounded-xl border-2 border-dashed border-gray-400">
           <span class="absolute -top-3 left-4 bg-white px-2 text-gray-500">my-project/</span>
@@ -37,7 +37,7 @@ const later = (active: number, step: number, s: number) => ({ transitionDelay: a
           </div>
         </div>
 
-        <div class="box left-[630px] top-[110px] w-[230px]" :class="active === 2 ? 'current' : active > 2 ? '' : 'opacity-0'" :style="later(active, 2, DRAW)">
+        <div class="box left-[630px] top-[110px] w-[230px]" :class="active === 2 || active === 5 ? 'current' : active > 2 ? '' : 'opacity-0'" :style="later(active, 2, DRAW)">
           🌐 GitHub: owner/repo
           <div class="sub">
             skills/&lt;name&gt;/SKILL.md
@@ -83,6 +83,11 @@ const later = (active: number, step: number, s: number) => ({ transitionDelay: a
           </g>
         </svg>
 
+        <!-- 取得元の制限の緩さ -->
+        <div class="absolute right-0 top-[40px] font-sans text-lg font-bold transition-all duration-700" :class="active >= 5 ? 'opacity-100' : 'opacity-0 translate-y-2'">
+          GitHub に公開されたリポジトリなら<span class="text-red-500">何でもOK</span>
+        </div>
+
         <span class="label left-[124px] top-[78px]" :class="active >= 1 ? 'opacity-100' : 'opacity-0'">① 読む</span>
         <span class="label left-[380px] top-[124px]" :class="active >= 2 ? 'opacity-100' : 'opacity-0'">② ref を解決</span>
         <span class="label left-[620px] top-[238px]" :class="active >= 2 ? 'opacity-100' : 'opacity-0'" :style="later(active, 2, 1)">② 取得</span>
@@ -90,14 +95,14 @@ const later = (active: number, step: number, s: number) => ({ transitionDelay: a
         <span class="label left-[140px] top-[236px]" :class="active >= 4 ? 'opacity-100' : 'opacity-0'">④ 記録</span>
       </div>
 
-      <div class="box left-[20px] top-[300px] w-[180px]" :class="active === 4 ? 'current' : active > 4 ? 'focus' : 'opacity-0 scale-50'" :style="later(active, 4, DRAW)">
+      <div class="box left-[20px] top-[300px] w-[180px]" :class="active === 4 ? 'current' : active > 5 ? 'focus' : active > 4 ? '' : 'opacity-0 scale-50'" :style="later(active, 4, DRAW)">
         🔒 apm.lock.yaml
         <div class="sub">
           commit SHA + sha256
         </div>
       </div>
 
-      <div class="absolute bottom-0 right-0 font-sans text-2xl font-bold transition-all duration-700" :class="active > 4 ? 'opacity-100' : 'opacity-0 translate-y-4'" :style="later(active, 5, 0.5)">
+      <div class="absolute bottom-0 right-0 font-sans text-2xl font-bold transition-all duration-700" :class="active > 5 ? 'opacity-100' : 'opacity-0 translate-y-4'" :style="later(active, 6, 0.5)">
         ここを <span class="text-red-500">Dependabot</span> が<br>更新できるようになった
       </div>
     </div>

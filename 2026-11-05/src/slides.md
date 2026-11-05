@@ -217,7 +217,7 @@ skill / instructions / prompts / agents / hooks / MCP をバージョン管理�
 
 ---
 layout: default
-clicks: 5
+clicks: 6
 ---
 
 # 仕組み
