@@ -294,7 +294,7 @@ clicks: 1
 
 ---
 layout: default
-clicks: 2
+clicks: 3
 ---
 
 # ハーネス周りまでこだわるなら Nix
@@ -305,10 +305,10 @@ clicks: 2
 <!-- 箇条書きの方が幅が広いので、ラベルとツリーだけ中央に寄せる -->
 <div class="mx-auto w-fit">
   <div class="mb-1 text-sm opacity-70">APM の範囲</div>
-  <ClaudeDirTree class="mb-8" active :nix="$clicks > 0" />
+  <ClaudeDirTree class="mb-8" active :nix="$clicks > 0" :nix-label="$clicks > 1" />
 </div>
 
-<div class="transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
+<div class="transition-opacity duration-700" :class="$clicks > 2 ? 'opacity-100' : 'opacity-0'">
 
 - 例: <SharedImage src="/images/shared/GitHub_Invertocat_Black.svg" img-class="inline w-5 h-5 mb-1" /> [https://github.com/yasunori0418/layat](https://github.com/yasunori0418/layat)。配置先のパスも `flake.nix` に自分で書ける
 - Dependabot（nix ecosystem）で `flake.lock` の更新 PR も出せる
