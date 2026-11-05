@@ -310,7 +310,7 @@ clicks: 2
 
 <div class="transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
 
-- 例: <SharedImage src="/images/shared/GitHub_Invertocat_Black.svg" img-class="inline w-5 h-5 mb-1" /> <a href="https://github.com/yasunori0418/layat" target="_blank">https://github.com/yasunori0418/layat</a>。配置先のパスも `flake.nix` に自分で書ける
+- 例: <SharedImage src="/images/shared/GitHub_Invertocat_Black.svg" img-class="inline w-5 h-5 mb-1" /> [https://github.com/yasunori0418/layat](https://github.com/yasunori0418/layat)。配置先のパスも `flake.nix` に自分で書ける
 - Dependabot（nix ecosystem）で `flake.lock` の更新 PR も出せる
 
 </div>
