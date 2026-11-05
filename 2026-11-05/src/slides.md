@@ -84,7 +84,7 @@ clicks: 4
     <div class="absolute inset-0 flex items-center justify-center text-6xl font-bold transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
       VS
     </div>
-    <div class="absolute inset-0 flex items-center justify-center translate-x-52 transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
+    <div class="absolute inset-0 flex items-start justify-center translate-x-52 transition-opacity duration-700" :class="$clicks > 1 ? 'opacity-100' : 'opacity-0'">
       <SharedImage src="/images/shared/nix-snowflake.svg" img-class="h-48" />
     </div>
   </div>
