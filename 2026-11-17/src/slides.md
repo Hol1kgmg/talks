@@ -38,42 +38,40 @@ layout: default
 <SelfIntro />
 
 ---
-layout: section
----
-
-<!-- TODO(本実装):
-- このスライドは削除する。WebMCP の概要を先に話したいので、次の「WebMCP とは」から入る
--->
-
-# UI はそのままで、<br>AI にも使えるサイトにする
-
----
 layout: default
 ---
 
-<!-- TODO(本実装):
-- コードサンプルの各部分（name / description / inputSchema / execute / signal）が何を表すのかを、図で解説する
-  - 例: ページ → registerTool → ブラウザ → エージェントの流れを図にし、コードの各行と図の要素を v-click で対応づけて強調する
-- コード中の「…」は、11枚目（Zod 定義）で具体化する前提の抽象的な形として残す
-- 目安: 75秒
--->
+<!-- 目安: 75秒。コード中の「…」は Zod 定義のスライドで具体化する -->
 
 # WebMCP とは
 
-<div class="h-9/10 flex flex-col justify-center gap-6">
+<SlideBody height="h-4/5" right-class="w-1/2 flex items-center justify-center">
+<template #left>
+<div class="h-full flex flex-col justify-center gap-4">
 
 - ページが **ツール** を登録し、ブラウザの中のエージェントに呼ばせる API
-- ツール = 名前・説明・入力のスキーマ・`execute`
 
-```ts
+```ts {*|1,8|3-5|6}
 await document.modelContext.registerTool(
-  { name: 'navigate', description: '…', inputSchema: { /* … */ }, execute: async (input) => { /* … */ } },
+  {
+    name: 'navigate',
+    description: '…',
+    inputSchema: { /* … */ },
+    execute: async (input) => { /* … */ },
+  },
   { signal },
 )
 ```
 
-- 実験段階。Chromium は `--enable-features=WebMCP` を付けたときだけ動く
+</div>
+</template>
+<template #right>
+<WebMcpFlow :step="$clicks" />
+</template>
+</SlideBody>
 
+<div class="absolute bottom-4 left-12 text-xs opacity-60">
+  ※ 実験段階。Chromium は <code>--enable-features=WebMCP</code> を付けたときだけ動く
 </div>
 
 ---
