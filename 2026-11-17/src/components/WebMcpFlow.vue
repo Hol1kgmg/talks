@@ -22,9 +22,7 @@ const box = 'w-96 rounded-xl border-2 border-gray-500 bg-white shadow'
     <div :class="box" class="overflow-hidden">
       <div class="flex items-center gap-2 bg-gray-100 px-3 py-1 text-xs">
         <span class="text-red-400">●</span><span class="-ml-1 text-yellow-400">●</span><span class="-ml-1 text-green-400">●</span>
-        <code class="flex-1 rounded bg-white px-2 transition-colors duration-500" :class="step === 3 ? 'text-sky-600 font-bold' : ''">
-          {{ step >= 3 ? '/admin/digests/new' : '/home' }}
-        </code>
+        <code class="flex-1 rounded bg-white px-2">/home</code>
       </div>
       <div class="flex items-center gap-3 px-3 py-2">
         <ph-app-window class="text-2xl" />
@@ -92,7 +90,7 @@ const box = 'w-96 rounded-xl border-2 border-gray-500 bg-white shadow'
       </div>
       <div class="mt-1 flex items-center gap-2 text-xs">
         <ph-user />
-        <span class="rounded-lg bg-gray-100 px-2 py-0.5">「ダイジェストを作る画面を開いて」</span>
+        <span class="rounded-lg bg-gray-100 px-2 py-0.5">「アイテムを作る画面を開いて」</span>
       </div>
     </div>
   </div>
