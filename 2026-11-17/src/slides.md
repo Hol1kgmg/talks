@@ -463,6 +463,72 @@ const toolsFor = (state: State) =>
 </style>
 
 ---
+layout: section
+---
+
+<!-- 目安: 10秒 -->
+
+# AI と WebMCP をつなぐ
+
+---
+layout: default
+clicks: 1
+---
+
+<!-- 目安: 45〜60秒。◯ は自分で気づく、△ は自分では気づかないが、指示を出せば使える。1クリック目で △ だけを残し「検知しない ≠ 使えない」を口頭で言う -->
+
+<!-- TODO(要確認・2026年11月時点):
+- 手元で未確認: Antigravity 2.0（内蔵のブラウザエージェントが CDP で Chrome を操作する。自分でツールに気づけば ◯ に変える）、Claude Code / Codex CLI / Antigravity CLI（Gemini CLI の後継。2026年6月に個人向けの提供終了。chrome-devtools-mcp に --categoryExperimentalWebmcp を付けて list_webmcp_tools が見えるか）、Gemini in Chrome（I/O 2026 で「近く対応」と発表。当日までに出ていれば ◯ に変える）、ChatGPT・Gemini のモバイルアプリ
+- 確認済み: Claude デスクトップアプリ・モバイルアプリ（本人）、Claude in Chrome（anthropics/claude-code#76809）、ChatGPT デスクトップアプリの内蔵ブラウザ（OpenAI ヘルプ。Chrome では使えない）
+-->
+
+# 各 AI の WebMCP 対応表
+
+<!-- 表のセルは枠線・影なしで、白地だけで区切る。△ 以外のセルは1クリック目で薄くする -->
+<div class="h-9/10 flex flex-col items-center justify-center gap-6">
+<div class="mb-4 text-lg opacity-80 underline underline-offset-4">すべての AI が WebMCP に対応しているわけではない</div>
+<!-- 凡例は4×3のマスに対して中央寄せする（左の AI 名の列 8rem + gap 0.5rem の分だけずらす） -->
+<div class="flex flex-col gap-6">
+<div class="grid grid-cols-[8rem_repeat(4,9rem)] gap-2 text-center text-sm [&_.cell]:h-16 [&_.cell]:flex [&_.cell]:flex-col [&_.cell]:items-center [&_.cell]:justify-center [&_.cell]:rounded-xl [&_.cell]:bg-white [&_.cell]:transition-opacity [&_.cell]:duration-500 [&_.mark]:text-xl [&_.mark]:font-bold [&_.name]:text-xs [&_.name]:opacity-60">
+  <div />
+  <div class="flex items-center justify-center gap-1 font-bold"><ph-desktop />デスクトップ</div>
+  <div class="flex items-center justify-center gap-1 font-bold"><logos-chrome />Chrome 上</div>
+  <div class="flex items-center justify-center gap-1 font-bold"><ph-terminal-window />CLI</div>
+  <div class="flex items-center justify-center gap-1 font-bold"><ph-device-mobile />モバイル</div>
+
+  <div class="flex items-center gap-2 font-bold"><logos-claude-icon />Claude</div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-sky-600">◯</span></div>
+  <div class="cell"><span class="mark text-amber-600">△</span><span class="name">Claude in Chrome</span></div>
+  <div class="cell"><span class="mark text-amber-600">△</span><span class="name">Claude Code</span></div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-gray-500">✕</span></div>
+
+  <div class="flex items-center gap-2 font-bold"><logos-openai-icon />ChatGPT</div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-sky-600">◯</span><span class="name">内蔵ブラウザ</span></div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-gray-500">─</span></div>
+  <div class="cell"><span class="mark text-amber-600">△</span><span class="name">Codex CLI</span></div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-gray-500">✕</span></div>
+
+  <div class="flex items-center gap-2 font-bold"><vscode-icons-file-type-gemini />Gemini</div>
+  <div class="cell"><span class="mark text-amber-600">△</span><span class="name">Antigravity 2.0</span></div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-gray-500 text-sm! leading-7!">予定</span><span class="name">Gemini in Chrome</span></div>
+  <div class="cell"><span class="mark text-amber-600">△</span><span class="name">Antigravity CLI</span></div>
+  <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-gray-500">✕</span></div>
+</div>
+
+<div class="ml-[8.5rem] mt-4 flex justify-center gap-6 text-xs opacity-70">
+  <span><b class="text-sky-600">◯</b> 自分で気づく</span>
+  <span><b class="text-amber-600">△</b> 指示を出せば使える</span>
+  <span><b class="text-gray-500">✕</b> 使えない</span>
+  <span><b class="text-gray-500">─</b> 対象外</span>
+</div>
+</div>
+</div>
+
+<div class="absolute bottom-8 right-12 text-xs opacity-60">
+  ※ 2026年11月時点。CLI はブラウザ操作の MCP（<code>chrome-devtools-mcp</code>）をつないだ場合
+</div>
+
+---
 layout: default
 ---
 
