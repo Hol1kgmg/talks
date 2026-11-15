@@ -222,7 +222,7 @@ layout: default
 <!-- PDF では型定義の窓を出す前（⑤まで）の状態にする -->
 <PrintClicks :at="5" />
 
-<SlideBody left-class="w-3/5 flex flex-col justify-center" right-class="w-2/5 flex flex-col justify-center gap-6 pl-6">
+<SlideBody left-class="w-3/5 flex flex-col justify-center" right-class="w-2/5 flex flex-col justify-center pl-6">
 <template #left>
 <!-- 上端を固定するため、最終ステップ（③と同じ19行で最も長い）と同じコードを invisible で重ね、その高さで中央寄せする -->
 <div class="relative grid items-start [&>*]:col-start-1 [&>*]:row-start-1">
@@ -387,11 +387,17 @@ interface ModelContext extends EventTarget {
 </div>
 </template>
 <template #right>
+<div class="flex flex-col gap-6">
 <div v-click="1" class="duration-500!">① ツールの入力を JSON Schema で書く</div>
 <div v-click="2" class="duration-500!">② 入力の Zod 定義に置き換える</div>
 <div v-click="3" class="duration-500!">③ 実行時の検証を追加し、品質を担保</div>
 <div v-click="4" class="duration-500!">④ 関数に包み、どのツールにも使えるようにする</div>
 <div v-click="5" class="duration-500!">⑤ ジェネリクスで型をつなぐ</div>
+</div>
+<!-- ⑤までは高さ 0 にして①〜⑤を上下中央に置き、6クリック目で 0fr→1fr に広げて①〜⑤を上へずらす。リストとの間隔は高さ 0 のときに残らないよう内側の pt-6 で取る -->
+<div class="grid transition-all duration-500" :class="$clicks >= 6 ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
+<div class="overflow-hidden">
+<div class="flex flex-col gap-6 pt-6">
 <!-- 7枚目「開発環境」の型のカードと同じアイコン。⑤で型の話をした後の補足として出す -->
 <div v-click="6" class="duration-500! flex items-center gap-2 border-t border-gray-400 pt-4 text-sm opacity-80">
   <SharedImage src="images/webmcp-types-icon.webp" img-class="h-6" />
@@ -399,6 +405,9 @@ interface ModelContext extends EventTarget {
 </div>
 <!-- コードは簡潔さを優先して ?. を省いているので、hover に出る optional の理由をここで補う -->
 <div v-click="6" class="duration-500! -mt-4 pl-8 text-xs opacity-60">対応ブラウザが一部のため optional（<code>modelContext?:</code>）</div>
+</div>
+</div>
+</div>
 </template>
 </SlideBody>
 
