@@ -1,0 +1,54 @@
+<script setup lang="ts">
+// step: スライドのクリック数
+// 0: API → hooks → UI がまっすぐ縦に並ぶ
+// 1: UI が左にずれ、矢印が時計回りに傾いて追う → hooks から WebMCP の矢印が伸びる → registerTool が現れる（右の画面はその後に光る）
+const props = defineProps<{ step: number }>()
+
+// 進むときだけ delay を付けて順番に動かし、戻るときはすぐ元に戻す
+const on = () => props.step >= 1
+// UI の箱は最初、下段（w-96）の中央にいる: (24rem - 11rem) / 2 = 6.5rem
+const slide = () => on() ? 'translate-x-0' : 'translate-x-[6.5rem]'
+// 矢印は傾きながら、それぞれ向かう箱の側へ少しずれる（UI のずれ 6.5rem の半分弱）
+const tilt = () => on() ? 'rotate-35 -translate-x-12' : 'rotate-0 translate-x-0'
+const grow = () => on() ? '-rotate-35 translate-x-12 scale-100 delay-500' : '-rotate-35 translate-x-0 scale-0'
+const appear = () => on() ? 'opacity-100 delay-1000' : 'opacity-0'
+
+const layer = 'w-44 rounded-lg border-2 border-gray-500 bg-white px-3 py-2 text-center shadow'
+const note = 'text-xs opacity-60'
+const arrow = 'absolute left-1/2 top-0 -ml-4 origin-top text-4xl transition-transform duration-500'
+</script>
+
+<template>
+  <div class="flex flex-col items-center gap-3 text-sm">
+    <div :class="layer">
+      API<div :class="note">
+        /search・/cart
+      </div>
+    </div>
+    <ph-arrow-down class="text-xl" />
+    <div :class="layer">
+      hooks<div :class="note">
+        <code>useShop()</code> → search / addToCart
+      </div>
+    </div>
+
+    <!-- hooks の真下を起点に、既存の矢印は UI へ、WebMCP の矢印は registerTool へ向く -->
+    <div class="relative h-10 w-96">
+      <ph-arrow-down :class="[arrow, tilt()]" />
+      <ph-arrow-down class="text-sky-500" :class="[arrow, grow()]" />
+    </div>
+
+    <div class="w-96 flex justify-between">
+      <div :class="[layer, slide()]" class="transition-transform duration-500">
+        UI コンポーネント<div :class="note">
+          検索欄・カートボタン
+        </div>
+      </div>
+      <div :class="[layer, appear()]" class="border-sky-500! transition-opacity duration-500">
+        <code>registerTool</code><div :class="note">
+          search・add_to_cart
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

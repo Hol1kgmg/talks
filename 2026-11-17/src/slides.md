@@ -159,39 +159,42 @@ layout: default
 layout: section
 ---
 
-<!-- TODO(本実装):
-- 文言を、人が話すような言葉に調整する
-- 目安: 10秒
--->
+<!-- 目安: 10秒 -->
 
-# 既存のフロントエンドに<br>つなぐ
+# 今あるフロントエンドに<br>つないでみる
 
 ---
 layout: default
+clicks: 1
 ---
 
-<!-- TODO(本実装):
-- 「既存のフロントエンド」の領域をもっと広くする
-- 最初に、ユーザー向けの UI コンポーネントのボックスを表示する
-- そこから矢印が切り替わるように、その下に WebMCP のコンポーネント一式（routesFor → navigate ツール → registerTool）を表示する
-  - ユーザー向け UI と WebMCP が同じ既存実装から枝分かれしている構図にする
-- 目安: 45秒
--->
+<!-- 目安: 45秒。左がコードの全体像、右が画面での見え方。hooks から WebMCP の枝が生えると、画面は同じまま AI にもツールが見える -->
 
-# 足したのは「つなぐ部分」だけ
+# 既存のコードはそのまま、UI の隣に WebMCP を足す
 
-<div class="h-9/10 flex flex-col justify-center gap-6">
-  <div class="flex items-center justify-center gap-3 text-base">
-    <div class="w-52 rounded-lg border-2 border-dashed border-gray-400 bg-white px-4 py-3 text-center opacity-70">既存のフロントエンド<div class="text-xs">hooks・API・ルーター・認証</div></div>
-    <div class="text-2xl">→</div>
-    <div class="w-52 rounded-lg border-2 border-gray-500 bg-white px-4 py-3 text-center shadow"><code>routesFor(state)</code><div class="text-xs opacity-60">画面のメニューと同じ行き先</div></div>
-    <div class="text-2xl">→</div>
-    <div class="w-52 rounded-lg border-2 border-sky-500 bg-white px-4 py-3 text-center shadow"><code>navigate</code> ツール<div class="text-xs opacity-60">行き先からツールを定義する</div></div>
-    <div class="text-2xl">→</div>
-    <div class="w-52 rounded-lg border-2 border-sky-500 bg-white px-4 py-3 text-center shadow"><code>registerTool</code><div class="text-xs opacity-60"><code>document.modelContext</code> に触る唯一の場所</div></div>
-  </div>
-  <div class="text-center text-xl">既存の実装には手を入れず、<b>画面と同じ行き先</b>をツールに渡す</div>
+<SlideBody left-class="w-1/2 flex items-center justify-center" right-class="w-1/2 flex flex-col items-center justify-center gap-4">
+<template #left>
+<FrontendBranch :step="$clicks" />
+</template>
+<template #right>
+<div>
+  <div class="mb-2 text-center text-sm font-bold opacity-70">利用者から見えること</div>
+  <!-- 左の図（寄る 0.5秒 → 矢印 0.5秒 → registerTool 0.5秒）が動き終わってから、画面が光り、ツールが出る -->
+  <EcScreen :lit="$clicks >= 1" delay="delay-1500" />
 </div>
+<div>
+  <div class="mb-2 text-center text-sm font-bold opacity-70">AI から見えること</div>
+  <div class="relative w-88 flex items-center gap-3 rounded-xl border-2 border-gray-500 bg-white px-5 py-3 text-sm shadow">
+    <ph-robot-duotone class="text-xl" />
+    <span class="opacity-50 transition-opacity duration-300" :class="$clicks >= 1 && 'opacity-0!'">使えるツール: なし</span>
+    <div class="absolute left-14 flex gap-3 transition-opacity duration-500" :class="$clicks >= 1 ? 'opacity-100 delay-2000' : 'opacity-0'">
+      <span class="flex items-center gap-1 rounded-full border border-sky-500 bg-white px-2 py-0.5 text-xs ring-2 ring-sky-500"><ph-magnifying-glass />search</span>
+      <span class="flex items-center gap-1 rounded-full border border-sky-500 bg-white px-2 py-0.5 text-xs ring-2 ring-sky-500"><ph-shopping-cart />add_to_cart</span>
+    </div>
+  </div>
+</div>
+</template>
+</SlideBody>
 
 ---
 layout: default
