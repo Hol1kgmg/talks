@@ -2,7 +2,9 @@
 // 5枚目と9枚目で共用する EC サイトの画面のモック
 // lit: 検索欄とカートボタンを、AI のツールと同じ光り方にする
 // delay: 光り始めを遅らせる（9枚目で左の図が動き終わってから光らせる）
-const props = defineProps<{ lit: boolean, delay?: string }>()
+// state: 渡したときだけログイン状態を出す（13枚目）。guest ならヘッダーに「ログイン」、カートボタンを隠す
+// boolean にすると、渡さなかったときも Vue が false にするため、5・9枚目でも guest の表示になってしまう。文字列で受ける
+const props = defineProps<{ lit: boolean, delay?: string, state?: 'guest' | 'member' }>()
 
 const glow = `ring-2 ring-sky-500 shadow-[0_0_8px_2px_rgb(14_165_233_/_0.5)] ${props.delay ?? ''}`
 </script>
@@ -26,6 +28,15 @@ const glow = `ring-2 ring-sky-500 shadow-[0_0_8px_2px_rgb(14_165_233_/_0.5)] ${p
         <span class="opacity-50">商品を検索</span>
       </div>
       <ph-shopping-cart class="text-lg" />
+      <!-- 「ログイン」と「会員」を同じ位置に重ね、opacity で切り替えてフェードさせる -->
+      <div v-if="state" class="grid items-center justify-items-end [&>*]:col-start-1 [&>*]:row-start-1">
+        <div class="rounded border border-gray-400 px-2 py-0.5 transition-opacity duration-500" :class="state === 'member' && 'opacity-0'">
+          ログイン
+        </div>
+        <div class="flex items-center gap-1 transition-opacity duration-500" :class="state === 'guest' && 'opacity-0'">
+          <ph-user-circle class="text-lg" />会員
+        </div>
+      </div>
     </div>
     <div class="flex items-center gap-4 px-4 py-5">
       <div class="flex h-12 w-12 items-center justify-center rounded bg-gray-200">
@@ -39,8 +50,11 @@ const glow = `ring-2 ring-sky-500 shadow-[0_0_8px_2px_rgb(14_165_233_/_0.5)] ${p
           ¥8,800
         </div>
       </div>
-      <div :class="lit && glow" class="rounded-lg bg-gray-700 px-3 py-1 text-white transition-shadow duration-500">
-        カートに入れる
+      <!-- 光り方（内側）とフェード（外側）は transition を分ける -->
+      <div class="transition-opacity duration-500" :class="state === 'guest' && 'opacity-0'">
+        <div :class="lit && glow" class="rounded-lg bg-gray-700 px-3 py-1 text-white transition-shadow duration-500">
+          カートに入れる
+        </div>
       </div>
     </div>
   </div>

@@ -209,7 +209,7 @@ layout: section
 layout: default
 ---
 
-<!-- 目安: 75秒。左は3枚目と同じ形のコード（ツール名だけ9枚目の add_to_cart）から始まる Magic Move、右はクリックごとに「何を変えたか」が1項目ずつ増える。手書きの JSON Schema → Zod 定義に置き換え → 実行時の検証を追加 → 関数に包む（「状態が変わればツールも変わる」で呼ぶ形） → ジェネリクスで型をつなぐ -->
+<!-- 目安: 75秒。左は3枚目と同じ形のコード（ツール名だけ9枚目の add_to_cart）から始まる Magic Move、右はクリックごとに「何を変えたか」が1項目ずつ増える。手書きの JSON Schema → Zod 定義に置き換え → 実行時の検証を追加 → 関数に包む（13枚目の toolsFor が返すツールを、状態が変わるたびに登録し直せる形） → ジェネリクスで型をつなぐ -->
 
 <!-- TODO(本実装):
 - text() の説明がスライドにない（実装は [{ type: 'text', text }] を直接返している）。口頭で補うか、スライドに書き戻すか決める
@@ -401,139 +401,66 @@ interface ModelContext extends EventTarget {
 layout: section
 ---
 
-<!-- TODO(本実装):
-- 文言を、人が話すような言葉に調整する
-- 目安: 10秒
--->
+<!-- 目安: 10秒。WebMCP はブラウザで動くので、フロントエンドが持っている状態とその型をそのまま使える、という前提をここで言い切る -->
 
-# 状態でツールを<br>仕分ける
+# ブラウザで動くから、<br>画面の状態が使える
 
 ---
 layout: default
 ---
 
-<!-- TODO(本実装):
-- 「判別共用体」という言い方はやめ、シンプルに「状態の型定義」と表現する
-- この型はユーザー向けの UI 制御と共通で使う、ということを伝える
-- 時間短縮のため、次の routesFor のスライドと1枚にまとめる（型定義は3行なので routesFor のコードの上に置く）
-- 目安: routesFor と合わせて60秒
--->
+<!-- 目安: 60秒。9・11枚目と同じ EC サイトの例。State は「カートに入れる」ボタンの出し分けにも使っている型で、addToCart は User を受け取って作るので、guest のときは型の上で作れない -->
 
-# 状態を型で表す
+# 状態の型定義からツールの一覧を作る
 
-<div class="h-9/10 flex flex-col justify-center gap-4">
+<!-- 上の段: 左にコード、右に画面。下の段: 両方をまとめて説明する箇条書きを横幅いっぱいに置く -->
+<!-- コードのハイライト（1クリック目: guest / 2クリック目: member）に合わせて、右の画面と AI のツールが切り替わる。0クリック目は guest の画面 -->
+<div class="h-9/10 flex flex-col justify-center gap-6">
+<div class="flex items-center">
+<div class="w-1/2">
 
-```ts
+```ts {*|2,6,8|3,6-7}
 type State
   = | { status: 'guest' }
-    | { status: 'admin', user: User }
+    | { status: 'member', user: User }
+
+const toolsFor = (state: State) =>
+  state.status === 'member'
+    ? [search, addToCart(state.user)]
+    : [search]
 ```
 
-- ツールを仕分ける根拠になる状態を、**判別共用体**で表す
-- 画面もツールも、この型から分岐する
+<div class="mt-1 text-xs opacity-60">※ 説明用に簡略化</div>
+</div>
+<div class="w-1/2 flex flex-col items-center gap-3">
+<div>
+  <div class="mb-1 text-center text-xs font-bold opacity-70">利用者から見えること</div>
+  <EcScreen lit :state="$clicks >= 2 ? 'member' : 'guest'" />
+</div>
+<div>
+  <div class="mb-1 text-center text-xs font-bold opacity-70">AI から見えること</div>
+  <!-- 9枚目の「AI から見えること」と同じ見た目 -->
+  <div class="w-88 flex items-center gap-3 rounded-xl border-2 border-gray-500 bg-white px-5 py-3 text-sm shadow">
+    <ph-robot-duotone class="text-xl" />
+    <span class="flex items-center gap-1 rounded-full border border-sky-500 bg-white px-2 py-0.5 text-xs ring-2 ring-sky-500"><ph-magnifying-glass />search</span>
+    <span class="flex items-center gap-1 rounded-full border border-sky-500 bg-white px-2 py-0.5 text-xs ring-2 ring-sky-500 transition-opacity duration-500" :class="$clicks < 2 && 'opacity-0'"><ph-shopping-cart />add_to_cart</span>
+  </div>
+</div>
+</div>
+</div>
+
+- 利用者に見せる UI と WebMCP のツールを、**同じ `State` で制御できる**
+  - 「カートに入れる」ボタンも `add_to_cart` も、ログインしたときだけ出る
+- guest には `state.user` がないので、`add_to_cart` を作ろうとすると**型エラー**
 
 </div>
 
-<div class="absolute bottom-4 left-12 text-xs opacity-60">
-  ※ 説明用に簡略化。実装例: Hol1kgmg/times#143
-</div>
-
----
-layout: default
----
-
-<!-- TODO(本実装):
-- 具体的なサンプルコードの話なので、スライドタイトルを「具体的にどうするか」がわかる表現にする
-  - 例: 「状態から行き先の一覧を作る」
-- 前の「状態を型で表す」と1枚にまとめる（目安は合わせて60秒）
--->
-
-# 行き先は状態から決まる
-
-<div class="h-9/10 flex flex-col justify-center gap-4">
-
-```ts {*|1-5|7-8}
-const adminRoutes = [
-  '/timeline',
-  '/admin/digests/new',
-  '/admin/digests',
-] as const satisfies readonly Route[] // 存在しないパスは型エラー
-
-const routesFor = (state: State) =>
-  state.status === 'admin' ? adminRoutes : []
-```
-
-- guest なら `[]`、admin なら3つ
-- **画面のメニューもツールも、この1つの関数から作る**
-
-</div>
-
-<div class="absolute bottom-4 left-12 text-xs opacity-60">
-  ※ 説明用に簡略化。実装例: Hol1kgmg/times#143
-</div>
-
----
-layout: default
----
-
-<!-- TODO(本実装):
-- 補足: 箇条書きの `tools()` がコードに出てこないので、表現をコードに合わせる
-- 「1つの Zod 定義から作る」の registerTool は tool.execute が文字列を返す前提（実装の Tool 型も string）。execute を `await navigate({ to })` のあと `${to} に移りました` を返す形にそろえる
-- 目安: 60秒
--->
-
-# 状態が変わればツールも変わる
-
-<div class="h-9/10 flex flex-col justify-center gap-4">
-
-```ts {*|2-4|9-10|12}
-useEffect(() => {
-  const routes = routesFor(state)
-  if (routes.length === 0)
-    return // guest: ツールを登録しない
-  const controller = new AbortController()
-  registerTool({
-    name: 'navigate',
-    description: '…',
-    input: z.object({ to: z.enum(routes) }), // 状態にある行き先だけ
-    execute: ({ to }) => navigate({ to }), // to の型も行き先に絞られる
-  }, controller.signal)
-  return () => controller.abort() // 状態が変わったら外す
-}, [state])
-```
-
-- guest では**ツール自体を登録しない**（`tools()` が `[]`）
-- admin では、`to` の enum が**行ける画面そのもの**になる
-
-</div>
-
-<div class="absolute bottom-4 left-12 text-xs opacity-60">
-  ※ 説明用に簡略化。実装例: Hol1kgmg/times#143
-</div>
-
----
-layout: default
----
-
-<!-- TODO(本実装):
-- このスライドは削除し、代わりに実際のデモを見せるスライドにする
-  - times のブラウザアプリで、guest → admin と状態が変わるとツールが変わる様子を Model Context Tool Inspector で見せる
-- 「ツールの出し分けは認可ではない」の注意は消さず、まとめに一言残す
-- デモは録画にする（本番のブラウザ操作やフラグ付き Chromium の起動で時間を取られず、失敗もしない）
-- 目安: 60秒
--->
-
-# 出さないものは出さない
-
-<div class="h-9/10 flex flex-col justify-center gap-4">
-
-- 公開予定の行き先を先に出さない
-  - 出すと、呼んだエージェントを 404 に送り、成功の返事で利用者まで誤解させる
-- 未ログインの画面に管理の操作はない → **AI にもない**
-- **注意: ツールの出し分けは認可ではない**
-  - ツールを隠しても API は誰でも呼べる。認可はサーバー側のまま
-
-</div>
+<!-- Slidev のコードハイライトは opacity をそのまま切り替えるだけなので、このスライドだけ右の図と同じ 0.5秒のフェードを付ける（slide 内の style はこのスライドに閉じる） -->
+<style>
+.slidev-code .line {
+  transition: opacity 0.5s;
+}
+</style>
 
 ---
 layout: default
@@ -555,5 +482,6 @@ layout: default
 - 開発環境（型・目視確認・テスト・実行環境）はもうそろっている
 - 既存のフロントエンドはそのままで、足すのは**つなぐ部分**だけ
 - 状態を型で表せば、**ツールも状態で型安全に仕分けられる**
+- ただし、ツールの出し分けは認可ではない（認可はサーバー側のまま）
 
 </div>
