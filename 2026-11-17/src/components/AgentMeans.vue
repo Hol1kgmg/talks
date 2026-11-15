@@ -2,7 +2,8 @@
 // step: スライドのクリック数
 // 0: 全部薄く表示 / 以降、左のカードから順に2クリックずつ使う
 // 1枚目のクリックでカードを明るくし、2枚目のクリックで下段（AI にどうさせるか）を動かす
-// 1・2: API・MCP / 3・4: DOM（上段のカーソルは3から動かす）/ 5・6: WebMCP（明るくなるときに強調も兼ねる）
+// 1・2: API・MCP / 3・4: DOM（上段のカーソルは3から動かす）/ 5・6: WebMCP
+// 7: 最後に WebMCP のカードだけ枠を水色にして強調する
 // 各カードの上段は何が提供されているか、下段はどうやって実行させるか
 // DOM のカードだけは、画面そのものが提供されているもの・推測で押すのが実行なので上下を入れ替えない
 const props = defineProps<{ step: number }>()
@@ -10,7 +11,7 @@ const props = defineProps<{ step: number }>()
 // WebMCP のカードが明るくなった次のクリックで、チャットの依頼 → AI の返事 → 画面の navigate が光る、の順に見せる
 // 光るのは、AI が画面のツールを見つけたことを示す
 const chat = (delay: number, origin: string) => ({
-  class: [origin, props.step === 6 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'],
+  class: [origin, props.step >= 6 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'],
   style: { transitionDelay: `${delay}ms`, transitionTimingFunction: 'cubic-bezier(.34, 1.56, .64, 1)' },
 })
 
@@ -19,7 +20,7 @@ const card = (i: number) => {
   const active = i === 2 ? props.step >= 5 : Math.ceil(props.step / 2) === i + 1
   if (!active)
     return 'opacity-25'
-  return i === 2 ? 'border-sky-500 scale-105 shadow-lg' : ''
+  return i === 2 && props.step >= 7 ? 'border-sky-500 scale-105 shadow-lg' : ''
 }
 
 const box = 'w-72 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow transition-all duration-500'
@@ -154,7 +155,7 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
             <span
               :class="tool"
               class="self-center transition-all duration-500"
-              :style="step === 6
+              :style="step >= 6
                 ? { transitionDelay: '1700ms', boxShadow: '0 0 8px 2px rgb(14 165 233 / 0.7)' }
                 : { opacity: 0.4 }"
             ><ph-wrench />navigate</span>

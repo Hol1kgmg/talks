@@ -76,7 +76,7 @@ await document.modelContext.registerTool(
 
 ---
 layout: default
-clicks: 6
+clicks: 7
 ---
 
 <!-- 目安: 45秒。次の「両立」と主張が重なるので、こちらは手段の違いだけに絞る -->
