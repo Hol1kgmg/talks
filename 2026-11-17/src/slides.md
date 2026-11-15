@@ -89,33 +89,16 @@ clicks: 7
 
 ---
 layout: default
+clicks: 3
 ---
 
-<!-- TODO(本実装):
-- 言葉だけで終わらせず、図や UI コンポーネントでわかりやすく見せる
-  - 例: 中央に画面（UI）のモック、その画面から生える「AI に頼めること」のツール一覧、両側に開発者と利用者
-- 今の ↘↙ の矢印は gap-64 で位置を合わせているだけで崩れやすいので、SVG か flex で組み直す
-- 目安: 30秒。図1枚で「同じ画面を見ればわかる」を伝えるだけにする
--->
+<!-- 目安: 30秒。AI に頼むのは利用者で、利用者は画面を見てできることを確かめてから頼む。だから「このページで何ができるか」が、利用者と AI の両方の視点でわかる必要がある -->
 
 # ユーザー親和性と AI フレンドリーの両立
 
-<div class="h-9/10 flex flex-col items-center justify-center gap-6">
-  <div class="flex gap-24 text-lg">
-    <div class="w-72 rounded-xl border-2 border-gray-400 bg-white p-4 text-center shadow-md">
-      <div class="text-sm opacity-60">開発者</div>
-      「この画面で AI に<br>これをさせる」
-    </div>
-    <div class="w-72 rounded-xl border-2 border-gray-400 bg-white p-4 text-center shadow-md">
-      <div class="text-sm opacity-60">利用者</div>
-      「この画面なら AI に<br>これを頼める」
-    </div>
-  </div>
-  <div class="flex gap-64 text-3xl"><span>↘</span><span>↙</span></div>
-  <div class="w-96 rounded-xl border-2 border-sky-500 bg-white py-5 text-center text-2xl font-bold shadow-md">
-    同じ画面（UI）
-  </div>
-  <div class="text-xl">画面を見れば、開発者も利用者も<b>同じ目線</b>で AI に何をさせられるかをイメージできる</div>
+<div class="h-9/10 flex flex-col items-center justify-center gap-10">
+<SharedScreen :step="$clicks" />
+<div v-click="3" class="text-xl"><b>このページで何ができるか</b>が、利用者と AI の両視点で一致している必要がある</div>
 </div>
 
 ---
