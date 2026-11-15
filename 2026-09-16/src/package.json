@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "tsx ../../scripts/build.ts /2026/animejs-v4/",
-    "export": "slidev export --per-slide --output ../2026-09-16-animejs-v4.pdf"
+    "export": "slidev export --per-slide --wait 1500 --output ../2026-09-16-animejs-v4.pdf"
   },
   "dependencies": {
     "animejs": "catalog:",

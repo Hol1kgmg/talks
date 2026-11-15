@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "tsx ../../scripts/build.ts /2026/keyboard-tech-stack-review/",
-    "export": "slidev export --per-slide --output ../2026-10-10-keyboard-tech-stack-review.pdf"
+    "export": "slidev export --per-slide --wait 1500 --output ../2026-10-10-keyboard-tech-stack-review.pdf"
   },
   "dependencies": {
     "@number-flow/vue": "catalog:",

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "tsx ../../scripts/build.ts /2026/agent-package-manager/",
-    "export": "slidev export --per-slide --output ../2026-11-05-agent-package-manager.pdf"
+    "export": "slidev export --per-slide --wait 1500 --output ../2026-11-05-agent-package-manager.pdf"
   },
   "dependencies": {
     "@number-flow/vue": "catalog:"
