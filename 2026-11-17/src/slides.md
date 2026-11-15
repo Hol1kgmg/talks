@@ -45,6 +45,8 @@ layout: default
 
 # WebMCP とは
 
+<PrintClicks :at="0" />
+
 <SlideBody height="h-4/5" right-class="w-1/2 flex items-center justify-center">
 <template #left>
 <div class="h-full flex flex-col justify-center gap-4">
@@ -216,6 +218,9 @@ layout: default
 -->
 
 # 1つの Zod 定義から作る
+
+<!-- PDF では型定義の窓を出す前（⑤まで）の状態にする -->
+<PrintClicks :at="5" />
 
 <SlideBody left-class="w-3/5 flex flex-col justify-center" right-class="w-2/5 flex flex-col justify-center gap-6 pl-6">
 <template #left>
@@ -413,6 +418,8 @@ layout: default
 
 # 状態の型定義からツールの一覧を作る
 
+<PrintClicks :at="0" />
+
 <!-- 上の段: 左にコード、右に画面。下の段: 両方をまとめて説明する箇条書きを横幅いっぱいに置く -->
 <!-- コードのハイライト（1クリック目: guest / 2クリック目: member）に合わせて、右の画面と AI のツールが切り替わる。0クリック目は guest の画面 -->
 <div class="h-9/10 flex flex-col justify-center gap-6">
@@ -483,6 +490,8 @@ clicks: 1
 -->
 
 # 各 AI の WebMCP 対応表
+
+<PrintClicks :at="0" />
 
 <!-- 表のセルは枠線・影なしで、白地だけで区切る。△ 以外のセルは1クリック目で薄くする -->
 <div class="h-9/10 flex flex-col items-center justify-center gap-6">
