@@ -113,42 +113,46 @@ layout: section
 layout: default
 ---
 
-<!-- TODO(本実装):
-- 4枚のカードの中身（定義の書き方、ツールのアイコン）、UI コンポーネントのスタイル、デザインを揃えて見やすくする
-  - 各カードに ツールのアイコン / 名前 / 一行の定義 を同じ構成で並べる
-- 補足: w-56 のカード4枚と gap-6 で横幅がほぼいっぱいなので、はみ出さないか確認する
-- 補足: Kitesurf の脚注は changelog ではなく、WebMCP の提供が書かれた Kitesurf のドキュメントに差し替える（changelog には WebMCP の記載がない）
-- 目安: 30秒。名前とアイコンを見せて流し、詳しい説明は脚注のリンクに任せる
--->
+<!-- 目安: 30秒。名前とアイコンを見せて流し、詳しい説明は脚注のリンクに任せる -->
 
-# 土台
+# 開発環境
 
-<div class="h-9/10 flex items-center justify-center gap-6 text-lg">
-  <div class="w-56 rounded-xl border-2 border-gray-500 bg-white p-5 text-center shadow">
-    <div class="text-xl font-bold">型</div>
-    <div class="mt-2"><code>webmcp-types</code></div>
-    <div class="text-sm opacity-60">仕様の団体が出すブラウザ API の型</div>
+<!-- カードは AgentMeans.vue と同じ見た目（上段: カテゴリ / 下段: ツールのアイコン・名前・一行の定義）。w-48 ×4 + gap-4 で横幅に収める -->
+<!-- 下段の3つは固定の高さにして、カード間で位置をそろえる（名前は2行、説明は3行まで入る） -->
+<!-- Playwright・Chrome・Cloudflare のアイコンは @iconify/json の logos セット。リンクは脚注の代わりにツール名へ埋め込む -->
+<div class="h-9/10 flex items-stretch justify-center gap-4 py-16">
+  <div class="w-48 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">型</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-4 text-center">
+      <div class="h-12 flex items-center"><SharedImage src="images/webmcp-types-icon.webp" img-class="h-12" /></div>
+      <div class="h-12 flex items-center"><a href="https://github.com/webmachinelearning/webmcp-types" target="_blank"><code>webmcp-types</code><ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a></div>
+      <div class="h-12 text-xs opacity-60">ブラウザ API の型（仕様の団体が提供）</div>
+    </div>
   </div>
-  <div class="w-56 rounded-xl border-2 border-gray-500 bg-white p-5 text-center shadow">
-    <div class="text-xl font-bold">目視確認</div>
-    <div class="mt-2">Model Context Tool Inspector</div>
-    <div class="text-sm opacity-60">登録されたツールを一覧し、手で実行できる Chrome 拡張</div>
+  <div class="w-48 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">目視確認</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-4 text-center">
+      <div class="h-12 flex items-center"><SharedImage src="images/WebMCP_extend_icon.webp" img-class="h-12" /></div>
+      <div class="h-12 flex items-center"><a href="https://github.com/beaufortfrancois/model-context-tool-inspector" target="_blank">Model Context Tool Inspector<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a></div>
+      <div class="h-12 text-xs opacity-60">ツールを一覧して手で実行できる Chrome 拡張</div>
+    </div>
   </div>
-  <div class="w-56 rounded-xl border-2 border-gray-500 bg-white p-5 text-center shadow">
-    <div class="text-xl font-bold">テスト</div>
-    <div class="mt-2">Playwright 1.64</div>
-    <div class="text-sm opacity-60"><code>page.webmcp.callTool()</code></div>
+  <div class="w-48 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">テスト</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-4 text-center">
+      <div class="h-12 flex items-center"><logos-playwright class="text-5xl" /></div>
+      <div class="h-12 flex items-center"><a href="https://playwright.dev/docs/api/class-webmcp" target="_blank">Playwright 1.64<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a></div>
+      <div class="h-12 text-xs opacity-60"><code>page.webmcp.callTool()</code> でツールを呼べる</div>
+    </div>
   </div>
-  <div class="w-56 rounded-xl border-2 border-gray-500 bg-white p-5 text-center shadow">
-    <div class="text-xl font-bold">実行環境</div>
-    <div class="mt-2">Chromium / Kitesurf</div>
-    <div class="text-sm opacity-60">Kitesurf は Cloudflare が 2026.11.12 に OSS 化した、AI エージェント向けのヘッドレスブラウザ</div>
+  <div class="w-48 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">実行環境</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-4 text-center">
+      <div class="relative h-12 flex items-center gap-4 text-3xl"><span class="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-sky-500 px-1.5 text-[10px] leading-4 text-sky-600">WebMCP 対応</span><logos-chrome /><logos-cloudflare-icon /></div>
+      <div class="h-12 flex flex-col justify-center whitespace-nowrap"><a href="https://developer.chrome.com/docs/modern-web-guidance/guides/webmcp/webmcp?hl=ja" target="_blank">Chromium<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a><a href="https://developers.cloudflare.com/browser-run/features/webmcp/" target="_blank">Kitesurf<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a></div>
+      <div class="h-12 text-xs opacity-60">Kitesurf は Cloudflare が OSS 化した AI エージェント向けのヘッドレスブラウザ</div>
+    </div>
   </div>
-</div>
-
-<div class="absolute bottom-4 left-12 text-xs opacity-60">
-  https://github.com/beaufortfrancois/model-context-tool-inspector<br>
-  https://developers.cloudflare.com/changelog/post/2026-11-12-kitesurf-open-source/
 </div>
 
 ---
@@ -381,7 +385,7 @@ layout: default
 <div class="h-9/10 flex flex-col justify-center gap-4">
 
 - WebMCP は、開発者と利用者が**同じ画面を目印に**、AI に何をさせられるかを共有できる
-- 型・目視確認・テスト・実行環境の土台はもうそろっている
+- 開発環境（型・目視確認・テスト・実行環境）はもうそろっている
 - 既存のフロントエンドはそのままで、足すのは**つなぐ部分**だけ
 - 状態を型で表せば、**ツールも状態で型安全に仕分けられる**
 
