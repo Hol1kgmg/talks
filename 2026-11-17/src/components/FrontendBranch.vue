@@ -15,7 +15,8 @@ const appear = () => on() ? 'opacity-100 delay-1000' : 'opacity-0'
 
 const layer = 'w-44 rounded-lg border-2 border-gray-500 bg-white px-3 py-2 text-center shadow'
 const note = 'text-xs opacity-60'
-const arrow = 'absolute left-1/2 top-0 -ml-4 origin-top text-4xl transition-transform duration-500'
+// アイコンの幅は 1.2em（unplugin-icons の既定）なので、半分の 0.6em 戻して中央にそろえる
+const arrow = 'absolute left-1/2 top-0 -ml-[0.6em] origin-top text-4xl transition-transform duration-500'
 </script>
 
 <template>
@@ -25,7 +26,8 @@ const arrow = 'absolute left-1/2 top-0 -ml-4 origin-top text-4xl transition-tran
         /search・/cart
       </div>
     </div>
-    <ph-arrow-down class="text-xl" />
+    <!-- 下の矢印（text-4xl）と線の太さを揃えるため同じ大きさにする。小さいと線が細くなり色が薄く見える -->
+    <ph-arrow-down class="text-4xl" />
     <div :class="layer">
       hooks<div :class="note">
         <code>useShop()</code> → search / addToCart
