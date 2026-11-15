@@ -515,16 +515,17 @@ clicks: 1
   <div class="cell" :class="$clicks >= 1 && 'opacity-30'"><span class="mark text-gray-500">✕</span></div>
 </div>
 
-<div class="ml-[8.5rem] mt-4 flex justify-center gap-6 text-xs opacity-70">
-  <span><b class="text-sky-600">◯</b> 自分で気づく</span>
+<!-- 凡例も表のセルと同じく、1クリック目で △ 以外を薄くする -->
+<div class="ml-[8.5rem] mt-4 flex justify-center gap-6 text-xs opacity-70 [&>span]:transition-opacity [&>span]:duration-500">
+  <span :class="$clicks >= 1 && 'opacity-30'"><b class="text-sky-600">◯</b> 自分で気づく</span>
   <span><b class="text-amber-600">△</b> 指示を出せば使える</span>
-  <span><b class="text-gray-500">✕</b> 使えない</span>
-  <span><b class="text-gray-500">─</b> 対象外</span>
+  <span :class="$clicks >= 1 && 'opacity-30'"><b class="text-gray-500">✕</b> 使えない</span>
+  <span :class="$clicks >= 1 && 'opacity-30'"><b class="text-gray-500">─</b> 対象外</span>
 </div>
 </div>
 </div>
 
-<div class="absolute bottom-8 right-12 text-xs opacity-60">
+<div class="absolute bottom-8 right-12 text-xs transition-opacity duration-500" :class="$clicks >= 1 ? 'opacity-20' : 'opacity-60'">
   ※ 2026年11月時点。CLI はブラウザ操作の MCP（<code>chrome-devtools-mcp</code>）をつないだ場合
 </div>
 
