@@ -21,8 +21,6 @@ seoMeta:
 
 # WebMCP をどう使うべきか
 
-<div class="text-xl opacity-80">TypeScript で作ってみて</div>
-
 <div class="text-sm opacity-70">【HERP社開催】五反田.ts #2</div>
 
 2026.11.17
@@ -435,10 +433,14 @@ layout: default
 <div class="flex items-center">
 <div class="w-1/2">
 
-```ts {*|2,6,8|3,6-7}
+```tsx {*|2,10,12|3,6-7,10-11}
 type State
   = | { status: 'guest' }
     | { status: 'member', user: User }
+
+const CartButton = (state: State) =>
+  state.status === 'member'
+  && <button>カートに入れる</button>
 
 const toolsFor = (state: State) =>
   state.status === 'member'
