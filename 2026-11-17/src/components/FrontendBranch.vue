@@ -45,7 +45,8 @@ const arrow = 'absolute left-1/2 top-0 -ml-4 origin-top text-4xl transition-tran
         </div>
       </div>
       <div :class="[layer, appear()]" class="border-sky-500! transition-opacity duration-500">
-        <code>registerTool</code><div :class="note">
+        <!-- 次の章扉の見出しへ View Transition で動かすための名前 -->
+        <code style="view-transition-name: register-tool">registerTool</code><div :class="note">
           search・add_to_cart
         </div>
       </div>

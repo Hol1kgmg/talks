@@ -166,6 +166,7 @@ layout: section
 ---
 layout: default
 clicks: 1
+transition: view-transition
 ---
 
 <!-- 目安: 45秒。左がコードの全体像、右が画面での見え方。hooks から WebMCP の枝が生えると、画面は同じまま AI にもツールが見える -->
@@ -197,43 +198,204 @@ clicks: 1
 </SlideBody>
 
 ---
+layout: section
+---
+
+<!-- 目安: 10秒。9枚目の図の registerTool の文字が、View Transition でこの見出しの位置へ動いてくる（9枚目の transition: view-transition と、両方の view-transition-name: register-tool で対応づけている） -->
+
+# <span style="view-transition-name: register-tool">registerTool</span> の作り方
+
+---
 layout: default
 ---
 
+<!-- 目安: 75秒。左は3枚目と同じ形のコード（ツール名だけ9枚目の add_to_cart）から始まる Magic Move、右はクリックごとに「何を変えたか」が1項目ずつ増える。手書きの JSON Schema → Zod 定義に置き換え → 実行時の検証を追加 → 関数に包む（「状態が変わればツールも変わる」で呼ぶ形） → ジェネリクスで型をつなぐ -->
+
 <!-- TODO(本実装):
-- 3枚目「WebMCP とは」で見せた抽象的なサンプルコードを具体化するとこうなる、という説明にする
-- その動きをつける: 4枚目のコードから始め、Shiki Magic Move などで「…」の部分が Zod の定義に置き換わっていく様子を見せる
-- 補足: text() と Tool 型の説明がないので、補足するかコードから消す
-- 目安: 75秒
+- text() の説明がスライドにない（実装は [{ type: 'text', text }] を直接返している）。口頭で補うか、スライドに書き戻すか決める
 -->
 
 # 1つの Zod 定義から作る
 
-<div class="h-9/10 flex flex-col justify-center gap-4">
+<SlideBody left-class="w-3/5 flex flex-col justify-center" right-class="w-2/5 flex flex-col justify-center gap-6 pl-6">
+<template #left>
+<!-- 上端を固定するため、最終ステップ（③と同じ19行で最も長い）と同じコードを invisible で重ね、その高さで中央寄せする -->
+<div class="relative grid items-start [&>*]:col-start-1 [&>*]:row-start-1">
+<div class="invisible">
 
-```ts {*|5|7-10}
-const registerTool = (tool: Tool, signal: AbortSignal) =>
-  document.modelContext?.registerTool({
-    name: tool.name,
-    description: tool.description,
-    inputSchema: z.toJSONSchema(tool.input), // AI に見せる入力の形
-    execute: async (raw) => {
-      const input = tool.input.safeParse(raw) // 実行時の検証
-      if (!input.success)
-        return { content: text(z.prettifyError(input.error)), isError: true }
-      return { content: text(await tool.execute(input.data)) } // 型のついた入力
+```ts
+const registerTool = <I extends z.ZodType>(
+  tool: Tool<I>,
+  signal: AbortSignal,
+) =>
+  document.modelContext.registerTool(
+    {
+      name: tool.name,
+      description: tool.description,
+      inputSchema: z.toJSONSchema(tool.input),
+      execute: async (raw) => {
+        const { success, data, error } = tool.input.safeParse(raw)
+        if (!success)
+          return { content: text(error.message), isError: true }
+        return { content: text(await tool.execute(data)) }
+      },
     },
-  }, { signal })
+    { signal },
+  )
 ```
 
-- ブラウザは入力を `inputSchema` に**照らさない** → `execute` の中の `safeParse` が唯一の検証
-- throw した文はエージェントに**届かない** → `isError: true` で返せば、直して呼び直せる
+</div>
+<div>
+
+````md magic-move
+```ts
+await document.modelContext.registerTool(
+  {
+    name: 'add_to_cart',
+    description: '…',
+    inputSchema: { /* … */ },
+    execute: async (input) => { /* … */ },
+  },
+  { signal },
+)
+```
+```ts
+await document.modelContext.registerTool(
+  {
+    name: 'add_to_cart',
+    description: '…',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        productId: { type: 'string' },
+        quantity: { type: 'integer', minimum: 1 },
+      },
+      required: ['productId', 'quantity'],
+    },
+    execute: async (input) => { /* … */ },
+  },
+  { signal },
+)
+```
+```ts
+const input = z.object({
+  productId: z.string(),
+  quantity: z.int().min(1),
+})
+await document.modelContext.registerTool(
+  {
+    name: 'add_to_cart',
+    description: '…',
+    inputSchema: z.toJSONSchema(input),
+    execute: async (raw) => { /* … */ },
+  },
+  { signal },
+)
+```
+```ts
+const input = z.object({
+  productId: z.string(),
+  quantity: z.int().min(1),
+})
+await document.modelContext.registerTool(
+  {
+    name: 'add_to_cart',
+    description: '…',
+    inputSchema: z.toJSONSchema(input),
+    execute: async (raw) => {
+      const { success, data, error } = input.safeParse(raw)
+      if (!success)
+        return { content: text(error.message), isError: true }
+      await addToCart(data)
+      return { content: text('カートに追加しました') }
+    },
+  },
+  { signal },
+)
+```
+```ts
+const registerTool = (
+  tool: Tool,
+  signal: AbortSignal,
+) =>
+  document.modelContext.registerTool(
+    {
+      name: tool.name,
+      description: tool.description,
+      inputSchema: z.toJSONSchema(tool.input),
+      execute: async (raw) => {
+        const { success, data, error } = tool.input.safeParse(raw)
+        if (!success)
+          return { content: text(error.message), isError: true }
+        return { content: text(await tool.execute(data)) }
+      },
+    },
+    { signal },
+  )
+```
+```ts {*|5}
+const registerTool = <I extends z.ZodType>(
+  tool: Tool<I>,
+  signal: AbortSignal,
+) =>
+  document.modelContext.registerTool(
+    {
+      name: tool.name,
+      description: tool.description,
+      inputSchema: z.toJSONSchema(tool.input),
+      execute: async (raw) => {
+        const { success, data, error } = tool.input.safeParse(raw)
+        if (!success)
+          return { content: text(error.message), isError: true }
+        return { content: text(await tool.execute(data)) }
+      },
+    },
+    { signal },
+  )
+```
+````
 
 </div>
+<!-- 6クリック目（行ハイライトの 0.7秒後。戻るときは遅延なしで消すため、表示中だけ delay を効かせる）: 5行目の modelContext の真下に、エディタの hover のような型定義の窓を出す。中身は webmcp-types の index.d.ts から抜粋。位置はコードの寸法（余白 8px・1行 18px・1文字約 7.2px）からの目安 -->
+<div v-click="6" class="duration-500! [&:not(.slidev-vclick-hidden)]:delay-700 absolute left-[88px] top-[112px] rounded-md border border-gray-400 bg-gray-300 shadow-lg" style="--slidev-code-background: #d1d5db; --slidev-code-font-size: 10px; --slidev-code-line-height: 15px;">
 
-<div class="absolute bottom-4 left-12 text-xs opacity-60">
-  ※ 説明用に簡略化。実装例: Hol1kgmg/times#143
+<!-- eslint-skip -->
+
+```ts
+(property) Document.modelContext?: WebMCP.ModelContext
+```
+
+<div class="border-t border-gray-300" />
+
+<!-- eslint-skip -->
+
+```ts
+interface ModelContext extends EventTarget {
+  registerTool(tool, options?): Promise<void>
+  getTools(options?): Promise<RegisteredTool[]>
+  executeTool(tool, inputObject?, options?): Promise<string>
+}
+```
+
+<div class="px-2 pb-1 text-right text-[10px] opacity-50">webmcp-types · index.d.ts</div>
 </div>
+</div>
+</template>
+<template #right>
+<div v-click="1" class="duration-500!">① ツールの入力を JSON Schema で書く</div>
+<div v-click="2" class="duration-500!">② 入力の Zod 定義に置き換える</div>
+<div v-click="3" class="duration-500!">③ 実行時の検証を追加し、品質を担保</div>
+<div v-click="4" class="duration-500!">④ 関数に包み、どのツールにも使えるようにする</div>
+<div v-click="5" class="duration-500!">⑤ ジェネリクスで型をつなぐ</div>
+<!-- 7枚目「開発環境」の型のカードと同じアイコン。⑤で型の話をした後の補足として出す -->
+<div v-click="6" class="duration-500! flex items-center gap-2 border-t border-gray-400 pt-4 text-sm opacity-80">
+  <SharedImage src="images/webmcp-types-icon.webp" img-class="h-6" />
+  <span><code>document.modelContext</code> の型定義は<br /><code>webmcp-types</code></span>
+</div>
+<!-- コードは簡潔さを優先して ?. を省いているので、hover に出る optional の理由をここで補う -->
+<div v-click="6" class="duration-500! -mt-4 pl-8 text-xs opacity-60">対応ブラウザが一部のため optional（<code>modelContext?:</code>）</div>
+</template>
+</SlideBody>
 
 ---
 layout: section
@@ -316,6 +478,7 @@ layout: default
 
 <!-- TODO(本実装):
 - 補足: 箇条書きの `tools()` がコードに出てこないので、表現をコードに合わせる
+- 「1つの Zod 定義から作る」の registerTool は tool.execute が文字列を返す前提（実装の Tool 型も string）。execute を `await navigate({ to })` のあと `${to} に移りました` を返す形にそろえる
 - 目安: 60秒
 -->
 
@@ -323,7 +486,7 @@ layout: default
 
 <div class="h-9/10 flex flex-col justify-center gap-4">
 
-```ts {*|2-4|8-9|11}
+```ts {*|2-4|9-10|12}
 useEffect(() => {
   const routes = routesFor(state)
   if (routes.length === 0)
@@ -331,6 +494,7 @@ useEffect(() => {
   const controller = new AbortController()
   registerTool({
     name: 'navigate',
+    description: '…',
     input: z.object({ to: z.enum(routes) }), // 状態にある行き先だけ
     execute: ({ to }) => navigate({ to }), // to の型も行き先に絞られる
   }, controller.signal)
