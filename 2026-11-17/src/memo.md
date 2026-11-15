@@ -12,6 +12,10 @@ WebMCP を TypeScript で実装する話
 - https://github.com/Hol1kgmg/times/pull/143 （adr/frontend/0014）
 - https://developers.cloudflare.com/changelog/post/2026-11-12-kitesurf-open-source/
   - changelog には WebMCP の記載はないが、Kitesurf のドキュメントで WebMCP の提供を確認済み
+- 16枚目「他にも話したかったこと」の3テーマ
+  - Kitesurf と WebMCP の相性: https://developers.cloudflare.com/browser-run/features/webmcp/
+  - Vercel の UI SDK と WebMCP の比較: https://azukiazusa.dev/blog/ui-sdk-agent-ready-behaviors/
+  - Personal Agent Protocol と WebMCP の連携: https://personalagentprotocol.org/ （2026年11月時点、仕様に WebMCP の記述は見当たらない）
 
 ## 結論
 
@@ -62,9 +66,10 @@ WebMCP なら、画面と同じ状態をもとにツールを仕分けられる�
 | 11 | 1つの Zod 定義から作る | 75秒 |
 | 13 | 状態の型定義からツールの一覧を作る | 60秒 |
 | 15 | 各 AI の WebMCP 対応表 | 45〜60秒 |
-| 16 | まとめ | 30秒 |
+| 16 | 他にも話したかったこと（テーマだけ3つ） | 20秒 |
+| 17 | まとめ | 30秒 |
 | 6, 8, 10, 12, 14 | section 5枚 | 各10秒 |
-| | **合計** | **545〜560秒** |
+| | **合計** | **565〜580秒** |
 
 デモ（録画・60秒）は今のところスライドに入っていない。入れると約10分になる
 

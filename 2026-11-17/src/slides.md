@@ -532,6 +532,41 @@ clicks: 1
 layout: default
 ---
 
+<!-- 目安: 20秒。テーマを並べるだけにし、結論は書かない（書くと話さないといけなくなる）。カードは7枚目「開発環境」と同じ見た目 -->
+
+# 他にも話したかったこと
+
+<div class="h-9/10 flex items-stretch justify-center gap-6 py-16">
+  <div class="w-64 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">相性</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-3 px-3 py-4 text-center">
+      <logos-cloudflare-icon class="text-5xl" />
+      <a href="https://developers.cloudflare.com/browser-run/features/webmcp/" target="_blank">Kitesurf<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a>
+      <div class="text-sm opacity-70">なぜ WebMCP と相性がいいのか</div>
+    </div>
+  </div>
+  <div class="w-64 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">比較</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-3 px-3 py-4 text-center">
+      <logos-vercel-icon class="text-5xl" />
+      <a href="https://azukiazusa.dev/blog/ui-sdk-agent-ready-behaviors/" target="_blank">UI SDK<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a>
+      <div class="text-sm opacity-70">Vercel の UI SDK と WebMCP は何が違うのか</div>
+    </div>
+  </div>
+  <div class="w-64 flex flex-col rounded-xl border-2 border-gray-500 bg-white shadow">
+    <div class="border-b-2 border-inherit px-3 py-2 font-bold">連携</div>
+    <div class="flex flex-1 flex-col items-center justify-center gap-3 px-3 py-4 text-center">
+      <SharedImage src="images/personal_agent_protocol_icon.webp" img-class="h-[3.6rem]" />
+      <a href="https://personalagentprotocol.org/" target="_blank">Personal Agent Protocol<ph-arrow-square-out class="ml-0.5 inline text-xs opacity-60" /></a>
+      <div class="text-sm opacity-70">WebMCP と連携できるのか</div>
+    </div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
 <!-- TODO(本実装):
 - WebMCP は、サイトを AI フレンドリーにするための適切な道具・手段である、と伝える
 - そのために TypeScript で実装する意図とメリットを話す
