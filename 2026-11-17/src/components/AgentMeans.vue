@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // step: スライドのクリック数
-// 0: 全部薄く表示 / 1〜3: 左のカードから順に、その1枚だけを明るくする（最後の WebMCP は強調も兼ねる）
-// 4: WebMCP のカードを明るくしたまま、チャットと navigate を動かす
+// 0: 全部薄く表示 / 以降、左のカードから順に2クリックずつ使う
+// 1枚目のクリックでカードを明るくし、2枚目のクリックで下段（AI にどうさせるか）を動かす
+// 1・2: API・MCP / 3・4: DOM（上段のカーソルは3から動かす）/ 5・6: WebMCP（明るくなるときに強調も兼ねる）
 // 各カードの上段は何が提供されているか、下段はどうやって実行させるか
 // DOM のカードだけは、画面そのものが提供されているもの・推測で押すのが実行なので上下を入れ替えない
 const props = defineProps<{ step: number }>()
@@ -9,13 +10,13 @@ const props = defineProps<{ step: number }>()
 // WebMCP のカードが明るくなった次のクリックで、チャットの依頼 → AI の返事 → 画面の navigate が光る、の順に見せる
 // 光るのは、AI が画面のツールを見つけたことを示す
 const chat = (delay: number, origin: string) => ({
-  class: [origin, props.step === 4 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'],
+  class: [origin, props.step === 6 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'],
   style: { transitionDelay: `${delay}ms`, transitionTimingFunction: 'cubic-bezier(.34, 1.56, .64, 1)' },
 })
 
 // i: 左からのカード番号
 const card = (i: number) => {
-  const active = i === 2 ? props.step >= 3 : props.step === i + 1
+  const active = i === 2 ? props.step >= 5 : Math.ceil(props.step / 2) === i + 1
   if (!active)
     return 'opacity-25'
   return i === 2 ? 'border-sky-500 scale-105 shadow-lg' : ''
@@ -33,7 +34,7 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
 <template>
   <div class="flex items-stretch justify-center gap-6">
     <!-- API・MCP サーバー・Bot -->
-    <div :class="[box, card(0), { paused: step !== 1 }]">
+    <div :class="[box, card(0)]">
       <div class="flex items-center gap-2 border-b-2 border-inherit px-3 py-2 font-bold">
         <ph-plugs class="text-xl" />API・MCP サーバー・Bot
       </div>
@@ -60,7 +61,7 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
           公開された API・MCP のツール
         </div>
       </div>
-      <div :class="section" class="border-t border-dashed border-gray-300">
+      <div :class="[section, { paused: step !== 2 }]" class="border-t border-dashed border-gray-300">
         <!-- サーバーを作る → AI がつなぐ → 依頼が線を通ってサーバーへ届き、✓ が返る -->
         <div class="flex h-20 items-center text-xs">
           <div class="relative">
@@ -91,11 +92,11 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
     </div>
 
     <!-- DOM を操作するエージェント -->
-    <div :class="[box, card(1), { paused: step !== 2 }]">
+    <div :class="[box, card(1)]">
       <div class="flex items-center gap-2 border-b-2 border-inherit px-3 py-2 font-bold">
         <ph-cursor-click class="text-xl" />DOM を操作
       </div>
-      <div :class="section">
+      <div :class="[section, { paused: step !== 3 && step !== 4 }]">
         <div :class="page" class="h-20 w-56">
           <div class="flex gap-3 p-3">
             <div :class="btn" /><div :class="btn" /><div :class="btn" />
@@ -106,7 +107,7 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
           画面を代わりに操作
         </div>
       </div>
-      <div :class="section" class="border-t border-dashed border-gray-300">
+      <div :class="[section, { paused: step !== 4 }]" class="border-t border-dashed border-gray-300">
         <div class="relative flex h-16 items-center gap-3">
           <!-- 左から順に押してみて、外れなら ×、最後のボタンで当たりの ✓ -->
           <div
@@ -153,7 +154,7 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
             <span
               :class="tool"
               class="self-center transition-all duration-500"
-              :style="step === 4
+              :style="step === 6
                 ? { transitionDelay: '1700ms', boxShadow: '0 0 8px 2px rgb(14 165 233 / 0.7)' }
                 : { opacity: 0.4 }"
             ><ph-wrench />navigate</span>
