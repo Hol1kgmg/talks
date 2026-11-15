@@ -33,7 +33,7 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
 <template>
   <div class="flex items-stretch justify-center gap-6">
     <!-- API・MCP サーバー・Bot -->
-    <div :class="[box, card(0)]">
+    <div :class="[box, card(0), { paused: step !== 1 }]">
       <div class="flex items-center gap-2 border-b-2 border-inherit px-3 py-2 font-bold">
         <ph-plugs class="text-xl" />API・MCP サーバー・Bot
       </div>
@@ -61,16 +61,27 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
         </div>
       </div>
       <div :class="section" class="border-t border-dashed border-gray-300">
-        <div class="flex h-20 items-center gap-2">
-          <div class="rounded-lg border border-gray-400 px-2 py-1 text-xs">
-            <ph-chat-circle-dots class="text-lg" />
-            <div class="mt-1 rounded bg-gray-100 px-1">
+        <!-- サーバーを作る → AI がつなぐ → 依頼が線を通ってサーバーへ届き、✓ が返る -->
+        <div class="flex h-20 items-center text-xs">
+          <div class="relative">
+            <div class="bubble absolute bottom-full left-1/2 mb-1 whitespace-nowrap rounded-xl rounded-bl-sm bg-gray-100 px-2">
               作って
             </div>
+            <ph-robot-duotone class="text-xl" />
           </div>
-          <ph-arrow-right />
-          <div class="rounded-lg border border-gray-400 px-2 py-1 text-center text-xs">
-            <ph-plugs class="text-lg" />API
+          <div class="relative mx-1 h-4 w-20">
+            <div class="wire absolute inset-x-0 top-1/2 origin-left border-t-2 border-dashed border-gray-500" />
+            <ph-plug class="plug absolute right-0 top-1/2 -translate-y-1/2" />
+            <div class="packet absolute top-1/2 h-2 w-2 rounded-full bg-gray-700" />
+            <ph-check-bold class="reply absolute top-1/2 text-green-600" />
+          </div>
+          <div class="flex w-20 flex-col gap-1 rounded-lg border border-gray-400 p-1">
+            <div class="flex items-center justify-between">
+              MCP<span class="lamp h-2 w-2 rounded-full bg-gray-300" />
+            </div>
+            <div class="code-1 h-1.5 w-12 origin-left rounded bg-gray-400" />
+            <div class="code-2 h-1.5 w-8 origin-left rounded bg-gray-400" />
+            <div class="code-3 h-1.5 w-14 origin-left rounded bg-gray-400" />
           </div>
         </div>
         <div :class="caption">
@@ -97,10 +108,17 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
       </div>
       <div :class="section" class="border-t border-dashed border-gray-300">
         <div class="relative flex h-16 items-center gap-3">
-          <div v-for="i in 3" :key="i" :class="btn" class="flex items-center justify-center">
-            <ph-question-bold class="guess text-xs text-orange-500" :style="{ animationDelay: `${i * 0.4}s` }" />
+          <!-- 左から順に押してみて、外れなら ×、最後のボタンで当たりの ✓ -->
+          <div
+            v-for="i in 3" :key="i" :class="btn"
+            class="press relative flex items-center justify-center"
+            :style="{ animationDelay: `${(i - 1) * 1.5}s` }"
+          >
+            <ph-question-bold class="ask absolute text-xs text-orange-500" :style="{ animationDelay: `${(i - 1) * 1.5}s` }" />
+            <ph-check-bold v-if="i === 3" :class="`hit-${i}`" class="absolute text-xs text-green-600" />
+            <ph-x-bold v-else :class="`hit-${i}`" class="absolute text-xs text-red-500" />
           </div>
-          <ph-robot-duotone class="cursor-wander absolute text-lg" />
+          <ph-robot-duotone class="cursor-try absolute text-lg" />
         </div>
         <div :class="caption">
           エージェントが推測
@@ -187,35 +205,333 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
   }
 }
 
-/* どれを押すか迷うエージェント */
-.cursor-wander {
-  animation: wander 2.4s ease-in-out infinite;
-  top: 0;
+/*
+ * 推測で押してみるエージェント。5秒で1周し、ボタン1つに1.5秒ずつ使う
+ * 各ボタンで: 着く(+0.3s) → ? で迷う → 押す(+0.8〜1.0s) → 結果を出す
+ * left はボタンの中心にロボットの中心を合わせた値
+ */
+.cursor-try {
+  animation: try 5s ease-in-out infinite;
 }
-@keyframes wander {
+@keyframes try {
   0%,
+  14%,
+  20%,
+  30% {
+    left: 0.94rem;
+    top: 0;
+  }
+  16% {
+    left: 0.94rem;
+    top: 0.4rem;
+  }
+  36%,
+  46%,
+  52%,
+  60% {
+    left: 4.69rem;
+    top: 0;
+  }
+  48% {
+    left: 4.69rem;
+    top: 0.4rem;
+  }
+  66%,
+  76%,
+  82%,
+  92% {
+    left: 8.44rem;
+    top: 0;
+  }
+  78% {
+    left: 8.44rem;
+    top: 0.4rem;
+  }
   100% {
-    left: 0.5rem;
-  }
-  50% {
-    left: 9rem;
+    left: 0.94rem;
+    top: 0;
   }
 }
-.guess {
-  animation: guess 1.2s ease-in-out infinite;
+/* ? と押し込みは各ボタンの1.5秒の中で完結するので、animation-delay でずらして共有する */
+.ask {
+  animation: ask 5s infinite;
+  opacity: 0;
 }
-@keyframes guess {
+@keyframes ask {
   0%,
+  5%,
+  18%,
   100% {
-    opacity: 0.2;
+    opacity: 0;
   }
-  50% {
+  6%,
+  17% {
+    opacity: 1;
+  }
+}
+.press {
+  animation: press 5s infinite;
+}
+@keyframes press {
+  0%,
+  15%,
+  21%,
+  100% {
+    transform: none;
+  }
+  16%,
+  20% {
+    transform: translateY(2px);
+    background-color: rgb(156 163 175);
+  }
+}
+/* 結果は周の終わりまで残すため、ボタンごとに出すタイミングを書く */
+.hit-1,
+.hit-2,
+.hit-3 {
+  animation: 5s infinite;
+  opacity: 0;
+}
+.hit-1 {
+  animation-name: hit-1;
+}
+.hit-2 {
+  animation-name: hit-2;
+}
+.hit-3 {
+  animation-name: hit-3;
+}
+@keyframes hit-1 {
+  0%,
+  19%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  92% {
+    opacity: 1;
+  }
+}
+@keyframes hit-2 {
+  0%,
+  49%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  50%,
+  92% {
+    opacity: 1;
+  }
+}
+@keyframes hit-3 {
+  0%,
+  79%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  80%,
+  92% {
     opacity: 1;
   }
 }
 
+/*
+ * 頼まれてから窓口を用意してつなぐ。6秒で1周する
+ * 頼む(0.3s): 「作って」 → 作る(〜2s): コードが1行ずつ伸びる → つなぐ(〜3s): 線が伸びてランプが緑 → 使う(〜5s): 呼び出して ✓ が返る
+ * 92%〜96% で全部消して最初に戻る
+ */
+:is(.code-1, .code-2, .code-3, .wire) {
+  animation: 6s infinite;
+  transform: scaleX(0);
+}
+.code-1 {
+  animation-name: code-1;
+}
+.code-2 {
+  animation-name: code-2;
+}
+.code-3 {
+  animation-name: code-3;
+}
+.wire {
+  animation-name: wire;
+}
+@keyframes code-1 {
+  0%,
+  8%,
+  96%,
+  100% {
+    transform: scaleX(0);
+  }
+  14%,
+  92% {
+    transform: scaleX(1);
+  }
+}
+@keyframes code-2 {
+  0%,
+  15%,
+  96%,
+  100% {
+    transform: scaleX(0);
+  }
+  22%,
+  92% {
+    transform: scaleX(1);
+  }
+}
+@keyframes code-3 {
+  0%,
+  25%,
+  96%,
+  100% {
+    transform: scaleX(0);
+  }
+  32%,
+  92% {
+    transform: scaleX(1);
+  }
+}
+@keyframes wire {
+  0%,
+  34%,
+  96%,
+  100% {
+    transform: scaleX(0);
+  }
+  48%,
+  92% {
+    transform: scaleX(1);
+  }
+}
+:is(.plug, .lamp, .bubble, .packet, .reply) {
+  animation: 6s infinite;
+}
+.plug {
+  animation-name: plug;
+  opacity: 0;
+}
+@keyframes plug {
+  0%,
+  47%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  50%,
+  92% {
+    opacity: 1;
+  }
+}
+.lamp {
+  animation-name: lamp;
+}
+@keyframes lamp {
+  0%,
+  50%,
+  96%,
+  100% {
+    background-color: rgb(209 213 219);
+  }
+  52%,
+  92% {
+    background-color: rgb(34 197 94);
+    box-shadow: 0 0 4px rgb(34 197 94);
+  }
+}
+.bubble {
+  animation-name: bubble;
+  opacity: 0;
+}
+/* 「作って」は人から AI への依頼なのでその場に残す */
+@keyframes bubble {
+  0%,
+  2%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  5%,
+  92% {
+    opacity: 1;
+  }
+}
+/* AI と MCP のやりとり: 呼び出しが左から右へ、✓ が右から左へ線の上を進む */
+.packet {
+  animation-name: packet;
+  opacity: 0;
+  translate: -50% -50%;
+}
+@keyframes packet {
+  0%,
+  61% {
+    left: 0;
+    opacity: 0;
+  }
+  62% {
+    left: 0;
+    opacity: 1;
+  }
+  72% {
+    left: 100%;
+    opacity: 1;
+  }
+  73%,
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+.reply {
+  animation-name: reply;
+  opacity: 0;
+  translate: -50% -50%;
+}
+@keyframes reply {
+  0%,
+  73% {
+    left: 100%;
+    opacity: 0;
+  }
+  74% {
+    left: 100%;
+    opacity: 1;
+  }
+  84%,
+  92% {
+    left: 0;
+    opacity: 1;
+  }
+  96%,
+  100% {
+    left: 0;
+    opacity: 0;
+  }
+}
+
 /* 薄く表示している間は止める */
-.paused :is(.cursor-click, .cursor-wander, .guess) {
+.paused
+  :is(
+    .cursor-click,
+    .cursor-try,
+    .ask,
+    .press,
+    .hit-1,
+    .hit-2,
+    .hit-3,
+    .code-1,
+    .code-2,
+    .code-3,
+    .wire,
+    .plug,
+    .lamp,
+    .bubble,
+    .packet,
+    .reply
+  ) {
   animation-play-state: paused;
 }
 </style>
