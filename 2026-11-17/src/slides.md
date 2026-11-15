@@ -70,7 +70,7 @@ await document.modelContext.registerTool(
 </template>
 </SlideBody>
 
-<div class="absolute bottom-4 left-12 text-xs opacity-60">
+<div class="absolute bottom-10 right-12 text-xs opacity-60">
   ※ 実験段階。Chromium は <code>--enable-features=WebMCP</code> を付けたときだけ動く
 </div>
 
