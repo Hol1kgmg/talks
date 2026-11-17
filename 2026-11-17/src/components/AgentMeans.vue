@@ -291,7 +291,9 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
 .hit-1,
 .hit-2,
 .hit-3 {
-  animation: 5s infinite;
+  /* animation の一括指定は名前がないとビルド時の圧縮で none にされるので、個別に書く */
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
   opacity: 0;
 }
 .hit-1 {
@@ -346,7 +348,8 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
  * 92%〜96% で全部消して最初に戻る
  */
 :is(.code-1, .code-2, .code-3, .wire) {
-  animation: 6s infinite;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
   transform: scaleX(0);
 }
 .code-1 {
@@ -410,7 +413,8 @@ const tool = 'flex items-center gap-1 rounded-full border border-sky-500 bg-whit
   }
 }
 :is(.plug, .lamp, .bubble, .packet, .reply) {
-  animation: 6s infinite;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
 }
 .plug {
   animation-name: plug;
