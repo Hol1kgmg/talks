@@ -98,7 +98,7 @@ clicks: 3
 
 <div class="h-9/10 flex flex-col items-center justify-center gap-10">
 <SharedScreen :step="$clicks" />
-<div v-click="3" class="text-xl"><b>このページで何ができるか</b>が、利用者と AI の両視点で一致している必要がある</div>
+<div v-click="3" class="text-xl"><b>このページで何ができるか</b>が、利用者と AI の両視点で一致</div>
 </div>
 
 ---
@@ -161,7 +161,7 @@ layout: section
 
 <!-- 目安: 10秒 -->
 
-# 今あるフロントエンドに<br>つないでみる
+# フロントエンドに繋ぐ
 
 ---
 layout: default
@@ -171,7 +171,7 @@ transition: view-transition
 
 <!-- 目安: 45秒。左がコードの全体像、右が画面での見え方。hooks から WebMCP の枝が生えると、画面は同じまま AI にもツールが見える -->
 
-# 既存のコードはそのまま、UI の隣に WebMCP を足す
+# 既存のコードを活用できる
 
 <SlideBody left-class="w-1/2 flex items-center justify-center" right-class="w-1/2 flex flex-col items-center justify-center gap-4">
 <template #left>
@@ -415,7 +415,13 @@ layout: section
 
 <!-- 目安: 10秒。WebMCP はブラウザで動くので、フロントエンドが持っている状態とその型をそのまま使える、という前提をここで言い切る -->
 
-# ブラウザで動くから、<br>画面の状態が使える
+# ブラウザで動くから
+
+---
+layout: section
+---
+
+# 画面の状態が使える
 
 ---
 layout: default
