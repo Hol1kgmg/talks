@@ -11,11 +11,17 @@ const loadIcon = async (name: string) => {
   return svg.replace(/fill="#000000"/, 'fill="currentColor"')
 }
 
-const [openIcon, presenterIcon, pdfIcon] = await Promise.all([
+const [openIcon, presenterIcon, pdfIcon, shareIcon, githubIcon] = await Promise.all([
   loadIcon('slideshow'),
   loadIcon('projector-screen'),
   loadIcon('file-pdf'),
+  loadIcon('share-network'),
+  loadIcon('github-logo'),
 ])
+
+const siteUrl = 'https://talks.hol1kgmg.com'
+// 独自ドメインとは別に、GitHub Pages本来のURLでも共有できるようにする
+const pagesUrl = 'https://hol1kgmg.github.io/talks'
 
 // Generates dist/index.html — a static landing page listing all talks,
 // separate from the Slidev decks themselves. GitHub Pages serves this
@@ -69,11 +75,12 @@ const items = talks
           ${hasPdf
             ? `<a class="card-action" href="${escape(base)}pdf" title="PDFをダウンロード" aria-label="PDFをダウンロード">${pdfIcon}</a>`
             : `<span class="card-action card-action-disabled" title="PDF未エクスポート" aria-label="PDF未エクスポート">${pdfIcon}</span>`}
+          <button type="button" class="card-action" data-share-url="${escape(siteUrl + base)}" title="リンクを共有" aria-label="リンクを共有">${shareIcon}</button>
+          <button type="button" class="card-action" data-share-url="${escape(pagesUrl + base)}" title="GitHub PagesのURLを共有" aria-label="GitHub PagesのURLを共有">${githubIcon}</button>
         </div>
       </li>`)
   .join('')
 
-const siteUrl = 'https://talks.hol1kgmg.com'
 const siteDescription = 'Hol1kgmgの個人登壇スライドをまとめたアーカイブサイト。Slidevで作成した発表資料を一覧・閲覧できます。'
 
 const html = `<!DOCTYPE html>
@@ -152,6 +159,9 @@ ${baseStyles}
     text-decoration: none;
     color: var(--color-text-body);
     background: transparent;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
     transition: border-color 0.2s ease, color 0.2s ease;
   }
   .card-action svg {
@@ -176,6 +186,23 @@ ${baseStyles}
 <h1>talks</h1>
 <ul>${items}
 </ul>
+<script>
+  // 共有シートがあれば使い、無ければURLをクリップボードにコピーする
+  document.addEventListener('click', async (e) => {
+    const button = e.target.closest('[data-share-url]')
+    if (!button)
+      return
+    const url = button.dataset.shareUrl
+    if (navigator.share) {
+      navigator.share({ url }).catch(() => {})
+      return
+    }
+    await navigator.clipboard.writeText(url)
+    const label = button.title
+    button.title = 'コピーしました'
+    setTimeout(() => { button.title = label }, 2000)
+  })
+</script>
 </body>
 </html>
 `
