@@ -75,8 +75,8 @@ const items = talks
           ${hasPdf
             ? `<a class="card-action" href="${escape(base)}pdf" title="PDFをダウンロード" aria-label="PDFをダウンロード">${pdfIcon}</a>`
             : `<span class="card-action card-action-disabled" title="PDF未エクスポート" aria-label="PDF未エクスポート">${pdfIcon}</span>`}
-          <button type="button" class="card-action" data-share-url="${escape(siteUrl + base)}" title="リンクを共有" aria-label="リンクを共有">${shareIcon}</button>
-          <button type="button" class="card-action" data-share-url="${escape(pagesUrl + base)}" title="GitHub PagesのURLを共有" aria-label="GitHub PagesのURLを共有">${githubIcon}</button>
+          <button type="button" class="card-action" data-share-url="${escape(siteUrl + base)}" title="リンクをコピー" aria-label="リンクをコピー">${shareIcon}</button>
+          <button type="button" class="card-action" data-share-url="${escape(pagesUrl + base)}" title="GitHub PagesのURLをコピー" aria-label="GitHub PagesのURLをコピー">${githubIcon}</button>
         </div>
       </li>`)
   .join('')
@@ -180,27 +180,55 @@ ${baseStyles}
     border-color: var(--color-border);
     color: var(--color-border);
   }
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    max-width: calc(100% - 2rem);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--color-text-body);
+    color: var(--color-bg-section);
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .toast.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
 </style>
 </head>
 <body>
 <h1>talks</h1>
 <ul>${items}
 </ul>
+<div class="toast" role="status" aria-live="polite"></div>
 <script>
-  // 共有シートがあれば使い、無ければURLをクリップボードにコピーする
+  // 共有シートは環境によって「コピー」が出ないため使わず、URLを直接クリップボードにコピーする
+  const toast = document.querySelector('.toast')
+  let timer
   document.addEventListener('click', async (e) => {
     const button = e.target.closest('[data-share-url]')
     if (!button)
       return
     const url = button.dataset.shareUrl
-    if (navigator.share) {
-      navigator.share({ url }).catch(() => {})
-      return
+    let ok = true
+    try {
+      await navigator.clipboard.writeText(url)
+      toast.textContent = 'リンクをコピーしました'
     }
-    await navigator.clipboard.writeText(url)
-    const label = button.title
-    button.title = 'コピーしました'
-    setTimeout(() => { button.title = label }, 2000)
+    catch {
+      ok = false
+      // 手で選択してコピーできるよう、失敗時はURLを長めに表示する
+      toast.textContent = 'コピーできませんでした: ' + url
+    }
+    toast.classList.add('show')
+    clearTimeout(timer)
+    timer = setTimeout(() => toast.classList.remove('show'), ok ? 2000 : 6000)
   })
 </script>
 </body>
