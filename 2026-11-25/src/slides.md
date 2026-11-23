@@ -42,7 +42,10 @@ layout: default
     url="https://talks.hol1kgmg.com/2026/keyboard-tech-stack-review/"
     image="images/keyboard-tech-stack-review-og.webp"
   />
-  <div class="text-2xl">今回はキースイッチとキーキャップの話をします</div>
+  <div class="text-center">
+    <div class="text-2xl">Magic Keyboard の配列が合わず、気に入った配列から基板を決めた</div>
+    <div class="mt-2 opacity-70">今回はキースイッチとキーキャップの話をします</div>
+  </div>
 </div>
 
 ---
@@ -65,6 +68,12 @@ layout: default
 - スイッチ: Kailh Glacial Silver Switch（バネを45gに入れ替え）
 - ワッシャー: Rushbox Washer
 -->
+
+---
+layout: section
+---
+
+# 目指すのは Magic Keyboard の打鍵感
 
 ---
 layout: section
@@ -113,30 +122,50 @@ layout: default
 
 # スイッチのカスタマイズ
 
-<div class="text-2xl">目指したのは、パンタグラフキーボードのような感触</div>
+<!-- grid-template-rows を 0fr → 1fr に遷移させてカードを展開し、上の見出しを押し上げる -->
+<div class="h-4/5 grid grid-cols-2 gap-10 text-center">
+  <div class="flex flex-col items-center justify-center gap-2">
+    <div class="text-2xl font-bold text-sky-600">パタパタした打鍵感の再現</div>
+    <div class="opacity-70">現状: コトコト寄りで、跳ね返りが弱い</div>
+    <div v-click class="w-full grid transition-all duration-500" :style="{ gridTemplateRows: $clicks >= 1 ? '1fr' : '0fr' }">
+      <div class="overflow-hidden flex flex-col items-center gap-2">
+        <div class="text-xl opacity-50">↓</div>
+        <div class="w-full h-60 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+          <SharedImage src="images/rushbox-washer.webp" img-class="h-24 rounded-lg object-cover" />
+          <div class="text-[0.5rem] opacity-60">Rushbox Washer（画像: モイメイト）</div>
+          <div class="text-xl font-bold">ワッシャーを入れる</div>
+          <div class="opacity-80">ストロークを浅く、打鍵感を固くする</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center gap-2">
+    <div class="text-2xl font-bold text-sky-600">打鍵時のストレスを軽減</div>
+    <div class="opacity-70">現状: 40g のバネで連続入力の誤検知が起きる</div>
+    <div v-click class="w-full grid transition-all duration-500" :style="{ gridTemplateRows: $clicks >= 2 ? '1fr' : '0fr' }">
+      <div class="overflow-hidden flex flex-col items-center gap-2">
+        <div class="text-xl opacity-50">↓</div>
+        <div class="w-full h-60 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+          <div class="h-24 flex items-center text-4xl font-bold">45g</div>
+          <div class="text-xl font-bold">バネを強くする</div>
+          <div class="opacity-80">キーの戻りを速くする</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<SlideBody height="h-3/4" left-class="w-1/2 flex flex-col justify-center gap-4 pr-6" right-class="w-1/2 flex flex-col items-center justify-center">
-<template #left>
-  <div class="rounded-xl border-2 border-sky-200 bg-white/60 px-5 py-3 flex items-center gap-4">
-    <div>
-      <div class="text-xl font-bold">ワッシャーを入れる <span class="text-sm font-normal opacity-60">Rushbox Washer</span></div>
-      <div class="mt-1">ストロークをさらに浅くし、打鍵感を固くする</div>
-    </div>
-    <div class="shrink-0 flex flex-col items-center">
-      <SharedImage src="images/rushbox-washer.webp" img-class="w-20 h-20 rounded-lg object-cover" />
-      <div class="text-[0.5rem] opacity-60">画像: モイメイト</div>
-    </div>
-  </div>
-  <div class="rounded-xl border-2 border-sky-200 bg-white/60 px-5 py-3">
-    <div class="text-xl font-bold">バネを強くする <span class="text-sm font-normal opacity-60">40g → 45g</span></div>
-    <div class="mt-1">キーの戻りを調整し、余分な入力が送信されないようにする</div>
-  </div>
-</template>
-<template #right>
-  <SharedImage src="images/key-switch_spring.webp" img-class="w-full rounded-xl" />
-  <div class="mt-1 text-xs opacity-60">バネやワッシャーの組み合わせを色々と試行錯誤している様子</div>
-</template>
-</SlideBody>
+<!--
+目指すもの2つと、スイッチの現状を説明する
+
+[click] ワッシャーでストロークを浅くする
+
+[click] バネを強くする
+- バネが弱いと、入力後に指を離すのが遅れる
+- 離すのが遅れると、PC側がキーの長押し（連続入力）と誤検知して同じ文字が続けて入力される
+- これが打鍵時のストレスの原因。45gに強くしてキーの戻りを速くし、誤検知を防いだ
+-->
+
 
 ---
 layout: section
@@ -152,9 +181,16 @@ layout: default
 
 <SlideBody height="h-4/5" right-class="w-1/2 flex flex-col items-center justify-center">
 <template #left>
-
-<!-- TODO: THT 98key White を選んだ理由 -->
-
+<div class="h-full flex flex-col justify-center gap-6 pr-6">
+  <div>
+    <div class="text-3xl font-bold">湾曲した天面</div>
+    <div class="opacity-80">指の腹にフィットする</div>
+  </div>
+  <div>
+    <div class="text-3xl font-bold">薄い</div>
+    <div class="opacity-80">付けても高さが出ず、ロープロファイルの打鍵感を保てる</div>
+  </div>
+</div>
 </template>
 <template #right>
   <SharedImage src="images/tht-98key-white.webp" img-class="h-80 rounded-xl" />
@@ -176,4 +212,17 @@ layout: default
 
 # まとめ
 
-<!-- TODO: スイッチ・キーキャップそれぞれの「選んだ理由 → カスタマイズ」を振り返る -->
+<div class="h-4/5 flex flex-col justify-center gap-6 text-xl">
+  <div>配列は自分の好みで選び、打鍵感は <span class="font-bold">Magic Keyboard</span> を目指した</div>
+  <div>
+    <div class="text-2xl font-bold">キースイッチ</div>
+    <div class="opacity-80">浅く軽いリニアを選び、ワッシャーとバネでパンタグラフの感触に寄せた</div>
+  </div>
+  <div>
+    <div class="text-2xl font-bold">キーキャップ</div>
+    <div class="opacity-80">湾曲していて薄く、ロープロファイルの打鍵感を保てるものを選んだ</div>
+  </div>
+  <div class="text-2xl font-bold">打鍵感の良いロープロファイルキーボードができた</div>
+</div>
+
+<!-- TODO: キーキャップのカスタマイズの内容が決まったら、キーキャップの項目に追記する -->
