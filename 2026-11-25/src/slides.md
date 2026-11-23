@@ -73,7 +73,7 @@ layout: default
 layout: section
 ---
 
-# 目指すのは Magic Keyboard の打鍵感
+# 目指すのは<br>Magic Keyboard の打鍵感
 
 ---
 layout: section
@@ -239,7 +239,8 @@ layout: default
   <div class="flex-1 grid grid-cols-2 gap-10 content-center">
     <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
       <div class="text-2xl font-bold text-sky-600">キースイッチでこだわる要素</div>
-      <div class="opacity-80">押し心地（リニア / タクタイル / クリッキー）・重さ・押す深さ</div>
+      <div class="opacity-80">押し心地・重さ・押す深さ</div>
+      <div class="text-base opacity-60">押し心地: リニア / タクタイル / クリッキー</div>
     </div>
     <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
       <div class="text-2xl font-bold text-sky-600">キーキャップでこだわる要素</div>
