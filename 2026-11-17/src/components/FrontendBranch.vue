@@ -2,6 +2,7 @@
 // step: スライドのクリック数
 // 0: API → hooks → UI がまっすぐ縦に並ぶ
 // 1: UI が左にずれ、矢印が時計回りに傾いて追う → hooks から WebMCP の矢印が伸びる → registerTool が現れる（右の画面はその後に光る）
+// slot ui-badge: UI コンポーネントの箱に重ねる要素（2026-11-27 で UI SDK のタグを付ける）
 const props = defineProps<{ step: number }>()
 
 // 進むときだけ delay を付けて順番に動かし、戻るときはすぐ元に戻す
@@ -41,7 +42,8 @@ const arrow = 'absolute left-1/2 top-0 -ml-[0.6em] origin-top text-4xl transitio
     </div>
 
     <div class="w-96 flex justify-between">
-      <div :class="[layer, slide()]" class="transition-transform duration-500">
+      <div :class="[layer, slide()]" class="relative transition-transform duration-500">
+        <slot name="ui-badge" />
         UI コンポーネント<div :class="note">
           検索欄・カートボタン
         </div>

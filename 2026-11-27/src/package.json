@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "slidev",
-    "build": "tsx ../../scripts/build.ts /2026/hover-hold-detection/",
-    "export": "slidev export --per-slide --wait 1500 --output ../2026-11-27-hover-hold-detection.pdf"
+    "build": "tsx ../../scripts/build.ts /2026/ui-sdk-webmcp/",
+    "export": "slidev export --per-slide --wait 1500 --output ../2026-11-27-ui-sdk-webmcp.pdf"
   }
 }
