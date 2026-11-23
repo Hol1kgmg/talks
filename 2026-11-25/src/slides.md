@@ -29,7 +29,7 @@ layout: default
 
 # 自己紹介
 
-<SelfIntro />
+<SelfIntro note="今の愛用キーボードは使い始めてそろそろ1年" />
 
 ---
 layout: default
@@ -204,7 +204,30 @@ layout: default
 
 # キーキャップのカスタマイズ
 
-<!-- TODO: Rushbox Washer の役割。キーキャップ側の話でなければ、この枚で話す内容を決める -->
+<SlideBody height="h-4/5" right-class="w-1/2 flex flex-col items-center justify-center">
+<template #left>
+<div class="h-full flex flex-col justify-center gap-6 pr-6">
+  <div>
+    <div class="text-3xl font-bold">親指のホームポジション</div>
+    <div class="opacity-80">無刻印のキーキャップには触って分かる目印がない</div>
+  </div>
+  <div>
+    <div class="text-3xl font-bold">UV レジンで突起を作る</div>
+    <div class="opacity-80">レジン液を少量垂らし、UV ライトで固める</div>
+  </div>
+  <div class="text-xs opacity-60">
+    参考: <a href="https://www.eisbahn.jp/yoichiro/2020/09/ergodash_home_position.html" target="_blank">UVレジン液でキーキャップにホームポジションのポッチを作った話</a>
+  </div>
+</div>
+</template>
+<template #right>
+  <SharedImage src="images/keycap-customize.webp" img-class="h-80 rounded-xl" />
+</template>
+</SlideBody>
+
+<!--
+- TODO: 親指の位置が安定して何が良くなったかを口頭で補う
+-->
 
 ---
 layout: default
@@ -212,17 +235,16 @@ layout: default
 
 # まとめ
 
-<div class="h-4/5 flex flex-col justify-center gap-6 text-xl">
-  <div>配列は自分の好みで選び、打鍵感は <span class="font-bold">Magic Keyboard</span> を目指した</div>
-  <div>
-    <div class="text-2xl font-bold">キースイッチ</div>
-    <div class="opacity-80">浅く軽いリニアを選び、ワッシャーとバネでパンタグラフの感触に寄せた</div>
+<div class="h-4/5 flex flex-col gap-8 text-xl text-center">
+  <div class="flex-1 grid grid-cols-2 gap-10 content-center">
+    <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+      <div class="text-2xl font-bold text-sky-600">キースイッチでこだわる要素</div>
+      <div class="opacity-80">押し心地（リニア / タクタイル / クリッキー）・重さ・押す深さ</div>
+    </div>
+    <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+      <div class="text-2xl font-bold text-sky-600">キーキャップでこだわる要素</div>
+      <div class="opacity-80">形・高さ・指触り</div>
+    </div>
   </div>
-  <div>
-    <div class="text-2xl font-bold">キーキャップ</div>
-    <div class="opacity-80">湾曲していて薄く、ロープロファイルの打鍵感を保てるものを選んだ</div>
-  </div>
-  <div class="text-2xl font-bold">打鍵感の良いロープロファイルキーボードができた</div>
+  <div class="text-2xl font-bold">3D プリントができなくても、理想のキーボードを作ることができる</div>
 </div>
-
-<!-- TODO: キーキャップのカスタマイズの内容が決まったら、キーキャップの項目に追記する -->
