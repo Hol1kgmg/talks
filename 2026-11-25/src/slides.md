@@ -78,7 +78,34 @@ layout: default
 
 # スイッチを選んだ理由
 
-<!-- TODO: Kailh Glacial Silver Switch を選んだ理由 -->
+<SlideBody height="h-4/5" right-class="w-1/2 flex flex-col items-center justify-center">
+<template #left>
+<div class="h-full flex flex-col justify-center gap-6 pr-6">
+  <div>
+    <div class="text-3xl font-bold">リニア</div>
+    <div class="opacity-80">引っかかりがなく、底までまっすぐ沈む</div>
+  </div>
+  <div>
+    <div class="text-3xl font-bold">40g</div>
+    <div class="opacity-80">軽い力で入力できる</div>
+  </div>
+  <div>
+    <div class="text-3xl font-bold">0.8mm / 2.0mm</div>
+    <div class="opacity-80">浅く押すだけで反応し、ストロークも短い</div>
+  </div>
+</div>
+</template>
+<template #right>
+  <SharedImage src="images/kailh-glacial-silver.webp" img-class="h-80 rounded-xl" />
+  <div class="mt-1 text-xs opacity-60">Kailh Choc Switch V2 Glacial Silver（画像: 遊舎工房）</div>
+</template>
+</SlideBody>
+
+<!--
+- 作動点（Pre Travel）0.8mm、底まで（Total Travel）2.0mm
+- Factory Lubed（出荷時にルブ済み）
+- TODO: 自分がこのスイッチを選んだ理由を口頭で補う
+-->
 
 ---
 layout: default
@@ -86,7 +113,30 @@ layout: default
 
 # スイッチのカスタマイズ
 
-<!-- TODO: バネを45gに入れ替えた。元のバネの重さと、入れ替えて何が変わったか -->
+<div class="text-2xl">目指したのは、パンタグラフキーボードのような感触</div>
+
+<SlideBody height="h-3/4" left-class="w-1/2 flex flex-col justify-center gap-4 pr-6" right-class="w-1/2 flex flex-col items-center justify-center">
+<template #left>
+  <div class="rounded-xl border-2 border-sky-200 bg-white/60 px-5 py-3 flex items-center gap-4">
+    <div>
+      <div class="text-xl font-bold">ワッシャーを入れる <span class="text-sm font-normal opacity-60">Rushbox Washer</span></div>
+      <div class="mt-1">ストロークをさらに浅くし、打鍵感を固くする</div>
+    </div>
+    <div class="shrink-0 flex flex-col items-center">
+      <SharedImage src="images/rushbox-washer.webp" img-class="w-20 h-20 rounded-lg object-cover" />
+      <div class="text-[0.5rem] opacity-60">画像: モイメイト</div>
+    </div>
+  </div>
+  <div class="rounded-xl border-2 border-sky-200 bg-white/60 px-5 py-3">
+    <div class="text-xl font-bold">バネを強くする <span class="text-sm font-normal opacity-60">40g → 45g</span></div>
+    <div class="mt-1">キーの戻りを調整し、余分な入力が送信されないようにする</div>
+  </div>
+</template>
+<template #right>
+  <SharedImage src="images/key-switch_spring.webp" img-class="w-full rounded-xl" />
+  <div class="mt-1 text-xs opacity-60">バネやワッシャーの組み合わせを色々と試行錯誤している様子</div>
+</template>
+</SlideBody>
 
 ---
 layout: section
@@ -100,7 +150,17 @@ layout: default
 
 # キーキャップを選んだ理由
 
+<SlideBody height="h-4/5" right-class="w-1/2 flex flex-col items-center justify-center">
+<template #left>
+
 <!-- TODO: THT 98key White を選んだ理由 -->
+
+</template>
+<template #right>
+  <SharedImage src="images/tht-98key-white.webp" img-class="h-80 rounded-xl" />
+  <div class="mt-1 text-xs opacity-60">THT 98key White（画像: TALPKEYBOARD）</div>
+</template>
+</SlideBody>
 
 ---
 layout: default
