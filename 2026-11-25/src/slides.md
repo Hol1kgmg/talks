@@ -35,23 +35,6 @@ layout: default
 layout: default
 ---
 
-# 配列の話は前回しました
-
-<div class="h-4/5 flex flex-col items-center justify-center gap-6">
-  <LinkCard
-    url="https://talks.hol1kgmg.com/2026/keyboard-tech-stack-review/"
-    image="images/keyboard-tech-stack-review-og.webp"
-  />
-  <div class="text-center">
-    <div class="text-2xl">Magic Keyboard の配列が合わず、気に入った配列から基板を決めた</div>
-    <div class="mt-2 opacity-70">今回はキースイッチとキーキャップの話をします</div>
-  </div>
-</div>
-
----
-layout: default
----
-
 # 私のキーボード
 
 <div class="h-4/5 flex items-center justify-center">
@@ -68,6 +51,32 @@ layout: default
 - スイッチ: Kailh Glacial Silver Switch（バネを45gに入れ替え）
 - ワッシャー: Rushbox Washer
 -->
+
+---
+layout: default
+---
+
+# 配列の話は前回しました
+
+<div class="h-4/5 flex flex-col items-center justify-center gap-6">
+  <LinkCard
+    url="https://talks.hol1kgmg.com/2026/keyboard-tech-stack-review/"
+    image="images/keyboard-tech-stack-review-og.webp"
+  />
+  <div class="text-center">
+    <div class="text-2xl">Magic Keyboard の配列が合わず、気に入った配列から基板を決めた</div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# 今回伝えたいこと
+
+<div class="h-4/5 flex items-center justify-center text-center">
+  <div class="text-3xl font-bold">自作キーボードは、一から作らなくてもこだわりを追求できる</div>
+</div>
 
 ---
 layout: section
@@ -90,6 +99,7 @@ layout: default
 <SlideBody height="h-4/5" right-class="w-1/2 flex flex-col items-center justify-center">
 <template #left>
 <div class="h-full flex flex-col justify-center gap-6 pr-6">
+  <div class="text-xl text-sky-600 font-bold">Magic Keyboard と同じ「浅くて軽い」</div>
   <div>
     <div class="text-3xl font-bold">リニア</div>
     <div class="opacity-80">引っかかりがなく、底までまっすぐ沈む</div>
@@ -99,8 +109,8 @@ layout: default
     <div class="opacity-80">軽い力で入力できる</div>
   </div>
   <div>
-    <div class="text-3xl font-bold">0.8mm / 2.0mm</div>
-    <div class="opacity-80">浅く押すだけで反応し、ストロークも短い</div>
+    <div class="text-3xl font-bold">作動点 0.8mm</div>
+    <div class="opacity-80">底まで 2.0mm。浅く押すだけで反応する</div>
   </div>
 </div>
 </template>
@@ -113,7 +123,7 @@ layout: default
 <!--
 - 作動点（Pre Travel）0.8mm、底まで（Total Travel）2.0mm
 - Factory Lubed（出荷時にルブ済み）
-- TODO: 自分がこのスイッチを選んだ理由を口頭で補う
+- Magic Keyboard はパンタグラフ式で「浅くて軽い」キーボード。3項目はその分解
 -->
 
 ---
@@ -130,22 +140,22 @@ layout: default
     <div v-click class="w-full grid transition-all duration-500" :style="{ gridTemplateRows: $clicks >= 1 ? '1fr' : '0fr' }">
       <div class="overflow-hidden flex flex-col items-center gap-2">
         <div class="text-xl opacity-50">↓</div>
-        <div class="w-full h-60 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
-          <SharedImage src="images/rushbox-washer.webp" img-class="h-24 rounded-lg object-cover" />
-          <div class="text-[0.5rem] opacity-60">Rushbox Washer（画像: モイメイト）</div>
+        <div class="w-full h-64 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+          <SharedImage src="images/rushbox-washer.webp" img-class="h-28 rounded-lg object-cover" />
+          <div class="text-xs opacity-60">Rushbox Washer（画像: モイメイト）</div>
           <div class="text-xl font-bold">ワッシャーを入れる</div>
-          <div class="opacity-80">ストロークを浅く、打鍵感を固くする</div>
+          <div class="opacity-80">浅く固い底打ちで、跳ね返りを出す</div>
         </div>
       </div>
     </div>
   </div>
   <div class="flex flex-col items-center justify-center gap-2">
     <div class="text-2xl font-bold text-sky-600">打鍵時のストレスを軽減</div>
-    <div class="opacity-70">現状: 40g のバネで連続入力の誤検知が起きる</div>
+    <div class="opacity-70">現状: 40g は軽すぎて連続入力を誤検知する</div>
     <div v-click class="w-full grid transition-all duration-500" :style="{ gridTemplateRows: $clicks >= 2 ? '1fr' : '0fr' }">
       <div class="overflow-hidden flex flex-col items-center gap-2">
         <div class="text-xl opacity-50">↓</div>
-        <div class="w-full h-60 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+        <div class="w-full h-64 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
           <div class="h-24 flex items-center text-4xl font-bold">45g</div>
           <div class="text-xl font-bold">バネを強くする</div>
           <div class="opacity-80">キーの戻りを速くする</div>
@@ -188,7 +198,7 @@ layout: default
   </div>
   <div>
     <div class="text-3xl font-bold">薄い</div>
-    <div class="opacity-80">付けても高さが出ず、ロープロファイルの打鍵感を保てる</div>
+    <div class="opacity-80">ロープロファイルの打鍵感を保てる</div>
   </div>
 </div>
 </template>
@@ -215,6 +225,10 @@ layout: default
     <div class="text-3xl font-bold">UV レジンで突起を作る</div>
     <div class="opacity-80">レジン液を少量垂らし、UV ライトで固める</div>
   </div>
+  <div>
+    <div class="text-3xl font-bold">タッチタイピングの精度向上</div>
+    <div class="opacity-80">親指のホームポジションが触って分かる</div>
+  </div>
   <div class="text-xs opacity-60">
     参考: <a href="https://www.eisbahn.jp/yoichiro/2020/09/ergodash_home_position.html" target="_blank">UVレジン液でキーキャップにホームポジションのポッチを作った話</a>
   </div>
@@ -225,27 +239,22 @@ layout: default
 </template>
 </SlideBody>
 
-<!--
-- TODO: 親指の位置が安定して何が良くなったかを口頭で補う
--->
-
 ---
 layout: default
 ---
 
 # まとめ
 
-<div class="h-4/5 flex flex-col gap-8 text-xl text-center">
-  <div class="flex-1 grid grid-cols-2 gap-10 content-center">
+<div class="h-4/5 flex flex-col justify-center gap-10 text-xl text-center">
+  <div class="text-2xl font-bold">既製パーツの選び方とひと手間で、Magic Keyboard の打鍵感に近づけられる</div>
+  <div class="grid grid-cols-2 gap-10">
     <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
       <div class="text-2xl font-bold text-sky-600">キースイッチでこだわる要素</div>
       <div class="opacity-80">押し心地・重さ・押す深さ</div>
-      <div class="text-base opacity-60">押し心地: リニア / タクタイル / クリッキー</div>
     </div>
     <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
       <div class="text-2xl font-bold text-sky-600">キーキャップでこだわる要素</div>
       <div class="opacity-80">形・高さ・指触り</div>
     </div>
   </div>
-  <div class="text-2xl font-bold">3D プリントができなくても、理想のキーボードを作ることができる</div>
 </div>
