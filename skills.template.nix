@@ -9,10 +9,6 @@
   # vercel/ai
   "adr-skill"
 
-  # gist
-  "cognitive-rhythm-writing"
-  "japanese-tech-writing"
-
   # addyosmani/web-quality-skills
   "web-quality-audit"
   "performance"
@@ -29,6 +25,8 @@
 
   # Hol1kgmg/skills（必要なリポジトリで有効化する）
   "dependabot-review"
+  "cognitive-rhythm-writing"
+  "japanese-tech-writing"
   # "speckit-explain"
 
   # ./skills（独自）

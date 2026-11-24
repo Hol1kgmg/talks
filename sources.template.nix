@@ -7,9 +7,6 @@ inputs: {
     yomiyasu = { path = inputs.yomiyasu.outPath; subdir = "skills"; };
     hol1kgmg = { path = inputs.hol1kgmg-skills.outPath; subdir = "skills"; };
     security-audit = { path = inputs.security-audit-skill.outPath; subdir = "skills"; };
-    # gist はルート直下に SKILL.md があり、ファイル名がそのままスキル ID になる
-    cognitive-rhythm-writing = { path = inputs.cognitive-rhythm-writing.outPath; filter.maxDepth = 0; };
-    japanese-tech-writing = { path = inputs.japanese-tech-writing.outPath; filter.maxDepth = 0; };
     local = { path = ./skills; };
   };
 

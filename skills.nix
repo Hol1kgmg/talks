@@ -4,6 +4,9 @@
   enable = [
     # slidevjs/slidev
     "slidev"
+
+    # Hol1kgmg/skills
+    "slide-reviewer"
   ];
 
   disable = [

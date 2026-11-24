@@ -57,22 +57,6 @@
         "type": "github"
       }
     },
-    "cognitive-rhythm-writing": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783600534,
-        "narHash": "sha256-Zo3iVnTvVG6IfU9vBf4Zv/bEcKmNKnI2IY1D0uvzkNM=",
-        "ref": "refs/heads/main",
-        "rev": "a3b1e26beced71d582e13314fb6f5b179b023c76",
-        "revCount": 3,
-        "type": "git",
-        "url": "https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432.git"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -110,33 +94,17 @@
     "hol1kgmg-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1792211563,
-        "narHash": "sha256-1d+SFsKYV+f15iVk6UZp/R8W5/ckHyATfFdhBOhTNOM=",
+        "lastModified": 1795535597,
+        "narHash": "sha256-HDxNiKniNmBahj7i3nt4Jjl2F5Ox0mrG1k0L5IO8+rY=",
         "owner": "Hol1kgmg",
         "repo": "skills",
-        "rev": "edc303a27fabbb2314c839e9332ab970c7e2f287",
+        "rev": "cbe70fa290cf416765427184f7cf1494048e19ae",
         "type": "github"
       },
       "original": {
         "owner": "Hol1kgmg",
         "repo": "skills",
         "type": "github"
-      }
-    },
-    "japanese-tech-writing": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1788943331,
-        "narHash": "sha256-jo1DvsAVIAKzurutp+T66kctgaFEe+sVbY9bf7wlCLM=",
-        "ref": "refs/heads/main",
-        "rev": "8f2d57610a73efc97d743c9b0b0ecb1002e09fa4",
-        "revCount": 7,
-        "type": "git",
-        "url": "https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d.git"
       }
     },
     "nix-claude-code": {
@@ -251,11 +219,9 @@
         "agent-rules": "agent-rules",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
-        "cognitive-rhythm-writing": "cognitive-rhythm-writing",
         "flake-utils": "flake-utils",
         "hol1kgmg-rules": "hol1kgmg-rules",
         "hol1kgmg-skills": "hol1kgmg-skills",
-        "japanese-tech-writing": "japanese-tech-writing",
         "nix-claude-code": "nix-claude-code",
         "nixpkgs": "nixpkgs_2",
         "nur-packages": "nur-packages",

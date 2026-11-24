@@ -18,8 +18,6 @@
     yomiyasu = { url = "github:nanaism/yomiyasu"; flake = false; };
     hol1kgmg-skills = { url = "github:Hol1kgmg/skills"; flake = false; };
     security-audit-skill = { url = "github:cloudflare/security-audit-skill"; flake = false; };
-    cognitive-rhythm-writing = { url = "git+https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432.git"; flake = false; };
-    japanese-tech-writing = { url = "git+https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d.git"; flake = false; };
     hol1kgmg-rules = { url = "github:Hol1kgmg/rules"; flake = false; };
 
     # --- project inputs: 派生先が管理。adr/from-template/0005 ---
