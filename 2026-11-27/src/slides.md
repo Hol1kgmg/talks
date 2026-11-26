@@ -69,16 +69,25 @@ layout: default
 layout: default
 ---
 
-<!-- 目安: 25秒。TODO: 公式サイト（ui-sdk.dev）の英語の原文も添えるか検討 -->
+<!-- 目安: 25秒 -->
 
 # UI SDK の公式の説明
 
-<div class="h-4/5 flex flex-col justify-center gap-8">
-
-> エージェントが次世代のユーザーインターフェースを構築するための動作ライブラリ
-
-- しかも **WebMCP に対応している**（`registerTools`）
-
+<div class="h-4/5 flex flex-col justify-center gap-6">
+  <div>
+    <div class="text-3xl font-bold leading-snug">
+      A library of behaviors for agents to build and drive the next generation of user interfaces.
+    </div>
+    <div class="mt-2 text-right text-sm opacity-60">
+      <a href="https://ui-sdk.dev/" target="_blank">https://ui-sdk.dev/</a>
+    </div>
+  </div>
+  <div class="text-xl">
+    エージェントが次世代の UI を作り、動かすための、振る舞いのライブラリ
+  </div>
+  <div class="text-xl">
+    しかも <strong>WebMCP にも対応している</strong>
+  </div>
 </div>
 
 ---
@@ -88,8 +97,8 @@ layout: center
 <!-- 目安: 10秒 -->
 
 <div class="text-2xl font-bold">
-  AI エージェント向けのフロントエンド技術が<br>
-  AI エージェント向けのフロントエンド技術をサポートしている…???
+  AI 向けのフロントエンド技術が<br>
+  AI 向けのフロントエンド技術をサポートしている…???
 </div>
 
 <!-- TODO: ジョジョの1コマを `just image` で追加して差し替える -->
