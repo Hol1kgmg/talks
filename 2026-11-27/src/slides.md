@@ -662,19 +662,18 @@ layout: default
 layout: default
 ---
 
-<!-- 目安: 20秒。テーマを並べるだけにし、結論は書かない（書くと話さないといけなくなる）。カードは共通の TopicCard（2026-11-17 の「他にも話したかったこと」と同じ見た目）
-TODO: 各カードの見出し・アイコン・リンク・一言を決める（アイコンは ph-question の仮置き） -->
+<!-- 目安: 20秒。テーマを並べるだけにし、結論は書かない（書くと話さないといけなくなる）。カードは共通の TopicCard（2026-11-17 の「他にも話したかったこと」と同じ見た目）。A2UI のアイコンは a2ui.org のヘッダー左端の SVG -->
 
 # 他にも話したかったこと
 
 <div class="h-9/10 flex items-stretch justify-center gap-6 py-16">
-  <TopicCard title="見出し1" href="#" label="テーマ1" note="一言">
-    <ph-question class="text-5xl opacity-40" />
+  <TopicCard title="相性" href="https://developers.cloudflare.com/browser-run/features/webmcp/" label="Kitesurf" note="なぜ WebMCP と相性がいいのか">
+    <logos-cloudflare-icon class="text-5xl" />
   </TopicCard>
-  <TopicCard title="見出し2" href="#" label="テーマ2" note="一言">
-    <ph-question class="text-5xl opacity-40" />
+  <TopicCard title="連携" href="https://personalagentprotocol.org/" label="Personal Agent Protocol" note="WebMCP と連携できるのか">
+    <SharedImage src="images/shared/personal_agent_protocol_icon.webp" img-class="h-[3.6rem]" />
   </TopicCard>
-  <TopicCard title="見出し3" href="#" label="テーマ3" note="一言">
-    <ph-question class="text-5xl opacity-40" />
+  <TopicCard title="比較" href="https://a2ui.org/" label="A2UI" note="Generative UI と UI SDK は何が違うのか">
+    <SharedImage src="images/a2ui_logo.svg" img-class="h-12" />
   </TopicCard>
 </div>
