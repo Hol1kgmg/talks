@@ -39,17 +39,30 @@ layout: default
 
 <!-- 目安: 20秒 -->
 
-# AI エージェント向けのフロントエンド技術が増えている
+# AI 向けのフロントエンド技術が増えている
 
 <div class="h-4/5 flex items-center justify-center gap-10">
   <div class="w-80 rounded-xl border-2 border-gray-500 bg-white px-6 py-5 shadow">
-    <div class="text-2xl font-bold">UI SDK</div>
+    <!-- アイコンとタイトルの領域は、WebMCP のイラスト h-20 + text-2xl の見出しが入る h-28 で固定し、両方のカードで上下中央に置く（カードの大きさもそろう） -->
+    <!-- ui-sdk.dev のヘッダーのロゴ（Vercel / UI SDK）。高さは WebMCP の text-2xl の見出しに合わせる -->
+    <div class="h-28 flex flex-col items-center justify-center">
+      <SharedImage src="images/shared/vercel-ui-sdk-logo.svg" img-class="h-7" />
+    </div>
     <div class="mt-2 text-sm opacity-70">Vercel Labs。2026年11月にベータ公開</div>
   </div>
   <div class="w-80 rounded-xl border-2 border-gray-500 bg-white px-6 py-5 shadow">
-    <div class="text-2xl font-bold">WebMCP</div>
+    <!-- items-center は左右中央に置くためのもの。既定の stretch のままだと img が横に引き伸ばされる -->
+    <div class="h-28 flex flex-col items-center justify-center">
+      <!-- developer.chrome.com の WebMCP の記事の og:image から、イラストだけを背景を抜いて切り出したもの -->
+      <SharedImage src="images/shared/webmcp-icon.webp" img-class="h-20" />
+      <div class="text-2xl font-bold">WebMCP</div>
+    </div>
     <div class="mt-2 text-sm opacity-70">ブラウザの API。Chromium で実験中</div>
   </div>
+</div>
+
+<div class="absolute bottom-8 right-12 text-xs opacity-60">
+  WebMCP の画像: <a href="https://developer.chrome.com/docs/ai/webmcp" target="_blank">developer.chrome.com</a>（CC BY 4.0）
 </div>
 
 ---
