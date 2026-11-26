@@ -8,6 +8,9 @@
 
 ###### 2026
 
+- `ja` [Vercel の UI SDK と WebMCP の役割を整理する](https://talks.hol1kgmg.com/2026/ui-sdk-webmcp/) - DMM meetup #41 ~DMM.go × Think! FrontEnd~ ([ソース](./2026-11-27))
+- `ja` [5分でわかるキーボードのカスタマイズ](https://talks.hol1kgmg.com/2026/keyboard-customize/) - TechBull mini LT&交流会！#5 ([ソース](./2026-11-25))
+- `ja` [WebMCP をどう使うべきか](https://talks.hol1kgmg.com/2026/webmcp-typescript/) - 【HERP社開催】五反田.ts #2 ([ソース](./2026-11-17))
 - `ja` [APM で agent skill をバージョン管理してみる](https://talks.hol1kgmg.com/2026/agent-package-manager/) - 新卒N年目の勉強会&交流会！ 〜若手エンジニアのAIの使い方・向き合い方〜 ([ソース](./2026-11-05))
 - `ja` [このPJ（キーボード）の技術選定についてレビューしてください](https://talks.hol1kgmg.com/2026/keyboard-tech-stack-review/) - 新卒N年目の勉強会&交流会！#6 ([ソース](./2026-10-10))
 - `ja` [anime.js v4.5.0 の adapter で three.js を動かす](https://talks.hol1kgmg.com/2026/animejs-v4/) - Web UI 実装勉強会 ([ソース](./2026-09-16))
