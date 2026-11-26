@@ -71,6 +71,7 @@ reuse/components/                                   # 実体（共通格納場�
   - `SelfIntro.vue`: 自己紹介スライドの本文（プロフィール画像・肩書き・SNSリンク）。固定内容で、`note` propに渡した一言だけが箇条書きの3項目目として追加される（未指定なら非表示）。使用例: `<SelfIntro note="anime.js は今回が初挑戦" />`
   - `SharedImage.vue`: 強制スタイルなしの汎用画像表示。`src` prop必須、`img-class` propでクラスを指定（デフォルト空文字）。`CenterImage`は`mx-auto object-contain`が常に付与され中央寄せの大きい画像向けなので、アイコンなどインライン表示したい小さい画像にはこちらを使う
   - `PrintClicks.vue`: PDFエクスポート時だけ、置いたスライドのクリック数を `at` propの値に戻す（描画なし）。使い方は[slidev-workflow.md](./slidev-workflow.md)の「PDFエクスポート」参照
+  - `TopicCard.vue`: 「他にも話したかったこと」のカード（`w-64`）。`title`（見出し）・`href`・`label`（リンクの文字）・`note`（一言）props必須、アイコンはdefault slotに入れる。横並びの外枠はスライド側で書く。使用例: `<TopicCard title="比較" href="https://…" label="UI SDK" note="…"><logos-vercel-icon class="text-5xl" /></TopicCard>`
 - 新規トークを追加する際は`<talk>/src/components/`を実ディレクトリとして作り、`shared`シンボリックリンクを張る
 - 複数画像を組み合わせた複雑なレイアウト（アイコン+ラベルの並び等）は、パターンが定着するまで個別スライドごとにベタ書きし、汎用コンポーネント化は見送っている
 - 実装例: `2026-09-08/src/components/`

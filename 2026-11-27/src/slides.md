@@ -502,3 +502,163 @@ clicks: 2
 }
 .cross { animation: cross 0.8s ease-in 1s both; }
 </style>
+
+---
+layout: default
+clicks: 4
+---
+
+<!-- 目安: 30秒。8枚目では WebMCP を hooks（サイトの裏側）につなぐ話しかしていない。UI コンポーネント（サイトの表側）からもツールを登録でき、部品の「操作」と「状態」を AI に渡せる。だから「いま画面でできること」が AI に伝わる。部品が画面から消えるとツールも消える（signal）、と口頭で補う -->
+
+# WebMCP（続き）
+
+<!-- 左は 8枚目の最後の状態の図、右は UI コンポーネントの操作と状態を registerTool へ渡す図と、その画面
+クリック:
+0: 右は見出し「表側とつなぐ」だけ
+1: 左の図の UI・registerTool の箱の複製が右の上へ飛ぶ → 操作・状態のタグと矢印 → ブラウザの画面
+2: 「操作」の複製が registerTool の箱へ動き、画面の S・M が赤く光る
+3: 「状態」の複製が同じように動き、「売り切れ」が緑に光る
+4: 左右に渡すもの（アプリの処理 / 画面の情報）。「WebMCP は裏側とも表側ともつなげられる」は口頭で締める
+-->
+<!-- 見出し / 図 / 伝わること の3段を左右でそろえる。図は下端でそろえる。クリック1で entered を付けて、下の style の動きを始める -->
+<div class="h-4/5 flex flex-col items-center justify-center" :class="$clicks >= 1 && 'entered'">
+  <div class="grid grid-cols-2 items-end justify-items-center gap-x-16 gap-y-4">
+    <div class="text-lg font-bold">裏側とつなぐ</div>
+    <div class="text-lg font-bold">表側とつなぐ</div>
+    <FrontendBranch :step="1" />
+    <!-- 箱と矢印の見た目は FrontendBranch にそろえる。左の図と同じ高さに伸ばし、2つの箱は上端（左の API の高さ）、画面は下端に置く -->
+    <div class="self-stretch flex flex-col items-center justify-between text-sm">
+      <!-- 上端から少し下げる。変えたら下の style の .fly-ui / .fly-tool の縦の位置も同じだけ変える -->
+      <div class="mt-6 flex items-center gap-2">
+        <div class="fly fly-ui w-44 rounded-lg border-2 border-gray-500 bg-white px-3 py-2 text-center shadow">
+          UI コンポーネント
+          <div class="later mt-1 flex justify-center gap-2 text-xs">
+            <span class="rounded border border-red-500 px-1.5 text-red-600">操作</span>
+            <span class="rounded border border-emerald-500 px-1.5 text-emerald-600">状態</span>
+          </div>
+        </div>
+        <ph-arrow-right class="grow-in text-4xl text-sky-500" />
+        <!-- 中身は UI の箱と同じ並び。タグは UI の箱の同じ位置（箱 w-44 + gap-2 + 矢印 1.2em × text-4xl + gap-2 = 14.7rem 左）から動かしてくる -->
+        <div class="fly fly-tool w-44 rounded-lg border-2 border-sky-500 bg-white px-3 py-2 text-center shadow">
+          <code>registerTool</code>
+          <div class="mt-1 flex justify-center gap-2 text-xs">
+            <span class="rounded border border-red-500 bg-white px-1.5 text-red-600 transition-all duration-700" :class="$clicks < 2 && '-translate-x-[14.7rem] opacity-0'">操作</span>
+            <span class="rounded border border-emerald-500 bg-white px-1.5 text-emerald-600 transition-all duration-700" :class="$clicks < 3 && '-translate-x-[14.7rem] opacity-0'">状態</span>
+          </div>
+        </div>
+      </div>
+      <!-- 押せる S・M（操作）を赤、売り切れの L（状態）を緑に光らせて、上の箱のタグと色で対応させる -->
+      <!-- ブラウザの画面として描き、「いま画面でできること」を画面そのもので伝える。ウィンドウの上端は 10・11枚目と同じ -->
+      <div class="later later-2 overflow-hidden rounded-xl border-2 border-gray-500 bg-white shadow">
+        <div class="flex items-center gap-2 border-b border-gray-300 bg-gray-100 px-2 py-1">
+          <div class="flex gap-1">
+            <span class="h-2 w-2 rounded-full bg-red-400" /><span class="h-2 w-2 rounded-full bg-yellow-400" /><span class="h-2 w-2 rounded-full bg-green-400" />
+          </div>
+          <div class="flex-1 rounded bg-white px-2 text-[10px] opacity-60">shop.example/items/sneaker</div>
+        </div>
+        <!-- 商品ページの横に、10・11枚目と同じ拡張機能の AI のパネルを置く。画面と合わせた幅を右の箱の段（25.7rem）以下に収める（超えると上の .fly の位置がずれる） -->
+        <div class="flex">
+        <!-- 商品ページ: 商品画像の右に、商品名・価格・購入するサイズのボタン -->
+        <div class="flex items-center gap-3 px-4 py-3">
+        <div class="h-14 w-14 flex shrink-0 items-center justify-center rounded bg-gray-100 text-3xl text-gray-400"><ph-sneaker /></div>
+        <div>
+        <div class="text-sm font-bold">スニーカー</div>
+        <div class="mb-2 text-xs opacity-70">¥8,800</div>
+        <div class="grid grid-cols-[auto_2rem_2rem_2rem] items-center gap-x-2">
+          <span class="text-xs font-bold">サイズ</span>
+          <span class="rounded border border-gray-500 bg-white text-center" :class="$clicks >= 2 && 'glow-red'">S</span>
+          <span class="rounded border border-gray-500 bg-white text-center" :class="$clicks >= 2 && 'glow-red'">M</span>
+          <span class="rounded border border-gray-300 bg-gray-100 text-center text-gray-400 line-through">L</span>
+          <span class="col-start-4 mt-1.5 justify-self-center whitespace-nowrap rounded bg-gray-100 px-1 text-[10px] text-gray-500" :class="$clicks >= 3 && 'glow-green'">売り切れ</span>
+        </div>
+        </div>
+        </div>
+        <!-- AI が認知したことを、画面の光と同じ色で1つずつ出す。画面が光り始めたあと（0.6秒後）、11枚目のチップと同じくページ側から流れ込み、ロボットが一度跳ねる（下の style の notice） -->
+        <div class="w-36 shrink-0 flex flex-col gap-1.5 border-l-2 border-gray-300 bg-gray-50 p-2 text-[10px]">
+          <div class="flex items-center gap-1 font-bold"><ph-puzzle-piece class="text-sm" />AI（拡張機能）</div>
+          <div class="flex items-center gap-1 transition-all duration-400" :class="$clicks < 2 ? '-translate-x-8 opacity-0' : 'delay-600'">
+            <ph-robot-duotone class="shrink-0 text-sm" :class="$clicks >= 2 && 'notice'" />
+            <span class="rounded-full border border-red-500 bg-white px-1.5 text-red-600">サイズを選ぶ</span>
+          </div>
+          <div class="flex items-center gap-1 transition-all duration-400" :class="$clicks < 3 ? '-translate-x-8 opacity-0' : 'delay-600'">
+            <ph-robot-duotone class="shrink-0 text-sm" :class="$clicks >= 3 && 'notice'" />
+            <span class="rounded-full border border-emerald-500 bg-white px-1.5 text-emerald-600">L は売り切れ</span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="font-bold text-sky-600 transition-opacity duration-500" :class="$clicks < 4 && 'opacity-0'">アプリの処理を渡す</div>
+    <div class="font-bold text-sky-600 transition-opacity duration-500" :class="$clicks < 4 && 'opacity-0'">画面の情報を渡す</div>
+  </div>
+</div>
+
+<style>
+/* クリック1: 左の図の下段の箱（UI・registerTool）に重ねた位置に複製を出し、右の上へ飛ばす
+   位置は左右の列の幅（右の箱の段 25.7rem + gap-x-16）と FrontendBranch の高さからの計算値。ずれたらここを調整する */
+.fly { opacity: 0; transition: transform 0.7s ease-in-out 0.3s, opacity 0.2s; }
+.fly-ui { transform: translate(-28.85rem, 13.7rem); }
+.fly-tool { transform: translate(-30.55rem, 13.7rem); }
+.entered .fly { opacity: 1; transform: none; }
+/* 箱が着いてから、タグ・矢印・見出し → 画面の順に出す */
+.later { opacity: 0; transition: opacity 0.5s 1s; }
+.later-2 { transition-delay: 1.5s; }
+.entered .later { opacity: 1; }
+/* UnoCSS の grow（flex-grow）と重ならない名前にする */
+.grow-in { transform: scaleX(0); transform-origin: left; transition: transform 0.5s 1s; }
+.entered .grow-in { transform: none; }
+/* タグが registerTool の箱に着く頃（0.5秒後）に1回光り、光ったまま止まる。光り方は EcScreen の水色の光（ring-2 + 影）と同じ形で色だけ変える */
+.glow-red { --glow: 0 0 0 2px rgb(239 68 68), 0 0 8px 2px rgb(239 68 68 / 0.5); }
+.glow-green { --glow: 0 0 0 2px rgb(16 185 129), 0 0 8px 2px rgb(16 185 129 / 0.5); }
+.glow-red, .glow-green { box-shadow: var(--glow); animation: light-up 0.4s 0.5s backwards; }
+@keyframes light-up {
+  from { box-shadow: none; }
+}
+/* パネルのチップが流れ込み終わった頃（0.6秒 + 0.4秒）に、ロボットが一度跳ねる。PDF の撮影（--wait 1500）までに終わるよう、合計 1.4秒に収める */
+.notice { animation: notice 0.4s 1s; }
+@keyframes notice {
+  50% { transform: translateY(-3px) scale(1.3); }
+}
+</style>
+
+---
+layout: default
+---
+
+<!-- 目安: 20秒。UI SDK は AI に伝わる UI の要素を作るライブラリ、WebMCP はそれを含めて Web アプリの表と裏から AI に情報を渡す経路。2つは役割が違う。カードは 2026-11-25 のまとめと同じ形 -->
+
+# まとめ
+
+<div class="h-4/5 flex flex-col justify-center text-xl text-center">
+  <div class="grid grid-cols-2 gap-10">
+    <div class="h-40 rounded-xl border-2 border-violet-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+      <div class="text-2xl font-bold text-violet-600">UI SDK</div>
+      <div class="opacity-80">AI に伝わる UI の要素を<br>作るライブラリ</div>
+    </div>
+    <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+      <div class="text-2xl font-bold text-sky-600">WebMCP</div>
+      <div class="opacity-80">Web アプリの表と裏から、<br>2種類の情報を AI に渡す経路</div>
+    </div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+<!-- 目安: 20秒。テーマを並べるだけにし、結論は書かない（書くと話さないといけなくなる）。カードは共通の TopicCard（2026-11-17 の「他にも話したかったこと」と同じ見た目）
+TODO: 各カードの見出し・アイコン・リンク・一言を決める（アイコンは ph-question の仮置き） -->
+
+# 他にも話したかったこと
+
+<div class="h-9/10 flex items-stretch justify-center gap-6 py-16">
+  <TopicCard title="見出し1" href="#" label="テーマ1" note="一言">
+    <ph-question class="text-5xl opacity-40" />
+  </TopicCard>
+  <TopicCard title="見出し2" href="#" label="テーマ2" note="一言">
+    <ph-question class="text-5xl opacity-40" />
+  </TopicCard>
+  <TopicCard title="見出し3" href="#" label="テーマ3" note="一言">
+    <ph-question class="text-5xl opacity-40" />
+  </TopicCard>
+</div>
