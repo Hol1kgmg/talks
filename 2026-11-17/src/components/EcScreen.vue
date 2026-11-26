@@ -4,7 +4,8 @@
 // delay: 光り始めを遅らせる（9枚目で左の図が動き終わってから光らせる）
 // state: 渡したときだけログイン状態を出す（13枚目）。guest ならヘッダーに「ログイン」、カートボタンを隠す
 // boolean にすると、渡さなかったときも Vue が false にするため、5・9枚目でも guest の表示になってしまう。文字列で受ける
-const props = defineProps<{ lit: boolean, delay?: string, state?: 'guest' | 'member' }>()
+// sdk: 検索欄を紫の枠にする（2026-11-27 の9枚目で、UI SDK を適用した部品として示す）。faint は複製を飛ばしたあとの薄い枠
+const props = defineProps<{ lit: boolean, delay?: string, state?: 'guest' | 'member', sdk?: 'on' | 'faint' }>()
 
 const glow = `ring-2 ring-sky-500 shadow-[0_0_8px_2px_rgb(14_165_233_/_0.5)] ${props.delay ?? ''}`
 </script>
@@ -23,7 +24,7 @@ const glow = `ring-2 ring-sky-500 shadow-[0_0_8px_2px_rgb(14_165_233_/_0.5)] ${p
       <div class="flex items-center gap-1 font-bold">
         <ph-storefront class="text-base" />ショップ
       </div>
-      <div :class="lit && glow" class="flex flex-1 items-center gap-1 rounded-full border border-gray-400 px-2 py-0.5 transition-shadow duration-500">
+      <div :class="[lit && glow, sdk === 'on' && 'ring-2 ring-violet-500', sdk === 'faint' && 'ring-2 ring-violet-200']" class="flex flex-1 items-center gap-1 rounded-full border border-gray-400 px-2 py-0.5 transition-shadow duration-500">
         <ph-magnifying-glass />
         <span class="opacity-50">商品を検索</span>
       </div>
