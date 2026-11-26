@@ -101,10 +101,7 @@ layout: center
   AI 向けのフロントエンド技術をサポートしている…???
 </div>
 
-<!-- TODO: ジョジョの1コマを `just image` で追加して差し替える -->
-<div class="mx-auto mt-8 h-60 w-100 flex items-center justify-center border-2 border-dashed border-gray-400 text-sm opacity-60">
-  画像（後で追加）
-</div>
+<CenterImage src="images/jojo_meme.webp" img-class="h-72 mt-6" />
 
 ---
 layout: section
