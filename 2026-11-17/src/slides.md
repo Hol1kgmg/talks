@@ -43,7 +43,8 @@ layout: default
 
 # WebMCP とは
 
-<PrintClicks :at="0" />
+<!-- PDF ではコード全体とツールが光った状態（①）にする -->
+<PrintClicks :at="1" />
 
 <SlideBody height="h-4/5" right-class="w-1/2 flex items-center justify-center">
 <template #left>
@@ -51,10 +52,10 @@ layout: default
 
 - ページが **ツール** を登録し、ブラウザの中のエージェントに呼ばせる API
 
-```ts {*|1,8|3-5|6}
+```ts {0|*|3|6}
 await document.modelContext.registerTool(
   {
-    name: 'navigate',
+    name: 'add_to_cart',
     description: '…',
     inputSchema: { /* … */ },
     execute: async (input) => { /* … */ },
@@ -209,7 +210,7 @@ layout: section
 layout: default
 ---
 
-<!-- 目安: 75秒。左は3枚目と同じ形のコード（ツール名だけ9枚目の add_to_cart）から始まる Magic Move、右はクリックごとに「何を変えたか」が1項目ずつ増える。手書きの JSON Schema → Zod 定義に置き換え → 実行時の検証を追加 → 関数に包む（13枚目の toolsFor が返すツールを、状態が変わるたびに登録し直せる形） → ジェネリクスで型をつなぐ -->
+<!-- 目安: 75秒。左は3枚目と同じコードから始まる Magic Move、右はクリックごとに「何を変えたか」が1項目ずつ増える。手書きの JSON Schema → Zod 定義に置き換え → 実行時の検証を追加 → 関数に包む（13枚目の toolsFor が返すツールを、状態が変わるたびに登録し直せる形） → ジェネリクスで型をつなぐ -->
 
 <!-- TODO(本実装):
 - text() の説明がスライドにない（実装は [{ type: 'text', text }] を直接返している）。口頭で補うか、スライドに書き戻すか決める

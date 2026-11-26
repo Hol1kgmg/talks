@@ -100,7 +100,8 @@ layout: default
 
 # WebMCP とは
 
-<PrintClicks :at="0" />
+<!-- PDF ではコード全体とツールが光った状態（①）にする -->
+<PrintClicks :at="1" />
 
 <SlideBody height="h-4/5" right-class="w-1/2 flex items-center justify-center">
 <template #left>
@@ -108,13 +109,13 @@ layout: default
 
 - ページが **ツール** を登録し、ブラウザの中のエージェントに呼ばせる API
 
-```ts {*|1,8|3-5|6}
+```ts {0|*|3|6}
 await document.modelContext.registerTool(
   {
-    name: 'navigate',
+    name: 'add_to_cart',
     description: '…',
     inputSchema: { /* … */ },
-    execute: async (input) => { /* … */ },
+    execute: async (input) => { /* … */ }, // 実行処理
   },
   { signal },
 )
@@ -485,11 +486,7 @@ clicks: 2
     </div>
   </div>
   <div class="flex items-center">
-    <div class="text-2xl font-bold text-center transition-opacity duration-500" :class="$clicks < 2 && 'opacity-0'">
-      <div>UI SDK の WebMCP 対応</div>
-      <div class="text-xl leading-none opacity-60"><span class="inline-block rotate-90">=</span></div>
-      <div>分解した UI の要素を、外部の AI にも渡す</div>
-    </div>
+    <div class="text-2xl font-bold text-center transition-opacity duration-500" :class="$clicks < 2 && 'opacity-0'">分解した UI の要素を、外部の AI にも渡す</div>
   </div>
 </div>
 
