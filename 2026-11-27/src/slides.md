@@ -31,7 +31,7 @@ layout: default
 
 # 自己紹介
 
-<SelfIntro />
+<SelfIntro note="漫画「ジャンケットバンク」の最新話で脳を焼かれました(2回目)"/>
 
 ---
 layout: default
