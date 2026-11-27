@@ -109,7 +109,7 @@ layout: section
 
 <!-- 目安: 10秒 -->
 
-# この2つを掘り下げる
+# 掘り下げてプロダクトに導入できるか検討した話
 
 ---
 layout: default
@@ -530,7 +530,7 @@ clicks: 4
 
 <!-- 目安: 30秒。8枚目では WebMCP を hooks（サイトの裏側）につなぐ話しかしていない。UI コンポーネント（サイトの表側）からもツールを登録でき、部品の「操作」と「状態」を AI に渡せる。だから「いま画面でできること」が AI に伝わる。部品が画面から消えるとツールも消える（signal）、と口頭で補う -->
 
-# WebMCP（続き）
+# WebMCP 視点の話（+UI SDK）
 
 <!-- 左は 8枚目の最後の状態の図、右は UI コンポーネントの操作と状態を registerTool へ渡す図と、その画面
 クリック:
@@ -646,23 +646,29 @@ layout: default
 ---
 
 <!-- 目安: 10秒。カードは 2026-11-25 のまとめと同じ形。台本:
-UI SDK は、AI に伝わる UI の要素を作るライブラリ。WebMCP は、Web アプリの表と裏から AI に情報を渡す経路。同じ「AI 向け」でも役割が違う、という話でした。
+UI SDK は、AI に伝わる UI の要素を作るライブラリ。WebMCP は、Web アプリの表と裏から AI に情報を渡す経路。同じ「AI 向け」でも役割が違います。
+UI SDK は WebMCP とつなげられるけど、WebMCP 自体がまだ試験的な段階。UI SDK 単体だと、メリットは実装サイドの AI の体験向上くらい。なので、今回はプロダクトへの導入を見送りました。
 -->
 <!-- 締めの一言はこのスライドで言い切る。次の「他にも話したかったこと」は表示して流すだけ -->
 
 # まとめ
 
-<div class="h-4/5 flex flex-col justify-center text-xl text-center">
-  <div class="grid grid-cols-2 gap-10">
-    <div class="h-40 rounded-xl border-2 border-violet-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
-      <div class="text-2xl font-bold text-violet-600">UI SDK</div>
-      <div class="opacity-80">AI に伝わる UI の要素を<br>作るライブラリ</div>
-    </div>
+<!-- 10・11枚目と同じく、カードは上端に寄せて少し空け、結論はその下に余った高さ（1fr）の上下中央に置く -->
+<div class="h-11/12 grid grid-rows-[auto_1fr] text-xl text-center">
+  <!-- 1段目のカードに役割、2段目（カードの外）に導入を見送った理由 -->
+  <div class="mt-8 grid grid-cols-2 gap-x-10 gap-y-4">
     <div class="h-40 rounded-xl border-2 border-sky-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
       <div class="text-2xl font-bold text-sky-600">WebMCP</div>
       <div class="opacity-80">Web アプリの表と裏から、<br>2種類の情報を AI に渡す経路</div>
     </div>
+    <div class="h-40 rounded-xl border-2 border-violet-200 bg-white/60 px-6 py-5 flex flex-col items-center justify-center gap-2">
+      <div class="text-2xl font-bold text-violet-600">UI SDK</div>
+      <div class="opacity-80">AI に伝わる UI の要素を<br>作るライブラリ</div>
+    </div>
+    <div class="text-base opacity-80">UI SDK とつなげられるが、<br>WebMCP 自体がまだ試験的な段階</div>
+    <div class="text-base opacity-80">単体のメリットは、<br>実装サイドの AI の体験向上くらい</div>
   </div>
+  <div class="flex items-center justify-center text-2xl font-bold">→ 今回はプロダクトへの導入を見送った</div>
 </div>
 
 ---
