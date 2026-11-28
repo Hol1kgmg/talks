@@ -1,6 +1,8 @@
 version: 2
+# apm ecosystem の beta 指定が不要になった（dependabot-core#16885）かを本番で確かめるまで残す
+enable-beta-ecosystems: true
 updates:
-  # .github/workflows/ 配下の全 workflow が対象。SHA pin と横の # vN コメントを更新する。
+  # .github/workflows/ 配下の全 workflow が対象。タグと actions.lock を更新する。
   - package-ecosystem: github-actions
     directory: /
     # 派生側の template-sync（土曜 09:00）より前に終えるため nix と同じ時刻にそろえる
@@ -12,9 +14,6 @@ updates:
     cooldown:
       default-days: 2
 
-  # flake.lock の全 input が対象。skill / rules の取得元も flake = false な input なので
-  # ここに含まれ、input ごとに PR が立つ。skill / rules の PR だけ dependabot-auto-merge が
-  # 素通りさせるので、dependabot-review スキルでレビューして手動マージする
   - package-ecosystem: nix
     directory: /
     schedule:
@@ -24,3 +23,14 @@ updates:
       timezone: Asia/Tokyo
     cooldown:
       default-days: 2
+
+  # skill / rules はエージェントの挙動を変えるため auto-merge せずレビューする。cooldown は apm では効かない（adr/from-template/0009）
+  # jactionlint は beta の apm を知らない
+  # jactionlint ignore=dependabot-syntax,dependabot-cooldown
+  - package-ecosystem: apm
+    directory: /
+    schedule:
+      interval: weekly
+      day: saturday
+      time: "08:00"
+      timezone: Asia/Tokyo

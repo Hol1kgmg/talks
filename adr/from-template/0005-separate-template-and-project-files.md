@@ -8,6 +8,8 @@ decision-makers: 'Hol1kgmg'
 
 ## Context and Problem Statement
 
+テンプレートリポジトリと派生リポジトリの管理場所を分け、テンプレートの更新を派生リポジトリへ円滑に取り込めるようにすることが目的である。
+
 [ADR 0001](0001-sync-template-via-merge-commit.md) のとおり、`just sync` はテンプレート元をマージコミットで取り込む。git のマージは行単位で、両側が同じ行か隣接する行を変えると衝突する。テンプレートと派生先が同じリスト（`skills.nix` の ID、`flake.nix` の `inputs`・skill の取得元・devShell の `packages`）に追記するため、同期のたびに衝突していた。
 
 ## Decision
@@ -52,3 +54,4 @@ decision-makers: 'Hol1kgmg'
 ## More Information
 
 - 前提: [テンプレート元の変更を手動のマージコミットで取り込む](0001-sync-template-via-merge-commit.md)
+- 一時的に一部置き換えられた: [skill / rules を Nix から APM に移す](0007-manage-skills-and-rules-with-apm.md)（`skills*.nix` / `rules*.nix` / `sources*.nix` の部分）。[skill / rules の取得元を flake input に戻す](0008-revert-skill-sources-to-flake-inputs.md) で元に戻した

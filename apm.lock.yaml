@@ -1,0 +1,2511 @@
+lockfile_version: '1'
+apm_version: 0.35.0
+dependencies:
+  - repo_url: _local/project
+    name: project-local
+    version: 0.0.0
+    package_type: apm_package
+    deployed_files:
+      - .claude/rules/slidev-assets.md
+      - .claude/rules/slidev-style.md
+      - .claude/rules/slidev-workflow.md
+      - .claude/rules/talk-ideas.md
+    deployed_file_hashes:
+      .claude/rules/slidev-assets.md: sha256:46e975e654848f7c8d483d140f9d80fb06a044650bea095baeb235373a18ec9c
+      .claude/rules/slidev-style.md: sha256:7bf10d42d7e5149435e050398fab5cd937220d6e3a454c81c697a0e0058fc8cb
+      .claude/rules/slidev-workflow.md: sha256:8322c48c06e430d5c68c011bef403336db23a3fbccf3e637fc6419ddf559f8ac
+      .claude/rules/talk-ideas.md: sha256:f5a7ad7401e2b204ec892402c68a6d685ad114d632c3e7499b90508054757646
+    source: local
+    local_path: ./packages/project
+    content_hash: sha256:66cbe17791a08698c83fb1bb17a5b8597a65c824d19d2b0f1d2a8a100cd09ea4
+  - repo_url: _local/template
+    name: template
+    version: 0.0.0
+    package_type: apm_package
+    deployed_files:
+      - .agents/skills/bot-pr-routine
+      - .agents/skills/bot-pr-routine/SKILL.md
+      - .agents/skills/init-from-template
+      - .agents/skills/init-from-template/SKILL.md
+      - .agents/skills/template-sync-review
+      - .agents/skills/template-sync-review/SKILL.md
+    deployed_file_hashes:
+      .agents/skills/bot-pr-routine/SKILL.md: sha256:418ced00e03c74c411c97befdd26e63d20eba20119966336c63c80601485c9e9
+      .agents/skills/init-from-template/SKILL.md: sha256:b58b2ba3647738ccf7102de169d0f31a38bd66e4118aba7e9321602ec9b9dc75
+      .agents/skills/template-sync-review/SKILL.md: sha256:deda8f9dfa60bd112fd51e50192cf049ab10f95bd0871adcd3bf2681a747c47a
+    source: local
+    local_path: ./packages/template
+    content_hash: sha256:20bb8c95e9bc282a0def2bc61dfed53870a416f48de995938f2d3f8562e2f403
+  - repo_url: addyosmani/web-quality-skills
+    name: accessibility
+    host: github.com
+    resolved_commit: afa8da942115f2961fdbfa80807ea0b232ff6c00
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/accessibility
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/accessibility
+      - .agents/skills/accessibility/SKILL.md
+      - .agents/skills/accessibility/references/A11Y-PATTERNS.md
+      - .agents/skills/accessibility/references/WCAG.md
+    deployed_file_hashes:
+      .agents/skills/accessibility/SKILL.md: sha256:267fb2a0707d6142f2871f22688203a42ba21291a2aa200fb740936e41362b5d
+      .agents/skills/accessibility/references/A11Y-PATTERNS.md: sha256:f10e238dd4dd3c4f51134c2056bc02d3dd4f8fb6ccc9145c2c1ba7aab4d58140
+      .agents/skills/accessibility/references/WCAG.md: sha256:16683e025e3833d931c9d880645d98a448827f97e10189b6c8f12c832e7a2361
+    content_hash: sha256:48861fac56e62fd43f9c3a173cef9e35a1545637445c6bdb64c18f083af84a44
+  - repo_url: addyosmani/web-quality-skills
+    name: best-practices
+    host: github.com
+    resolved_commit: afa8da942115f2961fdbfa80807ea0b232ff6c00
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/best-practices
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/best-practices
+      - .agents/skills/best-practices/SKILL.md
+      - .agents/skills/best-practices/references/SECURITY.md
+    deployed_file_hashes:
+      .agents/skills/best-practices/SKILL.md: sha256:9d1f10a08cd7a94176ce160ec860dbd3ecfadad75d46546001883f1f907c5c3e
+      .agents/skills/best-practices/references/SECURITY.md: sha256:af021e5db37e921c79b8807d63e1cfc02dcf63614d2806cfba04ba44a1366178
+    content_hash: sha256:db1978cc5ae90bd7f89609fec10251a50c1191d8e5a6b79719219f71f87b6f93
+  - repo_url: addyosmani/web-quality-skills
+    name: core-web-vitals
+    host: github.com
+    resolved_commit: afa8da942115f2961fdbfa80807ea0b232ff6c00
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/core-web-vitals
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/core-web-vitals
+      - .agents/skills/core-web-vitals/SKILL.md
+      - .agents/skills/core-web-vitals/references/CLS.md
+      - .agents/skills/core-web-vitals/references/INP.md
+      - .agents/skills/core-web-vitals/references/LCP.md
+    deployed_file_hashes:
+      .agents/skills/core-web-vitals/SKILL.md: sha256:731aa78c0347e8b3e191b75962175bee058ce73817278e610ac0fe546e685914
+      .agents/skills/core-web-vitals/references/CLS.md: sha256:c4fa0cd6311720b413018471a6ac9240e87db52af3b6e306ffb6684491f15898
+      .agents/skills/core-web-vitals/references/INP.md: sha256:7d40cf6053e9bb8a8a77e02da7c6b25aa8e6c1c092b48d8f9c8f30e9b25cf3a7
+      .agents/skills/core-web-vitals/references/LCP.md: sha256:522054d44b7a55409cbde511e8d365f7fa52399dd1e72b8d6b44a92ecddca81f
+    content_hash: sha256:2ce82f716569421bdffc8edf5c8abbbd7646ba115071d17aa2d538f5ee3424e8
+  - repo_url: addyosmani/web-quality-skills
+    name: performance
+    host: github.com
+    resolved_commit: afa8da942115f2961fdbfa80807ea0b232ff6c00
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/performance
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/performance
+      - .agents/skills/performance/SKILL.md
+      - .agents/skills/performance/references/MEASUREMENT.md
+      - .agents/skills/performance/references/RUM.md
+    deployed_file_hashes:
+      .agents/skills/performance/SKILL.md: sha256:b0c220185d88c61f7770eb127d8facf86c86d2dd1fd82b86e15a4965a0137265
+      .agents/skills/performance/references/MEASUREMENT.md: sha256:128f6f20c6c8fb55fcccd8b259cf680811022cf262dc55b03e9d623bcb555a99
+      .agents/skills/performance/references/RUM.md: sha256:a2bdf660ecb23098afbadfb83254d39cef10c0da82938225f61271bad3f81b19
+    content_hash: sha256:0b39d050ba0d2abc7ae5ab31f5b52b80a4e9f250aa01a61357968819ca28de18
+  - repo_url: addyosmani/web-quality-skills
+    name: seo
+    host: github.com
+    resolved_commit: afa8da942115f2961fdbfa80807ea0b232ff6c00
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/seo
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/seo
+      - .agents/skills/seo/SKILL.md
+      - .agents/skills/seo/references/STRUCTURED-DATA.md
+    deployed_file_hashes:
+      .agents/skills/seo/SKILL.md: sha256:57cd16566c2c706186b643644dec2884da89c42f296843364c65a40a4d566ae6
+      .agents/skills/seo/references/STRUCTURED-DATA.md: sha256:3e03876f41d223c89dfdbc0a0fe3668454e5d8819aad5379f4541fbf0bd67e17
+    content_hash: sha256:a9f5f5a03f30917ebdaaccff436b7d0e0df68f0c19b273302863b9c5cdb9f20d
+  - repo_url: addyosmani/web-quality-skills
+    name: web-quality-audit
+    host: github.com
+    resolved_commit: afa8da942115f2961fdbfa80807ea0b232ff6c00
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/web-quality-audit
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/web-quality-audit
+      - .agents/skills/web-quality-audit/SKILL.md
+      - .agents/skills/web-quality-audit/scripts/analyze.sh
+    deployed_file_hashes:
+      .agents/skills/web-quality-audit/SKILL.md: sha256:1903cfb4dcba987d50dc7a51f6c19ec43830ff924c2c8f78979d8775fbe20f91
+      .agents/skills/web-quality-audit/scripts/analyze.sh: sha256:b1b28663af412f746baf5008618e3ae798e322b10ff5ab7ae1830826a6d8e4e2
+    content_hash: sha256:660e02ead2a84a67c83be7ee98ee778f1ebd9fc25e77be812a1179fc10aadaeb
+  - repo_url: anthropics/skills
+    name: frontend-design
+    host: github.com
+    resolved_commit: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/frontend-design
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/frontend-design
+      - .agents/skills/frontend-design/LICENSE.txt
+      - .agents/skills/frontend-design/SKILL.md
+    deployed_file_hashes:
+      .agents/skills/frontend-design/LICENSE.txt: sha256:0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594
+      .agents/skills/frontend-design/SKILL.md: sha256:d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3
+    content_hash: sha256:89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576
+  - repo_url: anthropics/skills
+    name: skill-creator
+    host: github.com
+    resolved_commit: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/skill-creator
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/skill-creator
+      - .agents/skills/skill-creator/LICENSE.txt
+      - .agents/skills/skill-creator/SKILL.md
+      - .agents/skills/skill-creator/agents/analyzer.md
+      - .agents/skills/skill-creator/agents/comparator.md
+      - .agents/skills/skill-creator/agents/grader.md
+      - .agents/skills/skill-creator/assets/eval_review.html
+      - .agents/skills/skill-creator/eval-viewer/generate_review.py
+      - .agents/skills/skill-creator/eval-viewer/viewer.html
+      - .agents/skills/skill-creator/references/schemas.md
+      - .agents/skills/skill-creator/scripts/__init__.py
+      - .agents/skills/skill-creator/scripts/aggregate_benchmark.py
+      - .agents/skills/skill-creator/scripts/generate_report.py
+      - .agents/skills/skill-creator/scripts/improve_description.py
+      - .agents/skills/skill-creator/scripts/package_skill.py
+      - .agents/skills/skill-creator/scripts/quick_validate.py
+      - .agents/skills/skill-creator/scripts/run_eval.py
+      - .agents/skills/skill-creator/scripts/run_loop.py
+      - .agents/skills/skill-creator/scripts/utils.py
+    deployed_file_hashes:
+      .agents/skills/skill-creator/LICENSE.txt: sha256:bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362
+      .agents/skills/skill-creator/SKILL.md: sha256:dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf
+      .agents/skills/skill-creator/agents/analyzer.md: sha256:bf68f4cac5a56c673a928c2e6d619586c5b93ea364026ab37547772cb45a663a
+      .agents/skills/skill-creator/agents/comparator.md: sha256:fe1fc9787c495d864c5d6eada47396478572325fde1b33a96d78bf4b849b7a3e
+      .agents/skills/skill-creator/agents/grader.md: sha256:57134da0c1a4eea33fbd74a1c9c44aa814f07d6bc64de303edb586f941e5d21a
+      .agents/skills/skill-creator/assets/eval_review.html: sha256:ce477dcc74dc1c0d1d3352646a79167b5a63634e936b1019160025065974e452
+      .agents/skills/skill-creator/eval-viewer/generate_review.py: sha256:fc9d1b9243fe5ab6012ebd579bd76d0035de1b79fd3b969de114defab26478fb
+      .agents/skills/skill-creator/eval-viewer/viewer.html: sha256:a53213426ee1100441d701a3a0d49cda7a842f992d2c36463f4d3cc0258575fa
+      .agents/skills/skill-creator/references/schemas.md: sha256:8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f
+      .agents/skills/skill-creator/scripts/__init__.py: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      .agents/skills/skill-creator/scripts/aggregate_benchmark.py: sha256:123ef128ea5ccc01a4b1ac212ef5567f21e9c13d3d240609780beeb3200c49aa
+      .agents/skills/skill-creator/scripts/generate_report.py: sha256:13df7118a3c50c83c4c3250a606d5f2b20b25a3d44cbc392b3d669ec75281453
+      .agents/skills/skill-creator/scripts/improve_description.py: sha256:87d864570220b699fac52da309d2d6efdb060647bfebc74f768128e646accf80
+      .agents/skills/skill-creator/scripts/package_skill.py: sha256:1a33059b0db1ef73375d46d513e5ea81369d2e8838c970597b0d52ddef8d1c0f
+      .agents/skills/skill-creator/scripts/quick_validate.py: sha256:67cf5703402013936c8fb75ad6a1afecd8841d45cc5e606b634eb05825fde365
+      .agents/skills/skill-creator/scripts/run_eval.py: sha256:43e3b8f80dbf69c343967ba77e268fae991d9fa3ed68b32a0ff02532cd48657f
+      .agents/skills/skill-creator/scripts/run_loop.py: sha256:7bd6f674203168520517eec94c55f493c0d154339b061b4d7c0f0dad187d0f21
+      .agents/skills/skill-creator/scripts/utils.py: sha256:3af8ae62c40c73ab712207436a0d9a981e845f25c5a7040229eb189cc8e45bb1
+    content_hash: sha256:b2bfe91d69ca99994c0566baede889e7d2b9bb8791c6b6106c5d387392f717f6
+  - repo_url: anthropics/skills
+    name: webapp-testing
+    host: github.com
+    resolved_commit: e4bb5d960d87126ff3b3a8af1a104b7db67560ba
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/webapp-testing
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/webapp-testing
+      - .agents/skills/webapp-testing/LICENSE.txt
+      - .agents/skills/webapp-testing/SKILL.md
+      - .agents/skills/webapp-testing/examples/console_logging.py
+      - .agents/skills/webapp-testing/examples/element_discovery.py
+      - .agents/skills/webapp-testing/examples/static_html_automation.py
+      - .agents/skills/webapp-testing/scripts/with_server.py
+    deployed_file_hashes:
+      .agents/skills/webapp-testing/LICENSE.txt: sha256:bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362
+      .agents/skills/webapp-testing/SKILL.md: sha256:51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2
+      .agents/skills/webapp-testing/examples/console_logging.py: sha256:ea46877289acb82da7e7ce59d0bc37c8977cd57e2a006d0c88d7a1c625bf95da
+      .agents/skills/webapp-testing/examples/element_discovery.py: sha256:d63c89604a22f8845d724e95dda45db49b1bf57c25ce0a83afbb7b8da3d402f0
+      .agents/skills/webapp-testing/examples/static_html_automation.py: sha256:9d533aafb875ee3ab8b8ebf8f5b9003ac8d999da3d09b285cce252e623140064
+      .agents/skills/webapp-testing/scripts/with_server.py: sha256:b0dcf4918935b795f4eda9821579b9902119235ff4447f687a30286e7d0925fd
+    content_hash: sha256:8320d78c856340fa2f09a3ffb79b91de9427945abc18d36b6d7e9204120dad0a
+  - repo_url: cloudflare/security-audit-skill
+    name: security-audit
+    host: github.com
+    resolved_commit: c1c8a8c1471069fb0e188eeaff69b8e8db6564a8
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/security-audit
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/security-audit
+      - .agents/skills/security-audit/AI-AND-LLM.md
+      - .agents/skills/security-audit/ATTACK-CLASSES.md
+      - .agents/skills/security-audit/CLIENT-SIDE.md
+      - .agents/skills/security-audit/CLOUD-AND-DEPLOYMENT.md
+      - .agents/skills/security-audit/DATA-ISOLATION-AND-LIFECYCLE.md
+      - .agents/skills/security-audit/DESKTOP-MOBILE-AND-LOCAL-IPC.md
+      - .agents/skills/security-audit/HUNTING.md
+      - .agents/skills/security-audit/MEMORY-SAFETY-AND-BINARY.md
+      - .agents/skills/security-audit/PROTOCOLS-RPC-AND-MESSAGING.md
+      - .agents/skills/security-audit/RECONNAISSANCE.md
+      - .agents/skills/security-audit/RESOURCE-EXHAUSTION-AND-AVAILABILITY.md
+      - .agents/skills/security-audit/SKILL.md
+      - .agents/skills/security-audit/SUPPLY-CHAIN-AND-RELEASE.md
+      - .agents/skills/security-audit/VALIDATION-AND-REPORTING.md
+      - .agents/skills/security-audit/WEB-PROTOCOL-AND-AUTH.md
+      - .agents/skills/security-audit/report-schema.json
+      - .agents/skills/security-audit/validate-coverage-ledger.cjs
+      - .agents/skills/security-audit/validate-coverage-ledger.test.cjs
+      - .agents/skills/security-audit/validate-findings.cjs
+      - .agents/skills/security-audit/validate-findings.test.cjs
+    deployed_file_hashes:
+      .agents/skills/security-audit/AI-AND-LLM.md: sha256:7335a95c43554eadefcf03ece639291bb0e038c398a179299e3887ffe06bd2ef
+      .agents/skills/security-audit/ATTACK-CLASSES.md: sha256:3ee4f00c6e8c9dcf6dd02dd5ac2a4ceb322e2085f3e9fbe79cf0c6330bc7ef83
+      .agents/skills/security-audit/CLIENT-SIDE.md: sha256:613f6b98f86083e045525c5b60154ffdab122bac35f1e05eb17488e6e453370c
+      .agents/skills/security-audit/CLOUD-AND-DEPLOYMENT.md: sha256:3c80f3088be22345e07b057c056d6ed99fe2b0304f794398964f7ccd5a496ca3
+      .agents/skills/security-audit/DATA-ISOLATION-AND-LIFECYCLE.md: sha256:307dcb3e24d292715c4a041190e7bb135646a37eb6187619ae01d000a634a4ad
+      .agents/skills/security-audit/DESKTOP-MOBILE-AND-LOCAL-IPC.md: sha256:58eae8ee0ca6a46611c501ec5a3ab47fdff88dd7db0d8d74789bbf8bb19d8cb2
+      .agents/skills/security-audit/HUNTING.md: sha256:71c121decea1322c47c718f6e110f1a892980bb4266bd7ac55ef043a213ade09
+      .agents/skills/security-audit/MEMORY-SAFETY-AND-BINARY.md: sha256:7c8b0dccfb35315cca2455509674d49632b2fe37e1f3aac16c1a496a7e9924a7
+      .agents/skills/security-audit/PROTOCOLS-RPC-AND-MESSAGING.md: sha256:8b73816fa5b3697c9c40977f0c836b40f01d6e81929ff2720fe83ce089e9a619
+      .agents/skills/security-audit/RECONNAISSANCE.md: sha256:02ca887aca84de8ae137f1891bd2f0a54f28d3fa6da92a27f54734382b3381a2
+      .agents/skills/security-audit/RESOURCE-EXHAUSTION-AND-AVAILABILITY.md: sha256:4326fab5c92a0b4c420a70196254040105cd794026562130b59bf1a6db3e4baa
+      .agents/skills/security-audit/SKILL.md: sha256:5e3e96a1e438d8f35fef0a1e38f02d4f00e2bdf910401b7dfe00e6779c6dac85
+      .agents/skills/security-audit/SUPPLY-CHAIN-AND-RELEASE.md: sha256:f372e919940e335468ba1ae09f99026c3986a345f7fe26f8068f132e199f52a5
+      .agents/skills/security-audit/VALIDATION-AND-REPORTING.md: sha256:b892470cb89bb31f33403e050d4bdfbe2cdaef940ade1496fa65e32b2e129449
+      .agents/skills/security-audit/WEB-PROTOCOL-AND-AUTH.md: sha256:4f3066dffa23c5635859187be9b96c32f2aff29a688186b91ff0c63e47d62b5c
+      .agents/skills/security-audit/report-schema.json: sha256:6575c9de4a62255699ea052ebf9a49ebfb373a32891bcd89af6f55cc84b35519
+      .agents/skills/security-audit/validate-coverage-ledger.cjs: sha256:2eb280bd2e33c002916f86db9b29f9edfedb6454e5db973c766290465b868ac8
+      .agents/skills/security-audit/validate-coverage-ledger.test.cjs: sha256:cfb9df26b03469a4279a70e7664a2a5434dd6f8c2c204e91f9b0aeb9dd71e648
+      .agents/skills/security-audit/validate-findings.cjs: sha256:e85f232e36bfac0f866f244da50376692d6b45c690beadcb00608b0e6c8b5283
+      .agents/skills/security-audit/validate-findings.test.cjs: sha256:b92001117a92c4161d43777a0ba2fa182a8a4d97f2304cc8c0cee5331497b73b
+    content_hash: sha256:ac796659de231c3ab76f6ee012836072bdc82928fb019199925c9062800e16c1
+  - repo_url: hol1kgmg/rules
+    materialization_repo_url: Hol1kgmg/rules
+    name: rules-orca-worktree
+    host: github.com
+    resolved_commit: 9052b86c5e5820d3919dc2553fcf21402592d2c5
+    resolved_ref: main
+    version: 1.0.0
+    virtual_path: rules/orca-worktree.instructions.md
+    is_virtual: true
+    package_type: apm_package
+    deployed_files:
+      - .claude/rules/orca-worktree.md
+    deployed_file_hashes:
+      .claude/rules/orca-worktree.md: sha256:0fac71a864977bee34f44eecd93093e324616bdcea08fb3232b91217414605cb
+    content_hash: sha256:2d7a66e6fb486cad63cab80a5ebbbfaa1e64809ca82820f82af9970d1701820b
+  - repo_url: hol1kgmg/skills
+    materialization_repo_url: Hol1kgmg/skills
+    name: cognitive-rhythm-writing
+    host: github.com
+    resolved_commit: cbe70fa290cf416765427184f7cf1494048e19ae
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/cognitive-rhythm-writing
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/cognitive-rhythm-writing
+      - .agents/skills/cognitive-rhythm-writing/SKILL.md
+    deployed_file_hashes:
+      .agents/skills/cognitive-rhythm-writing/SKILL.md: sha256:65486e64f33ce2ab03c5db198b1f92e2838e71abfb1a80085d1b405340c11437
+    content_hash: sha256:c9bc3d89d327689176561ef4d73135685c73d90eca03f70403e4e21af3c68a3b
+  - repo_url: hol1kgmg/skills
+    materialization_repo_url: Hol1kgmg/skills
+    name: dependabot-review
+    host: github.com
+    resolved_commit: cbe70fa290cf416765427184f7cf1494048e19ae
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/dependabot-review
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/dependabot-review
+      - .agents/skills/dependabot-review/SKILL.md
+      - .agents/skills/dependabot-review/references/nix-content-input.md
+      - .agents/skills/dependabot-review/references/nix-flake.md
+      - .agents/skills/dependabot-review/references/semver.md
+    deployed_file_hashes:
+      .agents/skills/dependabot-review/SKILL.md: sha256:fb54f40c20221b116a8b6e48d0b2dc1c312df1858ccfe77995e51558d9d94b1e
+      .agents/skills/dependabot-review/references/nix-content-input.md: sha256:89c1d2b831700a51a6c5646e4022e4a75674857736c1f406147334022f02a3da
+      .agents/skills/dependabot-review/references/nix-flake.md: sha256:aaecaa2315e2fea00257e40742a68036f26ec2ec8d67acaf8528729ce812f252
+      .agents/skills/dependabot-review/references/semver.md: sha256:6082fd472ec9ccdadffc7a2b8bfb7d6037b2c0fdfdf7121549ec871813cdb868
+    content_hash: sha256:ec4edc6430a87fc1cc3246da9ec8e7b04152f0aae83faeca0f1e94535305d4ff
+  - repo_url: hol1kgmg/skills
+    materialization_repo_url: Hol1kgmg/skills
+    name: japanese-tech-writing
+    host: github.com
+    resolved_commit: cbe70fa290cf416765427184f7cf1494048e19ae
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/japanese-tech-writing
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/japanese-tech-writing
+      - .agents/skills/japanese-tech-writing/SKILL.md
+    deployed_file_hashes:
+      .agents/skills/japanese-tech-writing/SKILL.md: sha256:ad350e0e6f5630fd94d8ab98a6aee194053b0096fdc944c23e271d6dfa09ee68
+    content_hash: sha256:9ddea7db32f38a243da9ff3c08f19fa1f4eb39f9cc27f3a966842cfb323376f3
+  - repo_url: hol1kgmg/skills
+    materialization_repo_url: Hol1kgmg/skills
+    name: slide-reviewer
+    host: github.com
+    resolved_commit: cbe70fa290cf416765427184f7cf1494048e19ae
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/slide-reviewer
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/slide-reviewer
+      - .agents/skills/slide-reviewer/README.md
+      - .agents/skills/slide-reviewer/SKILL.md
+      - .agents/skills/slide-reviewer/references/content-review.md
+      - .agents/skills/slide-reviewer/references/presentation-patterns.md
+      - .agents/skills/slide-reviewer/references/scoring-guide.md
+      - .agents/skills/slide-reviewer/references/technical-slides.md
+      - .agents/skills/slide-reviewer/references/visual-review.md
+    deployed_file_hashes:
+      .agents/skills/slide-reviewer/README.md: sha256:37c87f0e4d8a13eab57c7fdd0b3507e1809a4e785f5253e0d693aba72436ec99
+      .agents/skills/slide-reviewer/SKILL.md: sha256:671f1956ced14984547df53e96019331ed2b3d147f32ac7f02853bad83ab7e26
+      .agents/skills/slide-reviewer/references/content-review.md: sha256:c316db18d8fe0fbcb878c305949561fbafd2185a0e20544f7aa0a7e12cdb5706
+      .agents/skills/slide-reviewer/references/presentation-patterns.md: sha256:9c4c7c7e2e6d5870027b1fc17cc2a08176124f972c2ea897302bab803421ef40
+      .agents/skills/slide-reviewer/references/scoring-guide.md: sha256:91eea69563e6b50d9b9dccf1267b7caaec8f7f1505b32ee35f0fd31399b93e8c
+      .agents/skills/slide-reviewer/references/technical-slides.md: sha256:e7746d9f62dcfee1d3a7b758683b91a17705d2b6f97af4e9674f585455698c90
+      .agents/skills/slide-reviewer/references/visual-review.md: sha256:e07ddaa79497db58067dc677853722cd8ba7fe7fd1b1f09743305a6ba7585dba
+    content_hash: sha256:86b0f741a1697d5cf5f9e94660785a446b53bad66e34758334e480f0bc118096
+  - repo_url: nanaism/yomiyasu
+    name: yomiyasu
+    host: github.com
+    resolved_commit: 3979c750b5e1fe9892bd47bb354f0fb51d534ff2
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/yomiyasu
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/yomiyasu
+      - .agents/skills/yomiyasu/LICENSE
+      - .agents/skills/yomiyasu/SKILL.md
+      - .agents/skills/yomiyasu/UNICODE-LICENSE.txt
+      - .agents/skills/yomiyasu/assets/algo-artis.png
+      - .agents/skills/yomiyasu/references/audience.md
+      - .agents/skills/yomiyasu/references/calques.md
+      - .agents/skills/yomiyasu/references/doc-types/article.md
+      - .agents/skills/yomiyasu/references/doc-types/essay.md
+      - .agents/skills/yomiyasu/references/doc-types/formal.md
+      - .agents/skills/yomiyasu/references/doc-types/incident.md
+      - .agents/skills/yomiyasu/references/doc-types/mail.md
+      - .agents/skills/yomiyasu/references/doc-types/manual.md
+      - .agents/skills/yomiyasu/references/doc-types/minutes.md
+      - .agents/skills/yomiyasu/references/doc-types/paper.md
+      - .agents/skills/yomiyasu/references/doc-types/pr.md
+      - .agents/skills/yomiyasu/references/doc-types/promo.md
+      - .agents/skills/yomiyasu/references/doc-types/proposal.md
+      - .agents/skills/yomiyasu/references/doc-types/script.md
+      - .agents/skills/yomiyasu/references/doc-types/slides.md
+      - .agents/skills/yomiyasu/references/domains/business.md
+      - .agents/skills/yomiyasu/references/domains/essay.md
+      - .agents/skills/yomiyasu/references/domains/tech.md
+      - .agents/skills/yomiyasu/references/fact-recovery-details.md
+      - .agents/skills/yomiyasu/references/fact-recovery.md
+      - .agents/skills/yomiyasu/references/gemini-syntax.md
+      - .agents/skills/yomiyasu/references/lists/fact-gaps.txt
+      - .agents/skills/yomiyasu/references/lists/feelings.txt
+      - .agents/skills/yomiyasu/references/lists/hedges.txt
+      - .agents/skills/yomiyasu/references/lists/intensifiers.txt
+      - .agents/skills/yomiyasu/references/lists/katakana-terms.txt
+      - .agents/skills/yomiyasu/references/lists/nominalization.txt
+      - .agents/skills/yomiyasu/references/lists/renyo-nouns.txt
+      - .agents/skills/yomiyasu/references/lists/thin-evaluation.txt
+      - .agents/skills/yomiyasu/references/persona.md
+      - .agents/skills/yomiyasu/references/rephrase-test.md
+      - .agents/skills/yomiyasu/references/review-points.md
+      - .agents/skills/yomiyasu/references/slop-catalog.md
+      - .agents/skills/yomiyasu/scripts/markdown_visibility.py
+      - .agents/skills/yomiyasu/scripts/yomiyasu_check.py
+      - .agents/skills/yomiyasu/scripts/yomiyasu_diff.py
+      - .agents/skills/yomiyasu/scripts/yomiyasu_hook.py
+      - .agents/skills/yomiyasu/scripts/yomiyasu_lint.py
+    deployed_file_hashes:
+      .agents/skills/yomiyasu/LICENSE: sha256:79d802f15bc8caf67f1a83c1bdbe214ccb41a0a0275f9046b329b89c65ee1fca
+      .agents/skills/yomiyasu/SKILL.md: sha256:e12341e6a5ca956be2589cfcd5fa5675913add02ddd168c5d5cd04f0b22fb709
+      .agents/skills/yomiyasu/UNICODE-LICENSE.txt: sha256:e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96
+      .agents/skills/yomiyasu/assets/algo-artis.png: sha256:57c7c204d43d0e2873e3b61221db3ac4ba75a7ce29271a6deaeb3bd09f26fdec
+      .agents/skills/yomiyasu/references/audience.md: sha256:451a18af660be00065b89cf2c977711cc8c30b02a05643172fda758a083b7038
+      .agents/skills/yomiyasu/references/calques.md: sha256:6a2f7b4980d6fe58c0f191f91046f75ae5cfb97a6b4626e7efd07276a213635b
+      .agents/skills/yomiyasu/references/doc-types/article.md: sha256:e5009c496b4b4ac8974c16f2f15b0f8ce93620863dfe721803b01138db845716
+      .agents/skills/yomiyasu/references/doc-types/essay.md: sha256:fd8b888d3599747040c416df696ab39b9d9b962ce19a9229544b691ef43742af
+      .agents/skills/yomiyasu/references/doc-types/formal.md: sha256:6b4121d4e57d52fb60fb428770a4504c53e1fb06c3fa20e57a1fcd56ce933141
+      .agents/skills/yomiyasu/references/doc-types/incident.md: sha256:d25282690b220e5d4fa2595228d282d65f7b03d8d4b325c30bf251b58a474b77
+      .agents/skills/yomiyasu/references/doc-types/mail.md: sha256:aafdef898a05c8526fed64c7b9e076dd618015704256e1a7ee4d1d0c9e5b4ca5
+      .agents/skills/yomiyasu/references/doc-types/manual.md: sha256:29806ff027229f1c82dbd9472a485b70ab0c537cfe15138f436f977783b63b08
+      .agents/skills/yomiyasu/references/doc-types/minutes.md: sha256:7869c10e72e0e4ce6ecb94833e84452beba7f8b676230908fe623deddc49b140
+      .agents/skills/yomiyasu/references/doc-types/paper.md: sha256:0ae274c3e8da87bcad74aaee069d799f902f2944c2972e714070e225b18ccde9
+      .agents/skills/yomiyasu/references/doc-types/pr.md: sha256:d7bb8a4ac7f5344abf66bb7dfe893480c67ea8d635078c5a8d2582264a21506b
+      .agents/skills/yomiyasu/references/doc-types/promo.md: sha256:06f8f3a39547985fc74a70c3717596070401b9d3db5fc93e3b10f76f9b6656e4
+      .agents/skills/yomiyasu/references/doc-types/proposal.md: sha256:2a8d8a557b33f2df51aedeed02ba5bb8ed623fcde55f6a42ff4b477920853731
+      .agents/skills/yomiyasu/references/doc-types/script.md: sha256:41bc1c8ebb9f5fea7c18b70b18a3e8ee86073e38f85d62d4ad00ae0719acb49a
+      .agents/skills/yomiyasu/references/doc-types/slides.md: sha256:fb175cf4cc8205e25991758be816350bd28f95b5b26e7be74134e25b02e66a20
+      .agents/skills/yomiyasu/references/domains/business.md: sha256:b68dbdf15d0145462794ba638c795cc9f13be9fe4d59e7dedafa945da6689aa3
+      .agents/skills/yomiyasu/references/domains/essay.md: sha256:5dccd1810c1b99b87e4bd27538240c32406be64280a4c6ee8be1ef9521eb3694
+      .agents/skills/yomiyasu/references/domains/tech.md: sha256:a45800b3fea46b45456ad00b8607f5ef347ede53d6a51f65826e1423f47d634a
+      .agents/skills/yomiyasu/references/fact-recovery-details.md: sha256:9359c801872643adef0b6ea56239f97314d9b70e6426dded6d880c9a7dd61749
+      .agents/skills/yomiyasu/references/fact-recovery.md: sha256:36056bcfef43b48b9c17b063c53f34e8d8b7e061895f5dea26847d5c9a2a2e63
+      .agents/skills/yomiyasu/references/gemini-syntax.md: sha256:78b593952303fe2f02f44921fe553925acdcd830cdb41ad1c9cae488ff8d25a3
+      .agents/skills/yomiyasu/references/lists/fact-gaps.txt: sha256:c78da500dcddc76978fecd1a7a9f3318d9feabf0db78387a41662a4545e6964f
+      .agents/skills/yomiyasu/references/lists/feelings.txt: sha256:37b6779b3ef8cf91260379b21d6b721bda362542a5702affd99d550879539e82
+      .agents/skills/yomiyasu/references/lists/hedges.txt: sha256:ed666036f63f4705d2c129d3fd30e971018d50732bbef2c18081412a61ccd771
+      .agents/skills/yomiyasu/references/lists/intensifiers.txt: sha256:b10e9fb077e76cd5a93ec6e27df943a03a3a08b4cf8dd5bd72910d0266e23fdb
+      .agents/skills/yomiyasu/references/lists/katakana-terms.txt: sha256:47c686e6a7a94590a97fa9e052b3dee9171dfc8a5f25da727111428cda978e2d
+      .agents/skills/yomiyasu/references/lists/nominalization.txt: sha256:cfe31060efc6d165c30b1619ab574ec405312a80bfb00387efc6557911614be0
+      .agents/skills/yomiyasu/references/lists/renyo-nouns.txt: sha256:0642b6ba40e4707af4715463d7433c0215087a8e068b00e7894b73e89365997a
+      .agents/skills/yomiyasu/references/lists/thin-evaluation.txt: sha256:b2cf6a8e1fc424d1bcac15e2aa2045a98ec77a002e2830692922a8f97ee406e4
+      .agents/skills/yomiyasu/references/persona.md: sha256:2e8f83550d1ee55066a8c83c594d1a2f34e87b910fb1fc1c67c30839e8bbb21f
+      .agents/skills/yomiyasu/references/rephrase-test.md: sha256:1086593de2fbcbcc577ca68c155d441f9fbe3bb72a229340cb639b4538207304
+      .agents/skills/yomiyasu/references/review-points.md: sha256:fb187881f99ad3e0a945b1e011597299b8af7ca6af7da78071c459cc13ea87ea
+      .agents/skills/yomiyasu/references/slop-catalog.md: sha256:25b38064d9d192d63bf1b5552df291608cf12534d675c4f7ee0a6ccf9d11fb00
+      .agents/skills/yomiyasu/scripts/markdown_visibility.py: sha256:94d64b9e09386842b750944f6eb553ca0a0034cbc96be992a576d00ff985e27f
+      .agents/skills/yomiyasu/scripts/yomiyasu_check.py: sha256:49b5a3492a6d1ac98085e8e34a5a0df6b813b9109159fe145004e7baee135844
+      .agents/skills/yomiyasu/scripts/yomiyasu_diff.py: sha256:275625a234f8b00b7dfcddb5084dd1a629a0d0213df02c348420987fd3c54ab1
+      .agents/skills/yomiyasu/scripts/yomiyasu_hook.py: sha256:9ae600e4f04db0435c39830f65752f727e2db31918a2eaa005129015f0d9b854
+      .agents/skills/yomiyasu/scripts/yomiyasu_lint.py: sha256:d536a6d2256c559e60ab4ca237eb9f6ac34f277e5b5c284bd5640b9c39171b53
+    content_hash: sha256:8d0b11a0960f8eddc0255f2e99dbeeab2548810344e0f97d6ef2a8530b798c49
+  - repo_url: slidevjs/slidev
+    name: slidev
+    host: github.com
+    resolved_commit: 3de6c46befe3f003828e378408c48f21db16ea45
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/slidev
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/slidev
+      - .agents/skills/slidev/README.md
+      - .agents/skills/slidev/SKILL.md
+      - .agents/skills/slidev/references/animation-click-marker.md
+      - .agents/skills/slidev/references/animation-drawing.md
+      - .agents/skills/slidev/references/animation-rough-marker.md
+      - .agents/skills/slidev/references/api-slide-hooks.md
+      - .agents/skills/slidev/references/build-og-image.md
+      - .agents/skills/slidev/references/build-pdf.md
+      - .agents/skills/slidev/references/build-remote-assets.md
+      - .agents/skills/slidev/references/build-seo-meta.md
+      - .agents/skills/slidev/references/code-groups.md
+      - .agents/skills/slidev/references/code-import-snippet.md
+      - .agents/skills/slidev/references/code-line-highlighting.md
+      - .agents/skills/slidev/references/code-line-numbers.md
+      - .agents/skills/slidev/references/code-magic-move.md
+      - .agents/skills/slidev/references/code-max-height.md
+      - .agents/skills/slidev/references/code-twoslash.md
+      - .agents/skills/slidev/references/core-animations.md
+      - .agents/skills/slidev/references/core-cli.md
+      - .agents/skills/slidev/references/core-components.md
+      - .agents/skills/slidev/references/core-exporting.md
+      - .agents/skills/slidev/references/core-frontmatter.md
+      - .agents/skills/slidev/references/core-global-context.md
+      - .agents/skills/slidev/references/core-headmatter.md
+      - .agents/skills/slidev/references/core-hosting.md
+      - .agents/skills/slidev/references/core-layouts.md
+      - .agents/skills/slidev/references/core-syntax.md
+      - .agents/skills/slidev/references/diagram-latex.md
+      - .agents/skills/slidev/references/diagram-mermaid.md
+      - .agents/skills/slidev/references/diagram-plantuml.md
+      - .agents/skills/slidev/references/editor-monaco-run.md
+      - .agents/skills/slidev/references/editor-monaco-write.md
+      - .agents/skills/slidev/references/editor-monaco.md
+      - .agents/skills/slidev/references/editor-prettier.md
+      - .agents/skills/slidev/references/editor-side.md
+      - .agents/skills/slidev/references/editor-vscode.md
+      - .agents/skills/slidev/references/layout-canvas-size.md
+      - .agents/skills/slidev/references/layout-draggable.md
+      - .agents/skills/slidev/references/layout-global-layers.md
+      - .agents/skills/slidev/references/layout-slots.md
+      - .agents/skills/slidev/references/layout-transform.md
+      - .agents/skills/slidev/references/layout-zoom.md
+      - .agents/skills/slidev/references/presenter-notes-ruby.md
+      - .agents/skills/slidev/references/presenter-recording.md
+      - .agents/skills/slidev/references/presenter-remote.md
+      - .agents/skills/slidev/references/presenter-timer.md
+      - .agents/skills/slidev/references/style-direction.md
+      - .agents/skills/slidev/references/style-icons.md
+      - .agents/skills/slidev/references/style-scoped.md
+      - .agents/skills/slidev/references/syntax-block-frontmatter.md
+      - .agents/skills/slidev/references/syntax-comark.md
+      - .agents/skills/slidev/references/syntax-frontmatter-merging.md
+      - .agents/skills/slidev/references/syntax-importing-slides.md
+      - .agents/skills/slidev/references/tool-eject-theme.md
+      - .agents/skills/slidev/references/tool-mcp.md
+    deployed_file_hashes:
+      .agents/skills/slidev/README.md: sha256:b2923498d6312b990ef2eb509433388d3df7f34752a01b4a4ec823b1073017a0
+      .agents/skills/slidev/SKILL.md: sha256:1191181966c0fa9c0fe5706cf9ee6e2354d79acef36364f6a713954cf93300c4
+      .agents/skills/slidev/references/animation-click-marker.md: sha256:ca20897bad85b12e976bbb4161597b0dcc4c5a9cf604d69d13cc0bdc922696eb
+      .agents/skills/slidev/references/animation-drawing.md: sha256:5fd91b06a9fa0c7a47e20c6eb7fdc4d7bd31de88c4ad792132cf721ab884642e
+      .agents/skills/slidev/references/animation-rough-marker.md: sha256:ef8c8d007d0763288679a18892fcf7a013025adbbd78ea6d70b5b706f6af5ec0
+      .agents/skills/slidev/references/api-slide-hooks.md: sha256:1477fce45bb0c36a75976fe6d4e329da1b0c8b707c9c5cab15456a99d149f67c
+      .agents/skills/slidev/references/build-og-image.md: sha256:b47dd5bd8dc2123eb1cd1e4e1d35fa2b1ce63f206765751d9f8b6be9a386d9ba
+      .agents/skills/slidev/references/build-pdf.md: sha256:023e028653116dcbdc1d51c21b51d5a7139e3b4fbfea108bc8d9118e430157a5
+      .agents/skills/slidev/references/build-remote-assets.md: sha256:a0fa11b7ffde2c5264c1b2c2143a375fc103beee3a4dc97f140c71a319c95efd
+      .agents/skills/slidev/references/build-seo-meta.md: sha256:5188fb1378c640fe87714cbb72fb0de8ac9c82ef05c78f369cb87819feac3519
+      .agents/skills/slidev/references/code-groups.md: sha256:c46d38d1e3606961068d264492474e61cbb636deb9c4f064802c81011ebc2328
+      .agents/skills/slidev/references/code-import-snippet.md: sha256:3f794e2387c70415f436ce70b248a6101122fa2b6e2dd983b3557a97f5e58510
+      .agents/skills/slidev/references/code-line-highlighting.md: sha256:4571a5faf1111fd4bf0a30d331cfa5623d4052cc084ee83831e02abb6873968f
+      .agents/skills/slidev/references/code-line-numbers.md: sha256:f69d767362dc135062899bb15037aba8f2be78e428daff55c4863732b1584858
+      .agents/skills/slidev/references/code-magic-move.md: sha256:2378e0aa7422dffc45fa2b2a4e83c9528eb978d021da5697eadfafd2eba45cf8
+      .agents/skills/slidev/references/code-max-height.md: sha256:6f7ec03bf10559f37c9d144d0339de0a850590a6f40e3bfc1471561ba1f0505b
+      .agents/skills/slidev/references/code-twoslash.md: sha256:12d80b5fbdd8fcf1a60e8a97d2cbb6861745d9839aa6d5c826d28550a771b3b7
+      .agents/skills/slidev/references/core-animations.md: sha256:60f871a56971fd0b16873623fd3d8397a5cda4ae201312c55278925b2b034c7a
+      .agents/skills/slidev/references/core-cli.md: sha256:93323cef9a750b7154fc771b11b890b4fb0b26162f49b654224859ae6eb58475
+      .agents/skills/slidev/references/core-components.md: sha256:43529b1f7467ff9cdea0bdf71241eae3cd7bcf62bfc9391aabce38545bca634d
+      .agents/skills/slidev/references/core-exporting.md: sha256:f8ccc2389597ee9d5c991ff357ba6033b91e90be66ab7a69ea1118606a435104
+      .agents/skills/slidev/references/core-frontmatter.md: sha256:044861667fee30b63358429d555770552913cc5f3e59569ec0c82d6347716513
+      .agents/skills/slidev/references/core-global-context.md: sha256:1bd3884b31819b9cb4b7957000d06dcbf56678b742aa1aa6bbc7145b4f8ff98d
+      .agents/skills/slidev/references/core-headmatter.md: sha256:1421e7bf36551e2c220a57c74eeec7755210916a6dc68c57de128a225fb2eb99
+      .agents/skills/slidev/references/core-hosting.md: sha256:69e8d015df1359924de9c1b157c1037a275d263a561a5af27d04d9a8aa31bb5e
+      .agents/skills/slidev/references/core-layouts.md: sha256:95fd7274b4d0055263938092db2115632a34636451bb651961d94c12f6bbb833
+      .agents/skills/slidev/references/core-syntax.md: sha256:cd4ef071b1ad40f3fb8ab5ed7c5f4743628456dd8e0bcfc25f246be64992726b
+      .agents/skills/slidev/references/diagram-latex.md: sha256:6fb51a8a3d5a1ab151e3d84950df0d38c609a30a53d82b1eb10dd0630369c093
+      .agents/skills/slidev/references/diagram-mermaid.md: sha256:2edfba65f4f46df2af20f504616b84e18d59fed47cc0c3008ceb7577a0d2e580
+      .agents/skills/slidev/references/diagram-plantuml.md: sha256:c006d564a031d1a76c6dc8d560c8bbafd14799512bf08d629f5e291f4413fc8b
+      .agents/skills/slidev/references/editor-monaco-run.md: sha256:f47be9b308f01006a95839eb6c54f94536e108af4f91909fa5d81e8856798221
+      .agents/skills/slidev/references/editor-monaco-write.md: sha256:fb17f1f5c8f40e53f12afc47a0dcf5e4530189ba3c8d9b1749e627d4c5589ab9
+      .agents/skills/slidev/references/editor-monaco.md: sha256:d54e5abbade63c837c9ab9c9515ceb5a0ceca157d2af3adbfbb84c68671833dc
+      .agents/skills/slidev/references/editor-prettier.md: sha256:126d048841dad13be1e1be7b2cff8c845bc0a78457c0f675b494b2815c0d94ca
+      .agents/skills/slidev/references/editor-side.md: sha256:0a5993ab5db99ae90ec83fa11e7bb53b4ed5baf4aa0d3dacc5a389e51f7547cf
+      .agents/skills/slidev/references/editor-vscode.md: sha256:54faab932076ee772032c9b89e8ecf3c1ae562e4b575ab565e7431a2f241427a
+      .agents/skills/slidev/references/layout-canvas-size.md: sha256:2d17e65933c63a8b7e8a9bd9c5b73478d19332f4da25b26195aaeb5a1bd1953b
+      .agents/skills/slidev/references/layout-draggable.md: sha256:cedf74ff840326b336f5846c7ec3603009fac2f8c126ee4a972a0b7d67b3019c
+      .agents/skills/slidev/references/layout-global-layers.md: sha256:9a2b1a5be0cc92dd1b63f4f089e4477032ea5c1905ca4ed786f5c297565cb20d
+      .agents/skills/slidev/references/layout-slots.md: sha256:b77222cc46ae53abe750aacb916822033ac220b41bbde5954824b534906e8d8e
+      .agents/skills/slidev/references/layout-transform.md: sha256:3d6a90df9a48c657e3709ecc01610f222e04dfb9fa5d530444653345e29e733a
+      .agents/skills/slidev/references/layout-zoom.md: sha256:c0ab0c3242e0a99f6bbc7eea163f551054ca4ca9d900174ea7f4073218ce89c0
+      .agents/skills/slidev/references/presenter-notes-ruby.md: sha256:aeadf860f7f23c1a7fd199180ac519c2f8b9f9e8c0609578c909b52c0c9e99e0
+      .agents/skills/slidev/references/presenter-recording.md: sha256:f2adf9c92892d468fd7297246462b669a444a4c000131bbcfbd178004d941a5c
+      .agents/skills/slidev/references/presenter-remote.md: sha256:90683d6eedf25395c312cb7b8f893f456ba2c5e221ee6ed91e7a192944a78ecb
+      .agents/skills/slidev/references/presenter-timer.md: sha256:7d0306a69c5f55cf223d47acbafb6ed3739ca68f21928d61fd6ca255df7e5a87
+      .agents/skills/slidev/references/style-direction.md: sha256:aaa1a10000ef92f05b3d63c1e0126cd41aead53d72432261f541d72c9d57a381
+      .agents/skills/slidev/references/style-icons.md: sha256:881daa50e5c1bec53cbaaa93029a4b0ed12f9f6ea36b9ab645799ac3b4c1521b
+      .agents/skills/slidev/references/style-scoped.md: sha256:f2caa6d5a3482f1d9364b41e70217f2150950be51375c0472e2ea912cdae895f
+      .agents/skills/slidev/references/syntax-block-frontmatter.md: sha256:fafee6da3b24fe8dcc60b0c1b6e212859d2e047322dc5479ec2fef70ef35d2ce
+      .agents/skills/slidev/references/syntax-comark.md: sha256:89316f0e900d2c8262cab221549ffaf434b09eb092de5c8feb5881de774e6cc5
+      .agents/skills/slidev/references/syntax-frontmatter-merging.md: sha256:f92f3de298e7b6cdff5e085a4f1f9d2a154878e340063504bfd26a6c94fed336
+      .agents/skills/slidev/references/syntax-importing-slides.md: sha256:5121a7fa19dd0496c4f5f42be0204ada7fb17484665727a1d259e31451c5ef42
+      .agents/skills/slidev/references/tool-eject-theme.md: sha256:c25fb0debc1af89bfe7aad1be3f09c67a9f97eafb051cb852063eaf1c9b995b0
+      .agents/skills/slidev/references/tool-mcp.md: sha256:00aabc8ba38e0376ee5aad8b511e723b9e67fc567cb4899c00e441650ad44ab8
+    content_hash: sha256:d644bddd4a83f36a023c54ea6bdca2e7b5eac52133b69a06d421a993545404e6
+  - repo_url: vercel/ai
+    name: adr-skill
+    host: github.com
+    resolved_commit: 71aa4dd03a840c9a98bc7426402a96fb9fe147c2
+    resolved_ref: main
+    version: unknown
+    virtual_path: skills/adr-skill
+    is_virtual: true
+    package_type: claude_skill
+    deployed_files:
+      - .agents/skills/adr-skill
+      - .agents/skills/adr-skill/SKILL.md
+      - .agents/skills/adr-skill/assets/templates/adr-readme.md
+      - .agents/skills/adr-skill/assets/templates/adr-simple.md
+      - .agents/skills/adr-skill/references/adr-conventions.md
+      - .agents/skills/adr-skill/references/examples.md
+      - .agents/skills/adr-skill/references/review-checklist.md
+      - .agents/skills/adr-skill/scripts/bootstrap_adr.js
+      - .agents/skills/adr-skill/scripts/new_adr.js
+    deployed_file_hashes:
+      .agents/skills/adr-skill/SKILL.md: sha256:b55b16004610383b0e3ff12849cca5478794a7484927f2d6aa47942ebd42ee06
+      .agents/skills/adr-skill/assets/templates/adr-readme.md: sha256:7ebbca88c9383023206ee58e5244742fe48fc2407621925cb497a6e39154b02a
+      .agents/skills/adr-skill/assets/templates/adr-simple.md: sha256:e8f44904db2bf01b1eb606db01615f01336159d38d245bc15c2a3d13be62a971
+      .agents/skills/adr-skill/references/adr-conventions.md: sha256:68667b70ee4ef1ac00e57ed3fe2900c053b5d8591e56ed549f19f35cc775646d
+      .agents/skills/adr-skill/references/examples.md: sha256:3b1c8e60e2489018f8c52de557ca6a974a0b15084ac1a35c47da078e0c5ea500
+      .agents/skills/adr-skill/references/review-checklist.md: sha256:f2608bbfb4a8961ce090fe971e70708502119bab193a3d894a01aafc25b26901
+      .agents/skills/adr-skill/scripts/bootstrap_adr.js: sha256:c0f8380a758e95e6084cab409a1f5c28bb5c4ac19807aa20f9bf1dae623fd8f6
+      .agents/skills/adr-skill/scripts/new_adr.js: sha256:7c9f197b28d71f1a82b20c80320412112d83acb0f50d4cde1ae84915ff40522b
+    content_hash: sha256:8d5ede5b05bbfed16d3d123ed5cd0a171b9a497abbc978c0305ef288e1334826
+deployments:
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/accessibility
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/accessibility
+    active_owner: addyosmani/web-quality-skills/skills/accessibility
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/accessibility/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/accessibility
+    active_owner: addyosmani/web-quality-skills/skills/accessibility
+    content_hash: sha256:267fb2a0707d6142f2871f22688203a42ba21291a2aa200fb740936e41362b5d
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/accessibility/references/A11Y-PATTERNS.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/accessibility
+    active_owner: addyosmani/web-quality-skills/skills/accessibility
+    content_hash: sha256:f10e238dd4dd3c4f51134c2056bc02d3dd4f8fb6ccc9145c2c1ba7aab4d58140
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/accessibility/references/WCAG.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/accessibility
+    active_owner: addyosmani/web-quality-skills/skills/accessibility
+    content_hash: sha256:16683e025e3833d931c9d880645d98a448827f97e10189b6c8f12c832e7a2361
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:b55b16004610383b0e3ff12849cca5478794a7484927f2d6aa47942ebd42ee06
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/assets/templates/adr-readme.md
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:7ebbca88c9383023206ee58e5244742fe48fc2407621925cb497a6e39154b02a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/assets/templates/adr-simple.md
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:e8f44904db2bf01b1eb606db01615f01336159d38d245bc15c2a3d13be62a971
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/references/adr-conventions.md
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:68667b70ee4ef1ac00e57ed3fe2900c053b5d8591e56ed549f19f35cc775646d
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/references/examples.md
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:3b1c8e60e2489018f8c52de557ca6a974a0b15084ac1a35c47da078e0c5ea500
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/references/review-checklist.md
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:f2608bbfb4a8961ce090fe971e70708502119bab193a3d894a01aafc25b26901
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/scripts/bootstrap_adr.js
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:c0f8380a758e95e6084cab409a1f5c28bb5c4ac19807aa20f9bf1dae623fd8f6
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/adr-skill/scripts/new_adr.js
+    runtime: null
+    scope: project
+    owners:
+      - vercel/ai/skills/adr-skill
+    active_owner: vercel/ai/skills/adr-skill
+    content_hash: sha256:7c9f197b28d71f1a82b20c80320412112d83acb0f50d4cde1ae84915ff40522b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/best-practices
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/best-practices
+    active_owner: addyosmani/web-quality-skills/skills/best-practices
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/best-practices/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/best-practices
+    active_owner: addyosmani/web-quality-skills/skills/best-practices
+    content_hash: sha256:9d1f10a08cd7a94176ce160ec860dbd3ecfadad75d46546001883f1f907c5c3e
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/best-practices/references/SECURITY.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/best-practices
+    active_owner: addyosmani/web-quality-skills/skills/best-practices
+    content_hash: sha256:af021e5db37e921c79b8807d63e1cfc02dcf63614d2806cfba04ba44a1366178
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/bot-pr-routine
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/template
+    active_owner: ./packages/template
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/bot-pr-routine/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/template
+    active_owner: ./packages/template
+    content_hash: sha256:418ced00e03c74c411c97befdd26e63d20eba20119966336c63c80601485c9e9
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/cognitive-rhythm-writing
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/cognitive-rhythm-writing
+    active_owner: hol1kgmg/skills/skills/cognitive-rhythm-writing
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/cognitive-rhythm-writing/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/cognitive-rhythm-writing
+    active_owner: hol1kgmg/skills/skills/cognitive-rhythm-writing
+    content_hash: sha256:65486e64f33ce2ab03c5db198b1f92e2838e71abfb1a80085d1b405340c11437
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/core-web-vitals
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/core-web-vitals
+    active_owner: addyosmani/web-quality-skills/skills/core-web-vitals
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/core-web-vitals/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/core-web-vitals
+    active_owner: addyosmani/web-quality-skills/skills/core-web-vitals
+    content_hash: sha256:731aa78c0347e8b3e191b75962175bee058ce73817278e610ac0fe546e685914
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/core-web-vitals/references/CLS.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/core-web-vitals
+    active_owner: addyosmani/web-quality-skills/skills/core-web-vitals
+    content_hash: sha256:c4fa0cd6311720b413018471a6ac9240e87db52af3b6e306ffb6684491f15898
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/core-web-vitals/references/INP.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/core-web-vitals
+    active_owner: addyosmani/web-quality-skills/skills/core-web-vitals
+    content_hash: sha256:7d40cf6053e9bb8a8a77e02da7c6b25aa8e6c1c092b48d8f9c8f30e9b25cf3a7
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/core-web-vitals/references/LCP.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/core-web-vitals
+    active_owner: addyosmani/web-quality-skills/skills/core-web-vitals
+    content_hash: sha256:522054d44b7a55409cbde511e8d365f7fa52399dd1e72b8d6b44a92ecddca81f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/dependabot-review
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/dependabot-review
+    active_owner: hol1kgmg/skills/skills/dependabot-review
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/dependabot-review/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/dependabot-review
+    active_owner: hol1kgmg/skills/skills/dependabot-review
+    content_hash: sha256:fb54f40c20221b116a8b6e48d0b2dc1c312df1858ccfe77995e51558d9d94b1e
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/dependabot-review/references/nix-content-input.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/dependabot-review
+    active_owner: hol1kgmg/skills/skills/dependabot-review
+    content_hash: sha256:89c1d2b831700a51a6c5646e4022e4a75674857736c1f406147334022f02a3da
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/dependabot-review/references/nix-flake.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/dependabot-review
+    active_owner: hol1kgmg/skills/skills/dependabot-review
+    content_hash: sha256:aaecaa2315e2fea00257e40742a68036f26ec2ec8d67acaf8528729ce812f252
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/dependabot-review/references/semver.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/dependabot-review
+    active_owner: hol1kgmg/skills/skills/dependabot-review
+    content_hash: sha256:6082fd472ec9ccdadffc7a2b8bfb7d6037b2c0fdfdf7121549ec871813cdb868
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/frontend-design
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/frontend-design
+    active_owner: anthropics/skills/skills/frontend-design
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/frontend-design/LICENSE.txt
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/frontend-design
+    active_owner: anthropics/skills/skills/frontend-design
+    content_hash: sha256:0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/frontend-design/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/frontend-design
+    active_owner: anthropics/skills/skills/frontend-design
+    content_hash: sha256:d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/init-from-template
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/template
+    active_owner: ./packages/template
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/init-from-template/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/template
+    active_owner: ./packages/template
+    content_hash: sha256:b58b2ba3647738ccf7102de169d0f31a38bd66e4118aba7e9321602ec9b9dc75
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/japanese-tech-writing
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/japanese-tech-writing
+    active_owner: hol1kgmg/skills/skills/japanese-tech-writing
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/japanese-tech-writing/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/japanese-tech-writing
+    active_owner: hol1kgmg/skills/skills/japanese-tech-writing
+    content_hash: sha256:ad350e0e6f5630fd94d8ab98a6aee194053b0096fdc944c23e271d6dfa09ee68
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/performance
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/performance
+    active_owner: addyosmani/web-quality-skills/skills/performance
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/performance/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/performance
+    active_owner: addyosmani/web-quality-skills/skills/performance
+    content_hash: sha256:b0c220185d88c61f7770eb127d8facf86c86d2dd1fd82b86e15a4965a0137265
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/performance/references/MEASUREMENT.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/performance
+    active_owner: addyosmani/web-quality-skills/skills/performance
+    content_hash: sha256:128f6f20c6c8fb55fcccd8b259cf680811022cf262dc55b03e9d623bcb555a99
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/performance/references/RUM.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/performance
+    active_owner: addyosmani/web-quality-skills/skills/performance
+    content_hash: sha256:a2bdf660ecb23098afbadfb83254d39cef10c0da82938225f61271bad3f81b19
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/AI-AND-LLM.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:7335a95c43554eadefcf03ece639291bb0e038c398a179299e3887ffe06bd2ef
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/ATTACK-CLASSES.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:3ee4f00c6e8c9dcf6dd02dd5ac2a4ceb322e2085f3e9fbe79cf0c6330bc7ef83
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/CLIENT-SIDE.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:613f6b98f86083e045525c5b60154ffdab122bac35f1e05eb17488e6e453370c
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/CLOUD-AND-DEPLOYMENT.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:3c80f3088be22345e07b057c056d6ed99fe2b0304f794398964f7ccd5a496ca3
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/DATA-ISOLATION-AND-LIFECYCLE.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:307dcb3e24d292715c4a041190e7bb135646a37eb6187619ae01d000a634a4ad
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/DESKTOP-MOBILE-AND-LOCAL-IPC.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:58eae8ee0ca6a46611c501ec5a3ab47fdff88dd7db0d8d74789bbf8bb19d8cb2
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/HUNTING.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:71c121decea1322c47c718f6e110f1a892980bb4266bd7ac55ef043a213ade09
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/MEMORY-SAFETY-AND-BINARY.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:7c8b0dccfb35315cca2455509674d49632b2fe37e1f3aac16c1a496a7e9924a7
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/PROTOCOLS-RPC-AND-MESSAGING.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:8b73816fa5b3697c9c40977f0c836b40f01d6e81929ff2720fe83ce089e9a619
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/RECONNAISSANCE.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:02ca887aca84de8ae137f1891bd2f0a54f28d3fa6da92a27f54734382b3381a2
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/RESOURCE-EXHAUSTION-AND-AVAILABILITY.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:4326fab5c92a0b4c420a70196254040105cd794026562130b59bf1a6db3e4baa
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:5e3e96a1e438d8f35fef0a1e38f02d4f00e2bdf910401b7dfe00e6779c6dac85
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/SUPPLY-CHAIN-AND-RELEASE.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:f372e919940e335468ba1ae09f99026c3986a345f7fe26f8068f132e199f52a5
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/VALIDATION-AND-REPORTING.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:b892470cb89bb31f33403e050d4bdfbe2cdaef940ade1496fa65e32b2e129449
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/WEB-PROTOCOL-AND-AUTH.md
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:4f3066dffa23c5635859187be9b96c32f2aff29a688186b91ff0c63e47d62b5c
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/report-schema.json
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:6575c9de4a62255699ea052ebf9a49ebfb373a32891bcd89af6f55cc84b35519
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/validate-coverage-ledger.cjs
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:2eb280bd2e33c002916f86db9b29f9edfedb6454e5db973c766290465b868ac8
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/validate-coverage-ledger.test.cjs
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:cfb9df26b03469a4279a70e7664a2a5434dd6f8c2c204e91f9b0aeb9dd71e648
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/validate-findings.cjs
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:e85f232e36bfac0f866f244da50376692d6b45c690beadcb00608b0e6c8b5283
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/security-audit/validate-findings.test.cjs
+    runtime: null
+    scope: project
+    owners:
+      - cloudflare/security-audit-skill/skills/security-audit
+    active_owner: cloudflare/security-audit-skill/skills/security-audit
+    content_hash: sha256:b92001117a92c4161d43777a0ba2fa182a8a4d97f2304cc8c0cee5331497b73b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/seo
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/seo
+    active_owner: addyosmani/web-quality-skills/skills/seo
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/seo/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/seo
+    active_owner: addyosmani/web-quality-skills/skills/seo
+    content_hash: sha256:57cd16566c2c706186b643644dec2884da89c42f296843364c65a40a4d566ae6
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/seo/references/STRUCTURED-DATA.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/seo
+    active_owner: addyosmani/web-quality-skills/skills/seo
+    content_hash: sha256:3e03876f41d223c89dfdbc0a0fe3668454e5d8819aad5379f4541fbf0bd67e17
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/LICENSE.txt
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:dcd4803e61e913e6fc27294184cd3a71f09f5e924ff20c8a9a20173e7b3c2bcf
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/agents/analyzer.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:bf68f4cac5a56c673a928c2e6d619586c5b93ea364026ab37547772cb45a663a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/agents/comparator.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:fe1fc9787c495d864c5d6eada47396478572325fde1b33a96d78bf4b849b7a3e
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/agents/grader.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:57134da0c1a4eea33fbd74a1c9c44aa814f07d6bc64de303edb586f941e5d21a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/assets/eval_review.html
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:ce477dcc74dc1c0d1d3352646a79167b5a63634e936b1019160025065974e452
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/eval-viewer/generate_review.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:fc9d1b9243fe5ab6012ebd579bd76d0035de1b79fd3b969de114defab26478fb
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/eval-viewer/viewer.html
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:a53213426ee1100441d701a3a0d49cda7a842f992d2c36463f4d3cc0258575fa
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/references/schemas.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/__init__.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/aggregate_benchmark.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:123ef128ea5ccc01a4b1ac212ef5567f21e9c13d3d240609780beeb3200c49aa
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/generate_report.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:13df7118a3c50c83c4c3250a606d5f2b20b25a3d44cbc392b3d669ec75281453
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/improve_description.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:87d864570220b699fac52da309d2d6efdb060647bfebc74f768128e646accf80
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/package_skill.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:1a33059b0db1ef73375d46d513e5ea81369d2e8838c970597b0d52ddef8d1c0f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/quick_validate.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:67cf5703402013936c8fb75ad6a1afecd8841d45cc5e606b634eb05825fde365
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/run_eval.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:43e3b8f80dbf69c343967ba77e268fae991d9fa3ed68b32a0ff02532cd48657f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/run_loop.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:7bd6f674203168520517eec94c55f493c0d154339b061b4d7c0f0dad187d0f21
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/skill-creator/scripts/utils.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/skill-creator
+    active_owner: anthropics/skills/skills/skill-creator
+    content_hash: sha256:3af8ae62c40c73ab712207436a0d9a981e845f25c5a7040229eb189cc8e45bb1
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/README.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:37c87f0e4d8a13eab57c7fdd0b3507e1809a4e785f5253e0d693aba72436ec99
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:671f1956ced14984547df53e96019331ed2b3d147f32ac7f02853bad83ab7e26
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/references/content-review.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:c316db18d8fe0fbcb878c305949561fbafd2185a0e20544f7aa0a7e12cdb5706
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/references/presentation-patterns.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:9c4c7c7e2e6d5870027b1fc17cc2a08176124f972c2ea897302bab803421ef40
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/references/scoring-guide.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:91eea69563e6b50d9b9dccf1267b7caaec8f7f1505b32ee35f0fd31399b93e8c
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/references/technical-slides.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:e7746d9f62dcfee1d3a7b758683b91a17705d2b6f97af4e9674f585455698c90
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slide-reviewer/references/visual-review.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/skills/skills/slide-reviewer
+    active_owner: hol1kgmg/skills/skills/slide-reviewer
+    content_hash: sha256:e07ddaa79497db58067dc677853722cd8ba7fe7fd1b1f09743305a6ba7585dba
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/README.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:b2923498d6312b990ef2eb509433388d3df7f34752a01b4a4ec823b1073017a0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:1191181966c0fa9c0fe5706cf9ee6e2354d79acef36364f6a713954cf93300c4
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/animation-click-marker.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:ca20897bad85b12e976bbb4161597b0dcc4c5a9cf604d69d13cc0bdc922696eb
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/animation-drawing.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:5fd91b06a9fa0c7a47e20c6eb7fdc4d7bd31de88c4ad792132cf721ab884642e
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/animation-rough-marker.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:ef8c8d007d0763288679a18892fcf7a013025adbbd78ea6d70b5b706f6af5ec0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/api-slide-hooks.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:1477fce45bb0c36a75976fe6d4e329da1b0c8b707c9c5cab15456a99d149f67c
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/build-og-image.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:b47dd5bd8dc2123eb1cd1e4e1d35fa2b1ce63f206765751d9f8b6be9a386d9ba
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/build-pdf.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:023e028653116dcbdc1d51c21b51d5a7139e3b4fbfea108bc8d9118e430157a5
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/build-remote-assets.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:a0fa11b7ffde2c5264c1b2c2143a375fc103beee3a4dc97f140c71a319c95efd
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/build-seo-meta.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:5188fb1378c640fe87714cbb72fb0de8ac9c82ef05c78f369cb87819feac3519
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-groups.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:c46d38d1e3606961068d264492474e61cbb636deb9c4f064802c81011ebc2328
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-import-snippet.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:3f794e2387c70415f436ce70b248a6101122fa2b6e2dd983b3557a97f5e58510
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-line-highlighting.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:4571a5faf1111fd4bf0a30d331cfa5623d4052cc084ee83831e02abb6873968f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-line-numbers.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:f69d767362dc135062899bb15037aba8f2be78e428daff55c4863732b1584858
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-magic-move.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:2378e0aa7422dffc45fa2b2a4e83c9528eb978d021da5697eadfafd2eba45cf8
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-max-height.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:6f7ec03bf10559f37c9d144d0339de0a850590a6f40e3bfc1471561ba1f0505b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/code-twoslash.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:12d80b5fbdd8fcf1a60e8a97d2cbb6861745d9839aa6d5c826d28550a771b3b7
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-animations.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:60f871a56971fd0b16873623fd3d8397a5cda4ae201312c55278925b2b034c7a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-cli.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:93323cef9a750b7154fc771b11b890b4fb0b26162f49b654224859ae6eb58475
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-components.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:43529b1f7467ff9cdea0bdf71241eae3cd7bcf62bfc9391aabce38545bca634d
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-exporting.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:f8ccc2389597ee9d5c991ff357ba6033b91e90be66ab7a69ea1118606a435104
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-frontmatter.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:044861667fee30b63358429d555770552913cc5f3e59569ec0c82d6347716513
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-global-context.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:1bd3884b31819b9cb4b7957000d06dcbf56678b742aa1aa6bbc7145b4f8ff98d
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-headmatter.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:1421e7bf36551e2c220a57c74eeec7755210916a6dc68c57de128a225fb2eb99
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-hosting.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:69e8d015df1359924de9c1b157c1037a275d263a561a5af27d04d9a8aa31bb5e
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-layouts.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:95fd7274b4d0055263938092db2115632a34636451bb651961d94c12f6bbb833
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/core-syntax.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:cd4ef071b1ad40f3fb8ab5ed7c5f4743628456dd8e0bcfc25f246be64992726b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/diagram-latex.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:6fb51a8a3d5a1ab151e3d84950df0d38c609a30a53d82b1eb10dd0630369c093
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/diagram-mermaid.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:2edfba65f4f46df2af20f504616b84e18d59fed47cc0c3008ceb7577a0d2e580
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/diagram-plantuml.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:c006d564a031d1a76c6dc8d560c8bbafd14799512bf08d629f5e291f4413fc8b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/editor-monaco-run.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:f47be9b308f01006a95839eb6c54f94536e108af4f91909fa5d81e8856798221
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/editor-monaco-write.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:fb17f1f5c8f40e53f12afc47a0dcf5e4530189ba3c8d9b1749e627d4c5589ab9
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/editor-monaco.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:d54e5abbade63c837c9ab9c9515ceb5a0ceca157d2af3adbfbb84c68671833dc
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/editor-prettier.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:126d048841dad13be1e1be7b2cff8c845bc0a78457c0f675b494b2815c0d94ca
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/editor-side.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:0a5993ab5db99ae90ec83fa11e7bb53b4ed5baf4aa0d3dacc5a389e51f7547cf
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/editor-vscode.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:54faab932076ee772032c9b89e8ecf3c1ae562e4b575ab565e7431a2f241427a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/layout-canvas-size.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:2d17e65933c63a8b7e8a9bd9c5b73478d19332f4da25b26195aaeb5a1bd1953b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/layout-draggable.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:cedf74ff840326b336f5846c7ec3603009fac2f8c126ee4a972a0b7d67b3019c
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/layout-global-layers.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:9a2b1a5be0cc92dd1b63f4f089e4477032ea5c1905ca4ed786f5c297565cb20d
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/layout-slots.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:b77222cc46ae53abe750aacb916822033ac220b41bbde5954824b534906e8d8e
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/layout-transform.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:3d6a90df9a48c657e3709ecc01610f222e04dfb9fa5d530444653345e29e733a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/layout-zoom.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:c0ab0c3242e0a99f6bbc7eea163f551054ca4ca9d900174ea7f4073218ce89c0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/presenter-notes-ruby.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:aeadf860f7f23c1a7fd199180ac519c2f8b9f9e8c0609578c909b52c0c9e99e0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/presenter-recording.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:f2adf9c92892d468fd7297246462b669a444a4c000131bbcfbd178004d941a5c
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/presenter-remote.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:90683d6eedf25395c312cb7b8f893f456ba2c5e221ee6ed91e7a192944a78ecb
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/presenter-timer.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:7d0306a69c5f55cf223d47acbafb6ed3739ca68f21928d61fd6ca255df7e5a87
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/style-direction.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:aaa1a10000ef92f05b3d63c1e0126cd41aead53d72432261f541d72c9d57a381
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/style-icons.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:881daa50e5c1bec53cbaaa93029a4b0ed12f9f6ea36b9ab645799ac3b4c1521b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/style-scoped.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:f2caa6d5a3482f1d9364b41e70217f2150950be51375c0472e2ea912cdae895f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/syntax-block-frontmatter.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:fafee6da3b24fe8dcc60b0c1b6e212859d2e047322dc5479ec2fef70ef35d2ce
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/syntax-comark.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:89316f0e900d2c8262cab221549ffaf434b09eb092de5c8feb5881de774e6cc5
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/syntax-frontmatter-merging.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:f92f3de298e7b6cdff5e085a4f1f9d2a154878e340063504bfd26a6c94fed336
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/syntax-importing-slides.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:5121a7fa19dd0496c4f5f42be0204ada7fb17484665727a1d259e31451c5ef42
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/tool-eject-theme.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:c25fb0debc1af89bfe7aad1be3f09c67a9f97eafb051cb852063eaf1c9b995b0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/slidev/references/tool-mcp.md
+    runtime: null
+    scope: project
+    owners:
+      - slidevjs/slidev/skills/slidev
+    active_owner: slidevjs/slidev/skills/slidev
+    content_hash: sha256:00aabc8ba38e0376ee5aad8b511e723b9e67fc567cb4899c00e441650ad44ab8
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/template-sync-review
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/template
+    active_owner: ./packages/template
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/template-sync-review/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/template
+    active_owner: ./packages/template
+    content_hash: sha256:deda8f9dfa60bd112fd51e50192cf049ab10f95bd0871adcd3bf2681a747c47a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/web-quality-audit
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/web-quality-audit
+    active_owner: addyosmani/web-quality-skills/skills/web-quality-audit
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/web-quality-audit/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/web-quality-audit
+    active_owner: addyosmani/web-quality-skills/skills/web-quality-audit
+    content_hash: sha256:1903cfb4dcba987d50dc7a51f6c19ec43830ff924c2c8f78979d8775fbe20f91
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/web-quality-audit/scripts/analyze.sh
+    runtime: null
+    scope: project
+    owners:
+      - addyosmani/web-quality-skills/skills/web-quality-audit
+    active_owner: addyosmani/web-quality-skills/skills/web-quality-audit
+    content_hash: sha256:b1b28663af412f746baf5008618e3ae798e322b10ff5ab7ae1830826a6d8e4e2
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing/LICENSE.txt
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: sha256:bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: sha256:51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing/examples/console_logging.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: sha256:ea46877289acb82da7e7ce59d0bc37c8977cd57e2a006d0c88d7a1c625bf95da
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing/examples/element_discovery.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: sha256:d63c89604a22f8845d724e95dda45db49b1bf57c25ce0a83afbb7b8da3d402f0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing/examples/static_html_automation.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: sha256:9d533aafb875ee3ab8b8ebf8f5b9003ac8d999da3d09b285cce252e623140064
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/webapp-testing/scripts/with_server.py
+    runtime: null
+    scope: project
+    owners:
+      - anthropics/skills/skills/webapp-testing
+    active_owner: anthropics/skills/skills/webapp-testing
+    content_hash: sha256:b0dcf4918935b795f4eda9821579b9902119235ff4447f687a30286e7d0925fd
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: null
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/LICENSE
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:79d802f15bc8caf67f1a83c1bdbe214ccb41a0a0275f9046b329b89c65ee1fca
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/SKILL.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:e12341e6a5ca956be2589cfcd5fa5675913add02ddd168c5d5cd04f0b22fb709
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/UNICODE-LICENSE.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/assets/algo-artis.png
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:57c7c204d43d0e2873e3b61221db3ac4ba75a7ce29271a6deaeb3bd09f26fdec
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/audience.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:451a18af660be00065b89cf2c977711cc8c30b02a05643172fda758a083b7038
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/calques.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:6a2f7b4980d6fe58c0f191f91046f75ae5cfb97a6b4626e7efd07276a213635b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/article.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:e5009c496b4b4ac8974c16f2f15b0f8ce93620863dfe721803b01138db845716
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/essay.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:fd8b888d3599747040c416df696ab39b9d9b962ce19a9229544b691ef43742af
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/formal.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:6b4121d4e57d52fb60fb428770a4504c53e1fb06c3fa20e57a1fcd56ce933141
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/incident.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:d25282690b220e5d4fa2595228d282d65f7b03d8d4b325c30bf251b58a474b77
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/mail.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:aafdef898a05c8526fed64c7b9e076dd618015704256e1a7ee4d1d0c9e5b4ca5
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/manual.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:29806ff027229f1c82dbd9472a485b70ab0c537cfe15138f436f977783b63b08
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/minutes.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:7869c10e72e0e4ce6ecb94833e84452beba7f8b676230908fe623deddc49b140
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/paper.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:0ae274c3e8da87bcad74aaee069d799f902f2944c2972e714070e225b18ccde9
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/pr.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:d7bb8a4ac7f5344abf66bb7dfe893480c67ea8d635078c5a8d2582264a21506b
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/promo.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:06f8f3a39547985fc74a70c3717596070401b9d3db5fc93e3b10f76f9b6656e4
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/proposal.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:2a8d8a557b33f2df51aedeed02ba5bb8ed623fcde55f6a42ff4b477920853731
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/script.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:41bc1c8ebb9f5fea7c18b70b18a3e8ee86073e38f85d62d4ad00ae0719acb49a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/doc-types/slides.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:fb175cf4cc8205e25991758be816350bd28f95b5b26e7be74134e25b02e66a20
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/domains/business.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:b68dbdf15d0145462794ba638c795cc9f13be9fe4d59e7dedafa945da6689aa3
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/domains/essay.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:5dccd1810c1b99b87e4bd27538240c32406be64280a4c6ee8be1ef9521eb3694
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/domains/tech.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:a45800b3fea46b45456ad00b8607f5ef347ede53d6a51f65826e1423f47d634a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/fact-recovery-details.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:9359c801872643adef0b6ea56239f97314d9b70e6426dded6d880c9a7dd61749
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/fact-recovery.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:36056bcfef43b48b9c17b063c53f34e8d8b7e061895f5dea26847d5c9a2a2e63
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/gemini-syntax.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:78b593952303fe2f02f44921fe553925acdcd830cdb41ad1c9cae488ff8d25a3
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/fact-gaps.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:c78da500dcddc76978fecd1a7a9f3318d9feabf0db78387a41662a4545e6964f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/feelings.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:37b6779b3ef8cf91260379b21d6b721bda362542a5702affd99d550879539e82
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/hedges.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:ed666036f63f4705d2c129d3fd30e971018d50732bbef2c18081412a61ccd771
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/intensifiers.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:b10e9fb077e76cd5a93ec6e27df943a03a3a08b4cf8dd5bd72910d0266e23fdb
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/katakana-terms.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:47c686e6a7a94590a97fa9e052b3dee9171dfc8a5f25da727111428cda978e2d
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/nominalization.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:cfe31060efc6d165c30b1619ab574ec405312a80bfb00387efc6557911614be0
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/renyo-nouns.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:0642b6ba40e4707af4715463d7433c0215087a8e068b00e7894b73e89365997a
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/lists/thin-evaluation.txt
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:b2cf6a8e1fc424d1bcac15e2aa2045a98ec77a002e2830692922a8f97ee406e4
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/persona.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:2e8f83550d1ee55066a8c83c594d1a2f34e87b910fb1fc1c67c30839e8bbb21f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/rephrase-test.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:1086593de2fbcbcc577ca68c155d441f9fbe3bb72a229340cb639b4538207304
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/review-points.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:fb187881f99ad3e0a945b1e011597299b8af7ca6af7da78071c459cc13ea87ea
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/references/slop-catalog.md
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:25b38064d9d192d63bf1b5552df291608cf12534d675c4f7ee0a6ccf9d11fb00
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/scripts/markdown_visibility.py
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:94d64b9e09386842b750944f6eb553ca0a0034cbc96be992a576d00ff985e27f
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/scripts/yomiyasu_check.py
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:49b5a3492a6d1ac98085e8e34a5a0df6b813b9109159fe145004e7baee135844
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/scripts/yomiyasu_diff.py
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:275625a234f8b00b7dfcddb5084dd1a629a0d0213df02c348420987fd3c54ab1
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/scripts/yomiyasu_hook.py
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:9ae600e4f04db0435c39830f65752f727e2db31918a2eaa005129015f0d9b854
+  - kind: project-relative
+    target: agent-skills
+    value: .agents/skills/yomiyasu/scripts/yomiyasu_lint.py
+    runtime: null
+    scope: project
+    owners:
+      - nanaism/yomiyasu/skills/yomiyasu
+    active_owner: nanaism/yomiyasu/skills/yomiyasu
+    content_hash: sha256:d536a6d2256c559e60ab4ca237eb9f6ac34f277e5b5c284bd5640b9c39171b53
+  - kind: project-relative
+    target: claude
+    value: .claude/rules/orca-worktree.md
+    runtime: null
+    scope: project
+    owners:
+      - hol1kgmg/rules/rules/orca-worktree.instructions.md
+    active_owner: hol1kgmg/rules/rules/orca-worktree.instructions.md
+    content_hash: sha256:0fac71a864977bee34f44eecd93093e324616bdcea08fb3232b91217414605cb
+  - kind: project-relative
+    target: claude
+    value: .claude/rules/slidev-assets.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/project
+    active_owner: ./packages/project
+    content_hash: sha256:46e975e654848f7c8d483d140f9d80fb06a044650bea095baeb235373a18ec9c
+  - kind: project-relative
+    target: claude
+    value: .claude/rules/slidev-style.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/project
+    active_owner: ./packages/project
+    content_hash: sha256:7bf10d42d7e5149435e050398fab5cd937220d6e3a454c81c697a0e0058fc8cb
+  - kind: project-relative
+    target: claude
+    value: .claude/rules/slidev-workflow.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/project
+    active_owner: ./packages/project
+    content_hash: sha256:8322c48c06e430d5c68c011bef403336db23a3fbccf3e637fc6419ddf559f8ac
+  - kind: project-relative
+    target: claude
+    value: .claude/rules/talk-ideas.md
+    runtime: null
+    scope: project
+    owners:
+      - ./packages/project
+    active_owner: ./packages/project
+    content_hash: sha256:f5a7ad7401e2b204ec892402c68a6d685ad114d632c3e7499b90508054757646

@@ -2,21 +2,34 @@
 list:
     @just --list
 
-# Install skills into .claude/skills
-skills:
-    nix run .#skills-install-local
+# Install skills and rules into .agents/skills and .claude/rules
+apm:
+    apm install
 
-# List installed skills
-skills-list:
-    nix run .#skills-list
+# List installed skills and rules
+apm-list:
+    apm deps list
 
-# Install rules into .agents/rules
-rules:
-    nix run .#rules-install-local
-
-# List available rules
-rules-list:
-    nix run .#rules-list
+# Dependabot の apm 0.34.0 が書いた lock は content_hash が欠けて --frozen が通らない。dependabot-core#16792 のマージ後に消す
+# Regenerate apm.lock.yaml on a Dependabot PR and push it
+apm-fix-lock PR:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    [ -z "$(git status --porcelain)" ] || { echo "作業ツリーを clean にしてから実行する" >&2; exit 1; }
+    orig=$(git branch --show-current)
+    [ -n "$orig" ] || { echo "detached HEAD では実行しない。ブランチに切り替えてから実行する" >&2; exit 1; }
+    # upstream remote があると gh は origin より upstream を既定の repo に選ぶ
+    export GH_REPO=$(git remote get-url origin | sed -E 's#(\.git)?$##; s#.*github\.com[:/]##')
+    trap 'git switch "$orig"' EXIT
+    # Dependabot が force-push した後は、手元に残った同名ブランチと食い違って checkout できない
+    gh pr checkout --force {{PR}}
+    apm install
+    if git diff --quiet apm.lock.yaml; then
+        echo "lock は直す必要がない"
+    else
+        git commit -m "fix: apm.lock.yaml を手元の apm で作り直す" apm.lock.yaml
+        git push
+    fi
 
 # Update flake.lock, then check
 update:
@@ -46,8 +59,14 @@ sync: _template-settled
     # upstream 側を採用する。2 回目以降は独自変更を守るため通常マージ。
     # マージコミットであることが必須。squash / rebase すると共通祖先が失われ、
     # 次回以降ツリー全体が衝突する（adr/from-template/0001）
-    if git merge-base HEAD upstream/main >/dev/null 2>&1; then
-        git merge upstream/main --no-edit || { scripts/resolve-flake-lock.sh && git commit --no-edit; }
+    if git merge-base --is-ancestor upstream/main HEAD; then
+        echo "取り込む更新はない"
+    elif git merge-base HEAD upstream/main >/dev/null 2>&1; then
+        git merge upstream/main --no-commit --no-ff || scripts/resolve-locks.sh
+        # 行単位のマージが衝突なしで通っても、両側の依存を合わせた lock が整合するとは限らない
+        apm install
+        git add apm.lock.yaml
+        git commit --no-edit
     else
         git merge upstream/main --allow-unrelated-histories --no-edit -X theirs
     fi
@@ -59,13 +78,11 @@ sync-pr: _template-settled
     [ -z "$(git status --porcelain)" ] || { echo "作業ツリーを clean にしてから実行する" >&2; exit 1; }
     orig=$(git branch --show-current)
     [ -n "$orig" ] || { echo "detached HEAD では実行しない。ブランチに切り替えてから実行する" >&2; exit 1; }
-    # upstream remote があると gh は origin より upstream を既定の repo に選ぶ
-    export GH_REPO=$(git remote get-url origin | sed -E 's#(\.git)?$##; s#.*github\.com[:/]##')
     git fetch --no-tags origin main
     git switch -C template-sync origin/main
     # 確認はこのレシピの依存で済んでいる
     SYNC_IGNORE_OPEN_PRS=1 just sync || {
-        printf 'template-sync で止めた。解決して commit し、git push --force origin template-sync && gh pr ready template-sync -R %s を実行して %s に戻る\n' "$GH_REPO" "$orig" >&2
+        printf 'template-sync で止めた。解決して commit し、just _sync-pr-open を実行して %s に戻る\n' "$orig" >&2
         exit 1
     }
     if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ]; then
@@ -73,6 +90,16 @@ sync-pr: _template-settled
         git switch "$orig"
         exit 0
     fi
+    just _sync-pr-open
+    git switch "$orig"
+
+# Push template-sync and mark the sync PR ready
+_sync-pr-open:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    [ "$(git branch --show-current)" = template-sync ] || { echo "template-sync ブランチで実行する" >&2; exit 1; }
+    # upstream remote があると gh は origin より upstream を既定の repo に選ぶ
+    export GH_REPO=$(git remote get-url origin | sed -E 's#(\.git)?$##; s#.*github\.com[:/]##')
     # template-sync は template-sync workflow が空コミットで作るブランチなので、毎回作り直す（adr/from-template/0006）
     git push --force origin template-sync
     case "$(gh pr list --head template-sync --state open --json isDraft -q '.[0].isDraft')" in
@@ -81,7 +108,11 @@ sync-pr: _template-settled
         *) gh pr create --base main --head template-sync --title "chore: テンプレートの更新を取り込む" \
             --body "**Create a merge commit** でマージする（squash / rebase は共通祖先を壊す。adr/from-template/0001）" ;;
     esac
-    git switch "$orig"
+
+# Lint workflows and dependabot.yml, and verify actions.lock against GitHub
+lint-actions:
+    jactionlint
+    gh-actions-lock --verify
 
 # Scan working tree for secrets
 scan:
