@@ -24,6 +24,8 @@
 
 テンプレート元が更新されると、`template-sync` workflow が毎週土曜 09:00 に draft PR（`template-sync` ブランチ）を用意します。手元で `just sync-pr` を実行すると、PR が取り込みの差分に置き換わり ready for review になります。
 
+週次の対応は `bot-pr-routine` スキルで行えます。取り込み PR（`template-sync-review`）、Dependabot PR（`dependabot-review`）の順にレビューします。
+
 ```bash
 just sync-pr   # テンプレート元の変更を取り込む PR を作る
 just sync      # テンプレート元の変更を現在のブランチに取り込む
@@ -32,7 +34,10 @@ just update    # flake.lock を更新して検証する
 
 - PR は **Create a merge commit** でマージしてください（squash / rebase は共通祖先を壊します）
 - テンプレート元に open の Dependabot PR が残っていると、`just sync` / `just sync-pr` は止まります。処理が終わってから実行するか、`SYNC_IGNORE_OPEN_PRS=1` を付けて実行してください
-- `flake.lock` の衝突は、テンプレートの input をテンプレート側、`flake = false` の project inputs を派生先側の値で解消します。それ以外の衝突では止まるので、手で解消してください
+- `flake.lock` の衝突は、テンプレートの input をテンプレート側、`flake = false` の project inputs を派生先側の値で解消します
+- `apm.lock.yaml` の衝突は、テンプレート側の lock に派生先だけの依存を派生先側の版で書き戻し、`apm install` で解消します
+- `.github/workflows/actions.lock` の衝突は、テンプレート側の lock に派生先だけの workflow と action を書き戻して解消します
+- それ以外の衝突では止まるので、手で解消してください
 - テンプレートの input や workflow だけを更新する Dependabot PR は、取り込み PR と重複するため `template-dependabot-close` workflow が閉じます
 - draft PR の作成には、リポジトリ設定の **Allow GitHub Actions to create and approve pull requests** が必要です（`init-from-template` スキルが有効にします）
 
